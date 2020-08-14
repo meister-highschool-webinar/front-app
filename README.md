@@ -11,6 +11,7 @@ Webinar Platform Web Application
 ## 코드 컨벤션
 Airbnb JS Style Guide를 따릅니다.
 https://github.com/airbnb/javascript
+IDE 에서 prettier 켜주세요.
 
 ## 세팅
 1. git clone https://github.com/meister-highschool-webinar/front-app.git
