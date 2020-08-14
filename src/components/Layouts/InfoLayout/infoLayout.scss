@@ -1,0 +1,25 @@
+.info_layout {
+  display: flex;
+  flex-flow: row nowrap;
+  border: 1px solid #c7c6c6;
+  margin: 10px 0 0;
+  height: 300px;
+  .contents_container {
+    width: 100%;
+    padding: 22px 32px;
+  }
+  .menu_container {
+    display: flex;
+    flex-flow: column nowrap;
+    .menu {
+      height: 100%;
+      line-height: 100%;
+      width: 70px;
+      background: #818181;
+      align-items: center;
+      &.active {
+        background: #fff;
+      }
+    }
+  }
+}

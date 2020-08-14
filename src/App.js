@@ -6,7 +6,7 @@ import { createBrowserHistory } from 'history'
 import { stores } from 'stores'
 
 import Header from 'components/Header/Header'
-import HomePage from './pages/HomePage'
+import MainPage from 'pages/MainPage'
 import TestPage from './pages/TestPage'
 import LoginPage from './pages/LoginPage'
 
@@ -18,7 +18,7 @@ const App = observer(() => {
     storeLoaded: false,
     setStoreLoaded: (load) => (store.storeLoaded = load),
   }))
-  
+
   React.useEffect(() => {
     const load = async () => {
       await hydrate('userStore', stores.userStore).then(() => {
@@ -27,14 +27,14 @@ const App = observer(() => {
     }
     load()
   }, [])
-  
+
   return (
     <Provider {...stores}>
       <Router history={browserHistory}>
         <Header />
         {store.storeLoaded ? (
           <Switch>
-            <Route exact path={'/'} component={HomePage} />
+            <Route exact path={'/'} component={MainPage} />
             <Route path={'/test'} component={TestPage} />
             <Route path={'/login'} component={LoginPage} />
           </Switch>

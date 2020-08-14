@@ -1,4 +1,4 @@
-import HomePage from './HomePage'
+import MainPage from 'pages/MainPage'
 import TestPage from './TestPage'
 
-export { HomePage, TestPage }
+export { MainPage, TestPage }
