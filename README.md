@@ -12,6 +12,11 @@ Webinar Platform Web Application
 Airbnb JS Style Guide를 따릅니다.
 https://github.com/airbnb/javascript
 
+## 세팅
+1. git clone https://github.com/meister-highschool-webinar/front-app.git
+2. yarn / npm install
+3. yarn start / npm start
+
 ## 개발 가이드
 - 개발 Task는 GitHub Projects의 칸반 보드로 관리합니다.
 - 칸반 보드의 각 카드는 GitHub Issue에 등록되어 있습니다. 해당 Issue는 모두 `task` 라벨이 달려있습니다.
