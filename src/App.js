@@ -26,7 +26,7 @@ const App = observer(() => {
       })
     }
     load()
-  }, [])
+  }, [store])
 
   return (
     <Provider {...stores}>
