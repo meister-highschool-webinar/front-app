@@ -7,6 +7,7 @@ import { InfoLayout } from 'components/Layouts'
 import Info from 'components/Info'
 import TimeTable from 'components/TimeTable'
 import './mainPage.scss'
+import Template from 'components/Template'
 
 const MainPage = observer(() => {
   const history = useHistory()
@@ -15,14 +16,16 @@ const MainPage = observer(() => {
     { title: '타임테이블', contents: TimeTable },
   ]
   return (
-    <div className={'mainpage'}>
-      <div className={'main_container'}>
-        <VideoSection />
-        <InfoLayout menus={InfoMenus} />
+    <Template>
+      <div className={'mainpage'}>
+        <div className={'main_container'}>
+          <VideoSection />
+          <InfoLayout menus={InfoMenus} />
+        </div>
+        <div className={'side_container'}>Side Menu</div>
+        {/*<img src={backgroundImg} className={'background'} alt={'background'} />*/}
       </div>
-      <div className={'side_container'}>Side Menu</div>
-      {/*<img src={backgroundImg} className={'background'} alt={'background'} />*/}
-    </div>
+    </Template>
   )
 })
 

@@ -9,6 +9,7 @@ import Header from 'components/Header/Header'
 import MainPage from 'pages/MainPage'
 import TestPage from './pages/TestPage'
 import LoginPage from './pages/LoginPage'
+import AdminLoginPage from './pages/AdminLoginPage'
 
 const browserHistory = createBrowserHistory()
 const hydrate = create()
@@ -31,13 +32,16 @@ const App = observer(() => {
   return (
     <Provider {...stores}>
       <Router history={browserHistory}>
-        <Header />
+        <Route path={'/adminLogin'} component={AdminLoginPage} />
+
         {store.storeLoaded ? (
-          <Switch>
-            <Route exact path={'/'} component={MainPage} />
-            <Route path={'/test'} component={TestPage} />
-            <Route path={'/login'} component={LoginPage} />
-          </Switch>
+          <>
+            <Switch>
+              <Route exact path={'/'} component={MainPage} />
+              <Route path={'/test'} component={TestPage} />
+              <Route path={'/login'} component={LoginPage} />
+            </Switch>
+          </>
         ) : null}
       </Router>
     </Provider>
