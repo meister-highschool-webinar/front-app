@@ -1,7 +1,10 @@
 .timetable {
   text-align: left;
   color: #000000;
-  h1 {}
+  h1 {
+    padding-bottom: 9px;
+    border-bottom: 2px solid #68e0cf;
+  }
   .contents {
     font-size: 16px;
     overflow-y: scroll;
