@@ -28,13 +28,7 @@ const InfoLayout = observer((props) => {
             }}
           >
             <div className={'menu_item'}>
-              {i === 0 ? (
-                <>
-                  <BsQuestionCircleFill style={{ width: '30px', height: '30px', margin: 'auto' }} />
-                </>
-              ) : (
-                <></>
-              )}
+              {i === 0 && <BsQuestionCircleFill style={{ width: '30px', height: '30px', margin: 'auto' }} />}
               <div className="menu_item_info">{menu.title}</div>
             </div>
           </div>
