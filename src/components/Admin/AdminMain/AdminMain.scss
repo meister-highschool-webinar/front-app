@@ -1,0 +1,18 @@
+.AdminMain {
+  &_header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 30px auto;
+    margin-bottom: 22px;
+    & > img {
+      width: 251px;
+      height: 83px;
+    }
+  }
+  &_wrap {
+    width: 100%;
+    height: 100%;
+    background-color: #eeeeee;
+  }
+}
