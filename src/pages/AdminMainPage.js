@@ -3,8 +3,8 @@ import { Link, useHistory } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import AdminMain from 'components/Admin/AdminMain'
 
-const AdminLoginPage = observer(() => {
+const AdminMainPage = observer(() => {
   return <AdminMain />
 })
 
-export default AdminLoginPage
+export default AdminMainPage
