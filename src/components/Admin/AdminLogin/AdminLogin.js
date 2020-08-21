@@ -3,6 +3,8 @@ import './AdminLogin.scss'
 import Box from 'assets/images/line-art.png'
 import managerIcon from 'assets/images/manager-icon.png'
 import loginIcon from 'assets/images/login-icon.png'
+import adminWebinarLogo from 'assets/images/logo@3x.png'
+
 const AdminLogin = () => {
   return (
     <>
@@ -13,10 +15,9 @@ const AdminLogin = () => {
           <div className={'AdminLogin_lineArt_content'}>
             <div className={'AdminLogin_lineArt_content_title'}>
               <img className={'AdminLogin_lineArt_content_title_managerIcon'} src={managerIcon} alt="" />
-              <div className={'AdminLogin_lineArt_content_title_managerIcon_Webinar'}>Webinar</div>
-            </div>
-            <div className={'AdminLogin_lineArt_content_sub'}>
-              <div className={'AdminLogin_lineArt_content_sub_info'}>전국마이스터고등학교 웨비나 관리자</div>
+              <div className={'AdminLogin_lineArt_content_title_WebinarLogo'}>
+                <img src={adminWebinarLogo} alt="" />
+              </div>
             </div>
             <div className={'AdminLogin_lineArt_content_loginWrap'}>
               <input className={'AdminLogin_lineArt_content_loginWrap_loginForm'} type="password" placeholder="비밀번호를 입력해주세요" />
