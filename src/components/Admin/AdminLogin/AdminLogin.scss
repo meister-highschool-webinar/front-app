@@ -90,22 +90,25 @@
         flex-direction: column;
         justify-content: center;
         margin: 144px auto 0px;
-        width: 520px;
+        max-width: 520px;
         &_loginForm {
-          width: 480px;
-          height: 77px;
+          width: calc(100% -8px);
+          height: 73px;
           border: solid 2px #cccccc;
           background-color: #ffffff;
-          text-align: center;
-          vertical-align: middle;
+          padding: 0px 30px;
           &::placeholder {
             position: relative;
+            text-align: center;
             color: #000000;
             font-size: 30px;
             font-family: 'Noto Sans Korean', sans-serif;
             width: 372px;
             height: 38px;
             top: 4px;
+          }
+          &:focus {
+            outline: none;
           }
         }
         &_loginButton {
