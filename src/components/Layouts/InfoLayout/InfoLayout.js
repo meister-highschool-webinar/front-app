@@ -1,16 +1,9 @@
 import React from 'react'
-import { observer, useLocalStore } from 'mobx-react'
 import './infoLayout.scss'
 
-const InfoLayout = observer((props) => {
-  const { menus } = props
-  const store = useLocalStore(() => ({
-    menuIndex: 0,
-    changeMenu: (index) => {
-      store.menuIndex = index
-    },
-  }))
-  const { menuIndex, changeMenu } = store
+const InfoLayout = (props) => {
+  const { menus, changeMenu, menuIndex } = props
+
   const MenuContents = menus[menuIndex].contents
 
   return (
@@ -27,6 +20,6 @@ const InfoLayout = observer((props) => {
       </div>
     </div>
   )
-})
+}
 
 export default InfoLayout
