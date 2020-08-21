@@ -1,18 +1,135 @@
 .AdminMain {
   &_header {
     display: flex;
-    justify-content: center;
     width: 100%;
     margin: 30px auto;
-    margin-bottom: 22px;
+    margin-bottom: 21px;
+    flex-direction: column;
+    align-items: center;
     & > img {
-      width: 251px;
-      height: 83px;
+      width: 276px;
+    }
+    & > h3 {
+      font-size: 16px;
+      font-weight: normal;
+      font-family: 'RecipeKorea', sans-serif;
+      color: black;
+      margin-bottom: 0;
+      margin-top: 4px;
     }
   }
   &_wrap {
     width: 100%;
-    height: 100%;
     background-color: #eeeeee;
+    padding: 55px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &_item {
+      margin-bottom: 19px;
+      font-family: 'Noto Sans Korean', sans-serif;
+      display: flex;
+      position: relative;
+      width: 1600px;
+      justify-content: space-between;
+      &_icon {
+        justify-self: start;
+        font-size: 25.7px;
+        font-weight: 900;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        div {
+          display: flex;
+          align-items: center;
+          span {
+            margin-left: 13px;
+          }
+          img {
+            width: 48px;
+            object-fit: contain;
+          }
+        }
+        &_download {
+          cursor: pointer;
+          margin-top: 22px;
+          width: 143px;
+          height: 38px;
+          object-fit: contain;
+        }
+      }
+      &_timetable {
+        width: 1252px;
+        height: 284px;
+        overflow-y: scroll;
+        border: solid 2px #cccccc;
+        background-color: #ffffff;
+      }
+      &_input {
+        margin-left: auto;
+        display: flex;
+        span {
+          padding-top: 5px;
+          margin-right: 18px;
+          font-size: 25.7px;
+        }
+        input {
+          font-family: 'Noto Sans Korean', sans-serif;
+          padding: 5px 10px;
+          font-size: 24px;
+          box-sizing: border-box;
+          width: 1252px;
+          height: 50px;
+          border: solid 2px #cccccc;
+          background-color: #ffffff;
+          &::placeholder {
+            color: #666666;
+          }
+        }
+        textarea {
+          font-family: 'Noto Sans Korean', sans-serif;
+          padding: 5px 10px;
+          font-size: 24px;
+          box-sizing: border-box;
+          width: 1252px;
+          resize: none;
+          height: 116px;
+          border: solid 2px #cccccc;
+          background-color: #ffffff;
+          overflow-y: scroll;
+          &::placeholder {
+            color: #666666;
+          }
+        }
+      }
+    }
+    &_footer {
+      display: flex;
+      width: 1600px;
+      justify-content: space-between;
+      margin-top: 54px;
+      margin-bottom: 116px;
+      img {
+        width: 323px;
+      }
+      &_item {
+        display: flex;
+        align-items: center;
+        font-family: 'Noto Sans Korean', sans-serif;
+        font-size: 25.7px;
+        font-weight: 900;
+        img {
+          width: 47px;
+        }
+        &_download {
+          width: 143px !important;
+        }
+        span {
+          display: inline-block;
+          margin-left: 11px;
+          margin-right: 10px;
+        }
+      }
+    }
   }
 }
