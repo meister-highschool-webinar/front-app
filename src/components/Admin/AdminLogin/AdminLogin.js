@@ -3,7 +3,7 @@ import './AdminLogin.scss'
 import Box from 'assets/images/line-art.png'
 import managerIcon from 'assets/images/manager-icon.png'
 import loginIcon from 'assets/images/login-icon.png'
-import adminWebinarLogo from 'assets/images/logo@3x.png'
+import TalkTalkTalkLogo from 'assets/images/TalkTalkTalklogo@3x.png'
 
 const AdminLogin = () => {
   return (
@@ -16,7 +16,7 @@ const AdminLogin = () => {
             <div className={'AdminLogin_lineArt_content_title'}>
               <img className={'AdminLogin_lineArt_content_title_managerIcon'} src={managerIcon} alt="" />
               <div className={'AdminLogin_lineArt_content_title_WebinarLogo'}>
-                <img src={adminWebinarLogo} alt="" />
+                <img src={TalkTalkTalkLogo} alt="" />
               </div>
             </div>
             <div className={'AdminLogin_lineArt_content_loginWrap'}>
