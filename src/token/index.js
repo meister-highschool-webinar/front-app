@@ -1,1 +1,1 @@
-export { default } from './tokenVerification'
+export { default } from './GetTokenLocation'

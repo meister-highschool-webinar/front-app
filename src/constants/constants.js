@@ -1,15 +1,15 @@
 // 현재는 임시로 TalkTalk-token 으로 이름으로 적었는데 추후 개발에 따라 토큰 이름을 바꿔야 할 수 있습니다.
-// 이 파일은 tokenVerifcation 파일과 연동되는 파일입니다. setItem Toekn이름이 바뀐다면 둘다 수정을 해야 합니다.
+// 로컬스토리지를 사용합니다.
 
-import TokenVerification from 'token/tokenVerification'
+import GetTokenLocation from 'token/GetTokenLocation'
 
 class Constants {
   TOKEN_EMPTY = () => {
-    return TokenVerification() === 'empty'
+    return GetTokenLocation() === 'empty'
   }
 
   GET_TOKEN = () => {
-    return TokenVerification() === 'localT' ? localStorage.getItem('TalkTalk-token') : sessionStorage.getItem('TalkTalk-token')
+    return GetTokenLocation() === 'localT' && localStorage.getItem('TalkTalk-token')
   }
 }
 
