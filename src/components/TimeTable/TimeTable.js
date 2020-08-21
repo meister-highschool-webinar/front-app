@@ -1,4 +1,5 @@
 import React from 'react'
+import './timetable.scss'
 
 const TimeTable = () => {
   return (
