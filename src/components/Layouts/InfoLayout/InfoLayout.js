@@ -20,7 +20,7 @@ const InfoLayout = observer((props) => {
       </div>
       <div className={'menu_container'}>
         {menus.map((menu, i) => (
-          <div className={menuIndex === i ? 'menu active' : 'menu'} onClick={() => changeMenu(i)}>
+          <div className={menuIndex === i ? 'menu active' : 'menu'} onClick={() => changeMenu(i)} key={i}>
             {menu.title}
           </div>
         ))}
