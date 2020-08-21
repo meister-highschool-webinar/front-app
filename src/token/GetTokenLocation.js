@@ -2,11 +2,11 @@
 // 현재는 임시로 TalkTalk-token 으로 이름으로 적었는데 추후 개발에 따라 토큰 이름을 바꿔야 할 수 있습니다.
 
 const GetTokenLocation = () => {
-  let Token = 'empty'
+  let Token = null
 
-  const localT = localStorage.getItem('TalkTalk-token')
+  const local = localStorage.getItem('TalkTalk-token')
 
-  if (localT !== null) Token = 'localT'
+  if (local !== null) Token = 'local'
 
   return Token
 }

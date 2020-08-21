@@ -5,11 +5,11 @@ import GetTokenLocation from 'token/GetTokenLocation'
 
 class Constants {
   TOKEN_EMPTY = () => {
-    return GetTokenLocation() === 'empty'
+    return GetTokenLocation() === null
   }
 
   GET_TOKEN = () => {
-    return GetTokenLocation() === 'localT' && localStorage.getItem('TalkTalk-token')
+    return GetTokenLocation() === 'local' && localStorage.getItem('TalkTalk-token')
   }
 }
 
