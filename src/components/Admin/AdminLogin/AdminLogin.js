@@ -20,7 +20,7 @@ const AdminLogin = () => {
               </div>
             </div>
             <div className={'AdminLogin_lineArt_content_loginWrap'}>
-              <input className={'AdminLogin_lineArt_content_loginWrap_loginForm'} type="password" placeholder="비밀번호를 입력해주세요" />
+              <input className={'AdminLogin_lineArt_content_loginWrap_loginForm'} type="password" placeholder="비밀번호를 입력하세요" />
               <div className={'AdminLogin_lineArt_content_loginWrap_loginButton'} onClick={() => console.log('click')}>
                 <img className={'AdminLogin_lineArt_content_loginWrap_loginButton_loginIcon'} src={loginIcon} alt="" />
               </div>
