@@ -24,6 +24,7 @@ IDE 에서 prettier 켜주세요.
 - Task는 1개 이상의 Feature로 쪼개집니다.
 - Feature는 본인이 자유롭게 나누고, 이를 Issue로 생성합니다. 해당 Issue에는 `feature` 라벨을 달아주세요.
 - 자신이 담당하는 Issue에는 본인을 Assignee로 등록해주세요.
+- 기본적으로 develop 브랜치에서 새로운 브랜치를 생성해서 작업하면 됩니다.
 - Git-flow 전략을 따르며, `feature-{seq}-{desc}`와 같은 식으로 브랜치를 생성합니다. `seq`는 Feature의 Issue 번호로 지정하며, `desc`는 자유롭게 지정해주세요.
 - 구현시 develop branch에 PR를 날립니다.
 - 해당 PR에 대해 자신을 제외한 2명 이상의 코드리뷰가 완료되면 merge 합니다.
