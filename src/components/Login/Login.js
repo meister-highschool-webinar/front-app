@@ -26,9 +26,11 @@ const Login = () => {
   }
 
   const onSubmit = (e) => {
+    let loginData = [school, Object.values(inputs)]
     e.preventDefault()
-    alert(school) //test
+    alert(loginData) //test
     setInputs({
+      school: '',
       grade: '',
       sclass: '',
       number: '',
@@ -46,18 +48,18 @@ const Login = () => {
       <form onSubmit={onSubmit}>
         <div className={'divSelect'}>
           <div className={'schoolSelect'}>
-            <select defaultValue={'default'} name="schoolSelect" onChange={selectOnChange}>
-              <option value="default" disabled>학교</option>
+            <select name="schoolSelect" onChange={selectOnChange} required="required">
+              <option value="">학교</option>
               <option value="deaduk">대덕SW마이스터고</option>
               <option value="deagu">대구SW마이스터고</option>
               <option value="gwangju"> 광주SW마이스터고</option>
             </select>
           </div>
           <div>
-            <input name="grade" type="text" value={grade} onChange={onChange} placeholder="학년" />
-            <input name="sclass" type="text" value={sclass} onChange={onChange} placeholder="반" />
-            <input name="number" type="text" value={number} onChange={onChange} placeholder="번호" />
-            <input name="name" type="text" value={name} onChange={onChange} placeholder="이름" />
+            <input name="grade" type="text" value={grade} onChange={onChange} placeholder="학년" required autoComplete="off"/>
+            <input name="sclass" type="text" value={sclass} onChange={onChange} placeholder="반" required autoComplete="off"/>
+            <input name="number" type="text" value={number} onChange={onChange} placeholder="번호" required autoComplete="off"/>
+            <input name="name" type="text" value={name} onChange={onChange} placeholder="이름" required autoComplete="off"/>
           </div>
         </div>
         <div className={'submitArea'}>
