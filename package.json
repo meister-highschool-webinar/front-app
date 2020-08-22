@@ -13,6 +13,7 @@
     "mobx-persist": "^0.4.1",
     "mobx-react": "^6.2.5",
     "mobx-react-lite": "^2.0.7",
+    "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
