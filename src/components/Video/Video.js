@@ -8,7 +8,7 @@ const Video = () => {
     <div className={'video_section'}>
       <img src={homeButton} alt=""></img>
       <div className={'video'}>
-        <ReactPlayer url="" width="100%" height="100%" />
+        <ReactPlayer url="" width="100%" height="100%" controls={true} />
       </div>
     </div>
   )
