@@ -50,8 +50,8 @@ const Login = () => {
           <div className={'schoolSelect'}>
             <select name="schoolSelect" onChange={selectOnChange} required="required">
               <option value="">학교</option>
-              <option value="deaduk">대덕SW마이스터고</option>
-              <option value="deagu">대구SW마이스터고</option>
+              <option value="daeduk">대덕SW마이스터고</option>
+              <option value="daegu">대구SW마이스터고</option>
               <option value="gwangju"> 광주SW마이스터고</option>
             </select>
           </div>
