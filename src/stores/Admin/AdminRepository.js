@@ -10,6 +10,20 @@ class AdminRepository {
       throw error
     }
   }
+
+  createWebinarInfo = async (request) => {
+    try {
+      const config = {
+        headers: {
+          'x-access-token': sessionStorage.getItem('adminToken'),
+        },
+      }
+      const data = await axios.post(`${SERVER}/auth/webinar`, request, config)
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export default new AdminRepository()
