@@ -3,6 +3,7 @@ import { observer, useLocalStore } from 'mobx-react'
 import { stores } from 'stores'
 import TimeTable from 'components/TimeTable'
 import moment from 'moment'
+import TimeTableTemp from 'components/TimeTable/TimeTableTemp/TimeTableTemp'
 
 const TimeTableContainer = observer(() => {
   const { getTimeTable, TimeTableList } = stores.WebinarTimeTableStore
@@ -22,9 +23,9 @@ const TimeTableContainer = observer(() => {
     const { start_time, end_time, speech, track_name } = data
     return (
       <>
-        <div>
-          {moment(start_time).format('YYYY-MM-DD')},{moment(end_time).format('YYYY-MM-DD')},{track_name},{speech}
-        </div>
+        <tr>
+          <TimeTableTemp start_time={start_time} end_time={end_time} speech={speech} track_name={track_name} />
+        </tr>
       </>
     )
   })

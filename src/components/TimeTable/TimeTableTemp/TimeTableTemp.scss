@@ -1,0 +1,31 @@
+.TimeTableTemp {
+  border-spacing: 0;
+  &_table {
+    text-align: center;
+    &_time {
+      height: 45px;
+      border: 0.5px solid #ebebeb;
+      width: 20%;
+    }
+    &_runTime {
+      height: 45px;
+      width: 53px;
+      border: 0.5px solid #ebebeb;
+    }
+    &_title {
+      height: 45px;
+      border: 0.5px solid #ebebeb;
+
+      width: 400px;
+    }
+    &_name {
+      height: 45px;
+      border: 0.5px solid #ebebeb;
+
+      width: 126px;
+    }
+  }
+}
+td {
+  text-align: center;
+}
