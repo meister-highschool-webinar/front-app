@@ -4,7 +4,6 @@ import UserStore from './UserStore'
 import ChatStore from './ChatStore'
 import SurveyStore from './SurveyStore'
 import LuckyStore from './LuckyStore'
-import WebinarInfoStore from './WebinarInfoStore/WebinarInfoStore'
 import AdminStore from './Admin/AdminStore'
 
 export const stores = {
@@ -13,7 +12,6 @@ export const stores = {
   chatStore: new ChatStore(),
   surveyStore: new SurveyStore(),
   luckyStore: new LuckyStore(),
-  WebinarInfoStore: new WebinarInfoStore(),
   AdminStore: new AdminStore(),
 }
 
