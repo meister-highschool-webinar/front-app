@@ -5,11 +5,15 @@ import WebinarInfoRepository from './WebinarInfoRepository'
 @autobind
 class WebinarInfoStore {
   @observable link = ''
+  @observable title = ''
+  @observable detail = ''
   @action
   async getWebinarInfo() {
     try {
-      const response = WebinarInfoRepository.getWebinarInfo()
+      const response = await WebinarInfoRepository.getWebinarInfo()
       this.link = response.data.link
+      this.title = response.data.title
+      this.detail = response.data.detail
       return new Promise((resolve, reject) => {
         resolve(response)
       })
