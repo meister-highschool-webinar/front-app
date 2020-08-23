@@ -1,6 +1,6 @@
 import React from 'react'
 import './timetable.scss'
-import { Table } from 'react-bootstrap'
+// import { Table } from 'react-bootstrap'
 
 const TimeTable = ({ TimeTableListMap }) => {
   return (

@@ -8,7 +8,7 @@
   }
   .contents {
     font-size: 16px;
-    overflow-y: scroll;
+    // overflow-y: scroll;
     text-overflow: clip;
     display: flex;
 
@@ -27,6 +27,10 @@
       width: 704px;
       height: 194px;
       overflow-y: auto;
+      & > table > tr > td {
+        text-align: center;
+        padding: 0px 5px 0px 5px;
+      }
     }
   }
 }
