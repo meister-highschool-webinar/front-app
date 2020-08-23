@@ -22,14 +22,21 @@
       justify-self: center;
       text-align: center;
       // justify-items: center;
+      & > div {
+        font-family: NotoSans;
+        font-size: 20px;
+        font-weight: 600;
+      }
     }
     &_table {
       width: 704px;
       height: 194px;
       overflow-y: auto;
-      & > table > tr > td {
-        text-align: center;
-        padding: 0px 5px 0px 5px;
+      & > table > tr {
+        & > td {
+          text-align: center;
+          padding: 0px 5px 0px 5px;
+        }
       }
     }
   }

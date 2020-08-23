@@ -1,17 +1,17 @@
 import React from 'react'
 import './timetable.scss'
-// import { Table } from 'react-bootstrap'
+import moment from 'moment'
 
-const TimeTable = ({ TimeTableListMap }) => {
+const TimeTable = ({ timeTableListMap, timeTableStartTime, title }) => {
   return (
     <div className={'timetable'}>
-      <h1>타임테이블</h1>
+      <h1>{title}</h1>
       <div className={'contents'}>
         <div className="contents_date">
-          <div>여기 시간</div>
+          <div>{timeTableStartTime}</div>
         </div>
         <div className="contents_table">
-          <table style={{ borderSpacing: '0' }}>{TimeTableListMap}</table>
+          <table style={{ borderSpacing: '0' }}>{timeTableListMap}</table>
         </div>
       </div>
     </div>
