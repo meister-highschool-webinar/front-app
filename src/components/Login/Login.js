@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import BasicInput from '../forms/BasicInput'
+import BasicSelect from '../forms/BasicSelect'
 import loginIcon from 'assets/images/login-icon.png'
 import './login.scss'
 
@@ -13,16 +15,17 @@ const Login = () => {
 
   const { grade, sclass, number, name } = inputs
 
-  const selectOnChange = (e) => {
-    setSchool(e.target.value)
-  }
-
   const onChange = (e) => {
     const { value, name } = e.target
+    console.log(e.target)
     setInputs({
       ...inputs,
       [name]: value,
     })
+  }
+
+  const selectOnChange = (e) => {
+    setSchool(e.target.value)
   }
 
   const onSubmit = (e) => {
@@ -38,53 +41,26 @@ const Login = () => {
     })
   }
 
-  const Select = (props) => {
-    const { options, ...restProps } = props
-    return (
-      <select {...restProps}>
-        {options.map((option, i) => {
-          const { value, name } = option
-          return (
-            <option key={i} value={value}>
-              {name}
-            </option>
-          )
-        })}
-      </select>
-    )
-  }
-
-  const Input = (props) => {
-    const { options, onChange } = props
+  const InputWrapper = (props) => {
+    const { options } = props
     return options.map((option, i) => {
-      const { name, type = 'text', value, required = true, autoComplete = 'off', placeholder } = option
-      return (
-        <input
-          key={i}
-          name={name}
-          type={type}
-          value={value}
-          onChange={onChange}
-          required={required}
-          placeholder={placeholder}
-          autoComplete={autoComplete}
-        />
-      )
+      const { value, name, placeholder } = option
+      return <BasicInput key={`input_${name}${i}`} value={value} name={name} placeholder={placeholder} onChange={onChange} />
     })
   }
-
-  const inputOptions = [
-    { value: inputs.grade, name: 'grade', placeholder: '학년' },
-    { value: inputs.sclass, name: 'sclass', placeholder: '반' },
-    { value: inputs.number, name: 'number', placeholder: '번호' },
-    { value: inputs.name, name: 'name', placeholder: '이름' },
-  ]
 
   const selectOptions = [
     { id: 1, value: '', name: '학교' },
     { id: 2, value: 'daeduk', name: '대덕SW마이스터고' },
     { id: 3, value: 'daegu', name: '대구SW마이스터고' },
     { id: 4, value: 'gwangju', name: '광주SW마이스터고' },
+  ]
+
+  const inputOptions = [
+    { value: inputs.grade, name: 'grade', placeholder: '학년' },
+    { value: inputs.sclass, name: 'sclass', placeholder: '반' },
+    { value: inputs.number, name: 'number', placeholder: '번호' },
+    { value: inputs.name, name: 'name', placeholder: '이름' },
   ]
 
   return (
@@ -97,10 +73,10 @@ const Login = () => {
       <form onSubmit={onSubmit}>
         <div className={'divSelect'}>
           <div className={'schoolSelect'}>
-            <Select name="schoolSelect" onChange={selectOnChange} options={selectOptions} required="required" />
+            <BasicSelect options={selectOptions} onChange={selectOnChange} />
           </div>
           <div>
-            <Input onChange={onChange} options={inputOptions} />
+            <InputWrapper options={inputOptions}/>
           </div>
         </div>
         <div className={'submitArea'}>
