@@ -2,7 +2,16 @@ import React, { useState } from 'react'
 import BasicInput from '../forms/BasicInput'
 import BasicSelect from '../forms/BasicSelect'
 import loginIcon from 'assets/images/login-icon.png'
+import { loginApi } from '../../utils/apis'
 import './login.scss'
+
+const InputWrapper = (props) => {
+  const { options, onChange } = props
+  return options.map((option, i) => {
+    const { value, name, placeholder } = option
+    return <BasicInput key={`input_${name}${i}`} value={value} name={name} placeholder={placeholder} onChange={onChange} />
+  })
+}
 
 const Login = () => {
   const [school, setSchool] = useState('학교')
@@ -17,7 +26,6 @@ const Login = () => {
 
   const onChange = (e) => {
     const { value, name } = e.target
-    console.log(e.target)
     setInputs({
       ...inputs,
       [name]: value,
@@ -29,9 +37,9 @@ const Login = () => {
   }
 
   const onSubmit = (e) => {
-    let loginData = [school, Object.values(inputs)]
+    let loginData = [school, inputs]
     e.preventDefault()
-    alert(loginData) //test
+    loginApi(loginData)
     setInputs({
       school: '',
       grade: '',
@@ -41,19 +49,11 @@ const Login = () => {
     })
   }
 
-  const InputWrapper = (props) => {
-    const { options } = props
-    return options.map((option, i) => {
-      const { value, name, placeholder } = option
-      return <BasicInput key={`input_${name}${i}`} value={value} name={name} placeholder={placeholder} onChange={onChange} />
-    })
-  }
-
   const selectOptions = [
     { id: 1, value: '', name: '학교' },
-    { id: 2, value: 'daeduk', name: '대덕SW마이스터고' },
-    { id: 3, value: 'daegu', name: '대구SW마이스터고' },
-    { id: 4, value: 'gwangju', name: '광주SW마이스터고' },
+    { id: 2, value: '대덕소프트웨어마이스터고등학교', name: '대덕SW마이스터고' },
+    { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW마이스터고' },
+    { id: 4, value: '광주소프트웨어마이스터고등학교', name: '광주SW마이스터고' },
   ]
 
   const inputOptions = [
@@ -76,7 +76,7 @@ const Login = () => {
             <BasicSelect options={selectOptions} onChange={selectOnChange} />
           </div>
           <div>
-            <InputWrapper options={inputOptions}/>
+            <InputWrapper options={inputOptions} onChange={onChange} />
           </div>
         </div>
         <div className={'submitArea'}>
