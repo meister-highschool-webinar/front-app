@@ -3,13 +3,8 @@ import { SERVER } from 'config/config.json'
 
 class WebinarInfoRepository {
   getWebinarInfo = async () => {
-    try {
-      const data = await axios.get(`${SERVER}/webinar-info`)
-      console.log(data)
-      return data
-    } catch (error) {
-      throw error
-    }
+    const data = await axios.get(`${SERVER}/webinar-info`)
+    return data
   }
 }
 

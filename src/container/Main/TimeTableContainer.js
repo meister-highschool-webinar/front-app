@@ -9,10 +9,12 @@ const TimeTableContainer = observer(() => {
   const { getTimeTable, timeTableList, tableStartTime } = stores.WebinarTimeTableStore
   const { title } = stores.WebinarInfoStore
 
-  const handleGetTimeTable = useCallback(() => {
-    getTimeTable().catch((error) => {
+  const handleGetTimeTable = useCallback(async () => {
+    try {
+      await getTimeTable()
+    } catch (error) {
       return error
-    })
+    }
   }, [getTimeTable])
 
   const timeTableListMap =

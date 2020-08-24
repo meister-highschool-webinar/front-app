@@ -16,10 +16,12 @@ const MainContainer = observer(() => {
       store.menuIndex = index
     },
   }))
-  const handleGetWebinarInfo = useCallback(() => {
-    getWebinarInfo().catch((error) => {
+  const handleGetWebinarInfo = useCallback(async () => {
+    try {
+      await getWebinarInfo()
+    } catch (error) {
       return error
-    })
+    }
   }, [getWebinarInfo])
 
   const { menuIndex, changeMenu } = store
