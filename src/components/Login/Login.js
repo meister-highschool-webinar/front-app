@@ -55,7 +55,7 @@ const Login = () => {
   }
 
   const Input = (props) => {
-    const { options, changeOption } = props
+    const { options, onChange } = props
     return options.map((option, i) => {
       const { name, type = 'text', value, required = true, autoComplete = 'off', placeholder } = option
       return (
@@ -64,7 +64,7 @@ const Login = () => {
           name={name}
           type={type}
           value={value}
-          onChange={changeOption}
+          onChange={onChange}
           required={required}
           placeholder={placeholder}
           autoComplete={autoComplete}
@@ -100,7 +100,7 @@ const Login = () => {
             <Select name="schoolSelect" onChange={selectOnChange} options={selectOptions} required="required" />
           </div>
           <div>
-            <Input changeOption={onChange} options={inputOptions} />
+            <Input onChange={onChange} options={inputOptions} />
           </div>
         </div>
         <div className={'submitArea'}>
