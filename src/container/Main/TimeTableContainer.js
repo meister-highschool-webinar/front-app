@@ -22,7 +22,6 @@ const TimeTableContainer = observer(() => {
       const start_time_min = moment.duration(moment(start_time).format('HH:mm'))
       const end_time_min = moment.duration(moment(end_time).format('HH:mm'))
       const time_result = (end_time_min - start_time_min) / 60000
-      // console.log(a._milliseconds / 60000)
       return (
         <>
           <tr>
