@@ -6,7 +6,7 @@ const TimeTableTemp = ({ start_time, end_time, speech, track_name, result }) => 
   return (
     <>
       <td className="TimeTableTemp_table_time">
-        {moment(start_time).format('HH:mm')} - {moment(end_time).format('HH:mm')}
+        {moment.parseZone(start_time).format(' HH:mm')} - {moment.parseZone(end_time).format(' HH:mm')}
       </td>
       <td className="TimeTableTemp_table_runTime">{result}분</td>
       <td className="TimeTableTemp_table_title">{track_name}</td>
