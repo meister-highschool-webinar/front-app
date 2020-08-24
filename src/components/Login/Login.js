@@ -38,6 +38,55 @@ const Login = () => {
     })
   }
 
+  const Select = (props) => {
+    const { options, ...restProps } = props
+    return (
+      <select {...restProps}>
+        {options.map((option, i) => {
+          const { value, name } = option
+          return (
+            <option key={i} value={value}>
+              {name}
+            </option>
+          )
+        })}
+      </select>
+    )
+  }
+
+  const Input = (props) => {
+    const { options, onChange } = props
+    return options.map((option, i) => {
+      const { name, type = 'text', value, required = true, autoComplete = 'off', placeholder } = option
+      return (
+        <input
+          key={i}
+          name={name}
+          type={type}
+          value={value}
+          onChange={onChange}
+          required={required}
+          placeholder={placeholder}
+          autoComplete={autoComplete}
+        />
+      )
+    })
+  }
+
+  const inputOptions = [
+    { value: inputs.grade, name: 'grade', placeholder: '학년' },
+    { value: inputs.sclass, name: 'sclass', placeholder: '반' },
+    { value: inputs.number, name: 'number', placeholder: '번호' },
+    { value: inputs.name, name: 'name', placeholder: '이름' },
+  ]
+
+  const selectOptions = [
+    { id: 1, value: '', name: '학교' },
+    { id: 2, value: 'daeduk', name: '대덕SW마이스터고' },
+    { id: 3, value: 'daegu', name: '대구SW마이스터고' },
+    { id: 4, value: 'gwangju', name: '광주SW마이스터고' },
+  ]
+
   return (
     <div className={'loginSection'}>
       <div>
@@ -48,22 +97,14 @@ const Login = () => {
       <form onSubmit={onSubmit}>
         <div className={'divSelect'}>
           <div className={'schoolSelect'}>
-            <select name="schoolSelect" onChange={selectOnChange} required="required">
-              <option value="">학교</option>
-              <option value="daeduk">대덕SW마이스터고</option>
-              <option value="daegu">대구SW마이스터고</option>
-              <option value="gwangju"> 광주SW마이스터고</option>
-            </select>
+            <Select name="schoolSelect" onChange={selectOnChange} options={selectOptions} required="required" />
           </div>
           <div>
-            <input name="grade" type="text" value={grade} onChange={onChange} placeholder="학년" required autoComplete="off"/>
-            <input name="sclass" type="text" value={sclass} onChange={onChange} placeholder="반" required autoComplete="off"/>
-            <input name="number" type="text" value={number} onChange={onChange} placeholder="번호" required autoComplete="off"/>
-            <input name="name" type="text" value={name} onChange={onChange} placeholder="이름" required autoComplete="off"/>
+            <Input onChange={onChange} options={inputOptions} />
           </div>
         </div>
         <div className={'submitArea'}>
-          <button className={'loginButton'}>
+          <button type="submit" className={'loginButton'}>
             <img src={loginIcon} alt="loginIcon" />
           </button>
         </div>
