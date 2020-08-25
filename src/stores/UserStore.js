@@ -1,11 +1,18 @@
-import { action, observable } from 'mobx'
-import { persist } from 'mobx-persist'
+import { observable } from 'mobx'
+import { loginApi } from '../utils/apis'
 
-export default class UserStore {
-  @persist @observable session_key = ''
-  @persist('object') @observable currentUser = {
-    email: '',
-    name: '',
+const UserStore = observable({
+  login(authData, callback) {
+    let result = loginApi(authData)
+      .then((response) => {
+        localStorage.setItem('authInfo', response.data.accessToken)
+      })
+      .catch((error) => {
+        console.log(error.response)
+      })
+      console.log(result)
+      callback(result)
   }
-  @persist @observable isAuthenticated = false
-}
+})
+
+export default UserStore

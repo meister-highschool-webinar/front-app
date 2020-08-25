@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import UserStore from '../../stores/UserStore'
 import BasicInput from '../forms/BasicInput'
 import BasicSelect from '../forms/BasicSelect'
 import loginIcon from 'assets/images/login-icon.png'
-import { loginApi } from '../../utils/apis'
 import './login.scss'
+import { useObserver } from 'mobx-react'
 
 const InputWrapper = (props) => {
   const { options, onChange } = props
@@ -14,6 +16,7 @@ const InputWrapper = (props) => {
 }
 
 const Login = () => {
+  let history = useHistory()
   const [school, setSchool] = useState('학교')
   const [inputs, setInputs] = useState({
     grade: '',
@@ -37,9 +40,15 @@ const Login = () => {
   }
 
   const onSubmit = (e) => {
-    let loginData = [school, inputs]
+    let userData = [school, inputs]
     e.preventDefault()
-    loginApi(loginData)
+    
+    const pageRoute = (result) => {
+      console.log(result)
+    }
+
+    UserStore.login(userData, pageRoute)
+
     setInputs({
       school: '',
       grade: '',
@@ -63,7 +72,7 @@ const Login = () => {
     { value: inputs.name, name: 'name', placeholder: '이름' },
   ]
 
-  return (
+  return useObserver(() => (
     <div className={'loginSection'}>
       <div>
         <p className={'loginTitle'}>
@@ -86,7 +95,7 @@ const Login = () => {
         </div>
       </form>
     </div>
-  )
+  ))
 }
 
 export default Login
