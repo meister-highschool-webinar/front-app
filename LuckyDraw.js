@@ -3,7 +3,8 @@ import './LuckyDraw.scss'
 import artwork from './img/artwork.png'
 import chattingIcon from './img/chatting-icon.png'
 import surveyIcon from './img/survey-icon.png'
-import axios from 'axios'
+import luckydrawIcon from './img/luckydraw-icon.png'
+import socketio from 'socket.io-client'
 
 
 
@@ -11,19 +12,10 @@ const LuckyDraw = () => {
   const [data, setData] = useState([
     {},{},{},{},{},{},{},{},{},{}
   ])
-
-  useEffect(( ) => {
-    axios
-      .post('http://54.180.138.80:3000/api/auth/luckdraw/start', {
-        event: 0
-      }, {
-        headers : {
-          "x-access-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImNjNjZiODU4LTU2MWUtNDBiZC1iNzNiLTZkNzkzMjVlNDgzNyIsImlhdCI6MTU5ODE4ODQ2M30.8kxMGqKzpDsbOzSjNUGZe-sh4wBaGyvZOxhDc4I3V2Q"
-        }
-      })
-      .then(({ data }) => setData(data))
-      .catch(e => console.log(e));
-  }, [])
+  const socket = socketio.connect('http://localhost:4000');
+  socket.on('winner', (data) => {
+    setData(data);
+  })
 
   return (
     <div className="Background-box">
@@ -31,6 +23,7 @@ const LuckyDraw = () => {
         <div className="Icons">
           <img  src={chattingIcon} className="chatting-icon"></img>
           <img src={surveyIcon} className="survey-icon"></img>
+          <img src={luckydrawIcon} className="luckydraw-icon"></img>
         </div>
         <div className="text">럭키드로우</div>
         <div className="Lucky-Draw-Area">
