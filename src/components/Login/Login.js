@@ -42,12 +42,13 @@ const Login = () => {
   const onSubmit = (e) => {
     let userData = [school, inputs]
     e.preventDefault()
-    
-    const pageRoute = (result) => {
+
+    const pageRoute = (result) => { //callback
+      alert("로그인성공")
       console.log(result)
     }
 
-    UserStore.login(userData, pageRoute)
+    UserStore.login(userData, pageRoute) //callback
 
     setInputs({
       school: '',
