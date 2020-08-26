@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { stores } from 'stores'
+import { SERVER } from 'config/config.json'
 
-let URL = process.env.NODE_ENV !== 'production' ? '/api' : 'http://test-api/api'
+let URL = SERVER
 
 const axiosApi = (url, method = 'GET', data, options = {}) => {
   data = method.toUpperCase() === 'GET' ? { params: { ...data } } : { data }

@@ -4,8 +4,8 @@ import UserStore from './UserStore'
 import ChatStore from './ChatStore'
 import SurveyStore from './SurveyStore'
 import LuckyStore from './LuckyStore'
-import WebinarInfoStore from './WebinarInfoStore/WebinarInfoStore'
-import WebinarTimeTableStore from './WebinarTimeTableStore/WebinarTimeTableStore'
+import WebinarInfoStore from './WebinarInfoStore'
+import WebinarTimeTableStore from './WebinarTimeTableStore'
 
 export const stores = {
   appStore: new AppStore(),

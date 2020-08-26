@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx'
 import { autobind } from 'core-decorators'
-import WebinarInfoRepository from './WebinarInfoRepository'
+import * as api from 'utils/apis'
 
 @autobind
 class WebinarInfoStore {
@@ -9,7 +9,7 @@ class WebinarInfoStore {
   @observable detail = ''
   @action
   async getWebinarInfo() {
-    const response = await WebinarInfoRepository.getWebinarInfo()
+    const response = await api.getWebinarInfo()
     this.link = response.data.link
     this.title = response.data.title
     this.detail = response.data.detail
