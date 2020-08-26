@@ -7,7 +7,7 @@ import LuckyStore from './LuckyStore'
 
 export const stores = {
   appStore: new AppStore(),
-  userStore: new UserStore(),
+  userStore: UserStore,
   chatStore: new ChatStore(),
   surveyStore: new SurveyStore(),
   luckyStore: new LuckyStore(),

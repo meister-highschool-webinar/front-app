@@ -1,9 +1,26 @@
 .container{
     display: grid;
-    grid-template-rows: 700px 380px;
+    grid-template-rows: 635px 345px;
 }
 
 .background{
     background-image: url('../assets/images/login_background.png');
     background-position: center;
+    z-index: 0;
 }
+
+// .gradientBox{
+//     width:520px;
+//     height:700px;
+//     background-image: linear-gradient(to top, #209cff, #68e0cf);
+//     position: absolute;
+//     z-index: 1;
+// }
+
+// .logo{
+//     background-repeat: no-repeat;
+//     background-image: url('../assets/images/logo.png');
+//     background-position: center;
+//     position: absolute;
+//     z-index: 2;
+// }
