@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useObserver } from 'mobx-react'
 import { useStores } from 'stores'
+import { loginApi } from 'utils/apis'
 import BasicInput from '../forms/BasicInput'
 import BasicSelect from '../forms/BasicSelect'
 import loginIcon from 'assets/images/login-icon.png'
 import './login.scss'
-import { useObserver } from 'mobx-react'
 
 const InputWrapper = (props) => {
   const { options, onChange } = props
@@ -26,6 +27,20 @@ const Login = () => {
     studentName: '',
   })
 
+  const selectOptions = [
+    { id: 1, value: '', name: '학교', disabled: true, selected: true },
+    { id: 2, value: '대덕소프트웨어마이스터고등학교', name: '대덕SW마이스터고' },
+    { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW마이스터고' },
+    { id: 4, value: '광주소프트웨어마이스터고등학교', name: '광주SW마이스터고' },
+  ]
+
+  const inputOptions = [
+    { value: userData.grade, name: 'grade', placeholder: '학년' },
+    { value: userData.sclass, name: 'sclass', placeholder: '반' },
+    { value: userData.number, name: 'number', placeholder: '번호' },
+    { value: userData.studentName, name: 'studentName', placeholder: '이름' },
+  ]
+
   const onInputChange = (e) => {
     const { value, name } = e.target
     setUserData({
@@ -43,28 +58,30 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    const pageRoute = (result) => {
-      //callback
-      alert('로그인성공')
-      console.log(result)
+
+    const { schoolName, grade, sclass, number, studentName } = userData
+    const studentId = parseInt(`${grade}${sclass}${number < 10 ? `0${number}` : number}`)
+    const loginData = {
+      schoolName: schoolName,
+      grade: parseInt(grade),
+      class: parseInt(sclass),
+      number: parseInt(number),
+      studentId: studentId,
+      studentName: studentName,
     }
 
-    userStore.login(userData, pageRoute) //callback
+    loginApi(loginData)
+      .then((response) => {
+        console.log(response)
+        localStorage.setItem('accessToken', response.accessToken)
+        userStore.login(response)
+        alert('로그인성공')
+        history.push('/')
+      })
+      .catch((err) => {
+        console.log('error', err)
+      })
   }
-
-  const selectOptions = [
-    { id: 1, value: '', name: '학교', disabled: true, selected: true },
-    { id: 2, value: '대덕소프트웨어마이스터고등학교', name: '대덕SW마이스터고' },
-    { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW마이스터고' },
-    { id: 4, value: '광주소프트웨어마이스터고등학교', name: '광주SW마이스터고' },
-  ]
-
-  const inputOptions = [
-    { value: userData.grade, name: 'grade', placeholder: '학년' },
-    { value: userData.sclass, name: 'sclass', placeholder: '반' },
-    { value: userData.number, name: 'number', placeholder: '번호' },
-    { value: userData.studentName, name: 'studentName', placeholder: '이름' },
-  ]
 
   return useObserver(() => (
     <div className={'loginSection'}>
