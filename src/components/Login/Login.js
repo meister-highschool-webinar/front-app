@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import UserStore from '../../stores/UserStore'
+import { useStores } from 'stores'
 import BasicInput from '../forms/BasicInput'
 import BasicSelect from '../forms/BasicSelect'
 import loginIcon from 'assets/images/login-icon.png'
@@ -17,60 +17,53 @@ const InputWrapper = (props) => {
 
 const Login = () => {
   let history = useHistory()
-  const [school, setSchool] = useState('학교')
-  const [inputs, setInputs] = useState({
+  const { userStore } = useStores()
+  const [userData, setUserData] = useState({
+    schoolName: '',
     grade: '',
     sclass: '',
     number: '',
-    name: '',
+    studentName: '',
   })
 
-  const { grade, sclass, number, name } = inputs
-
-  const onChange = (e) => {
+  const onInputChange = (e) => {
     const { value, name } = e.target
-    setInputs({
-      ...inputs,
+    setUserData({
+      ...userData,
       [name]: value,
     })
   }
 
-  const selectOnChange = (e) => {
-    setSchool(e.target.value)
-  }
-
-  const onSubmit = (e) => {
-    let userData = [school, inputs]
-    e.preventDefault()
-
-    const pageRoute = (result) => { //callback
-      alert("로그인성공")
-      console.log(result)
-    }
-
-    UserStore.login(userData, pageRoute) //callback
-
-    setInputs({
-      school: '',
-      grade: '',
-      sclass: '',
-      number: '',
-      name: '',
+  const onSelectChange = (e) => {
+    setUserData({
+      ...userData,
+      schoolName: e.target.value,
     })
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    const pageRoute = (result) => {
+      //callback
+      alert('로그인성공')
+      console.log(result)
+    }
+
+    userStore.login(userData, pageRoute) //callback
+  }
+
   const selectOptions = [
-    { id: 1, value: '', name: '학교' },
+    { id: 1, value: '', name: '학교', disabled: true, selected: true },
     { id: 2, value: '대덕소프트웨어마이스터고등학교', name: '대덕SW마이스터고' },
     { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW마이스터고' },
     { id: 4, value: '광주소프트웨어마이스터고등학교', name: '광주SW마이스터고' },
   ]
 
   const inputOptions = [
-    { value: inputs.grade, name: 'grade', placeholder: '학년' },
-    { value: inputs.sclass, name: 'sclass', placeholder: '반' },
-    { value: inputs.number, name: 'number', placeholder: '번호' },
-    { value: inputs.name, name: 'name', placeholder: '이름' },
+    { value: userData.grade, name: 'grade', placeholder: '학년' },
+    { value: userData.sclass, name: 'sclass', placeholder: '반' },
+    { value: userData.number, name: 'number', placeholder: '번호' },
+    { value: userData.studentName, name: 'studentName', placeholder: '이름' },
   ]
 
   return useObserver(() => (
@@ -83,10 +76,10 @@ const Login = () => {
       <form onSubmit={onSubmit}>
         <div className={'divSelect'}>
           <div className={'schoolSelect'}>
-            <BasicSelect options={selectOptions} onChange={selectOnChange} />
+            <BasicSelect options={selectOptions} onChange={onSelectChange} />
           </div>
           <div>
-            <InputWrapper options={inputOptions} onChange={onChange} />
+            <InputWrapper options={inputOptions} onChange={onInputChange} />
           </div>
         </div>
         <div className={'submitArea'}>

@@ -4,13 +4,7 @@ export const testApi = (data) => {
   return axiosApi('/test', 'POST', data, {})
 }
 
-export const loginApi = (schoolName, grade, sclass, number, studentId, studentName) => {
-  return axiosApi('/auth/login', 'POST', {
-    schoolName,
-    grade,
-    class: sclass,
-    number,
-    studentId,
-    studentName,
-  })
+// {schoolName, grade, sclass, number, studentId, studentName} = data
+export const loginApi = (data) => {
+  return axiosApi('/auth/login', 'POST', data)
 }

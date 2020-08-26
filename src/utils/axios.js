@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { stores } from 'stores'
 
 let URL = 'http://54.180.138.80:3000/api'
 

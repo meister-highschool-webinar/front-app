@@ -1,3 +1,3 @@
 import InfoLayout from './InfoLayout'
 
-export {InfoLayout}
+export { InfoLayout }

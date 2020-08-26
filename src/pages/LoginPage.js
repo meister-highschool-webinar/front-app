@@ -6,7 +6,7 @@ const LoginPage = () => {
     <div className={'container'}>
       <div className={'background'}></div>
       <div>
-        <LoginSection/>
+        <LoginSection />
       </div>
     </div>
   )
