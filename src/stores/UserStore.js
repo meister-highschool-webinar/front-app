@@ -1,11 +1,10 @@
-import { action, observable } from 'mobx'
-import { persist } from 'mobx-persist'
+import { observable } from 'mobx'
 
-export default class UserStore {
-  @persist @observable session_key = ''
-  @persist('object') @observable currentUser = {
-    email: '',
-    name: '',
-  }
-  @persist @observable isAuthenticated = false
-}
+const UserStore = observable({
+  userInfo: {},
+  login(data) {
+    this.userInfo = data
+  },
+})
+
+export default UserStore
