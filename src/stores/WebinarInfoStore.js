@@ -10,9 +10,9 @@ class WebinarInfoStore {
   @action
   async getWebinarInfo() {
     const response = await api.getWebinarInfo()
-    this.link = response.data.link
-    this.title = response.data.title
-    this.detail = response.data.detail
+    this.link = response.link
+    this.title = response.title
+    this.detail = response.detail
     return response
   }
 }

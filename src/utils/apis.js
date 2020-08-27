@@ -10,8 +10,8 @@ export const getTimeTable = () => {
 
 export const getWebinarInfo = () => {
   return axiosApi('/webinar-info', 'GET')
-  
-// {schoolName, grade, sclass, number, studentId, studentName} = data
-export const loginApi = (data) => {
-  return axiosApi('/auth/login', 'POST', data)
 }
+// {schoolName, grade, sclass, number, studentId, studentName} = data
+// export const loginApi = (data) => {
+//   return axiosApi('/auth/login', 'POST', data)
+// }

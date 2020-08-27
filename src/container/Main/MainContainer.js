@@ -61,7 +61,9 @@ const MainContainer = observer(() => {
         sideMenuIndex={sideMenuIndex}
         changeSideMenu={changeSideMenu}
         SideMenuInfo={SideMenuInfo}
-        link={link} title={title} detail={detail} 
+        link={link}
+        title={title}
+        detail={detail}
       />
     </>
   )

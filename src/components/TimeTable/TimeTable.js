@@ -3,6 +3,7 @@ import './timetable.scss'
 import moment from 'moment'
 
 const TimeTable = ({ timeTableListMap, timeTableStartTime, title }) => {
+  console.log('title', title)
   return (
     <div className={'timetable'}>
       <h1>{title}</h1>

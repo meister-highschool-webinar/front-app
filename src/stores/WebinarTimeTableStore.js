@@ -10,8 +10,8 @@ class WebinarTimeTableStore {
   @action
   async getTimeTable() {
     const response = await api.getTimeTable()
-    this.timeTableList = response.data.timeTableList
-    this.tableStartTime = response.data.timeTableList[0].start_time
+    this.timeTableList = response.timeTableList
+    this.tableStartTime = response.timeTableList[0].start_time
     return response
   }
 }

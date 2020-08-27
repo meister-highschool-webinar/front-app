@@ -5,6 +5,7 @@ import { stores } from 'stores'
 
 const InfoContainer = observer(() => {
   const { title, detail } = stores.WebinarInfoStore
+  console.log(title, detail)
 
   return <Info title={title} detail={detail} />
 })
