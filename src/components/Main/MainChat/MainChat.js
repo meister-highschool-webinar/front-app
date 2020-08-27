@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import io from 'socket.io-client'
 import './MainChat.scss'
 
 const getToken = localStorage.getItem('accessToken')
-const socket = io(`http://54.180.138.80:3000?token=${getToken}`)
+const socket = io(`http://54.180.138.80:3000`, {
+  query: {
+    token: getToken
+  }
+})
 
 const MainChat = () => {
   const [chatData, setChatData] = useState('')
-
+  const [chatList, setChatList] = useState([])
   socket.on('connect', () => {
     console.log('connection')
-
-    socket.on('connected_change', (data) => {
-      console.log('현재 접속 인원', data)
-    })
+    socket.on('connected_change')
   })
 
   useEffect(() => {
-    console.log('채팅 불러오기!')
-    socket.on('receive message', (chatList) => {
-      console.log('receove', chatList)
+    socket.on('receive message', (message) => {
+      setChatList(chatList.concat(message))
     })
   })
 
@@ -29,19 +29,23 @@ const MainChat = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-
-    console.log('content', chatData)
-    socket.emit('send message', (chatData) => {
-      console.log(chatData)
-    })
+    socket.emit('send message', chatData)
+    setChatData('')
   }
 
   return (
     <div>
-      <div className={'chatlogBox'}>채팅박스</div>
+      <div className={'chatlogBox'}>
+        {chatList.map(chat => (
+          <div className={'inChatBox'}>
+            <p className={'chatName'}>{chat.student_name}</p>
+            <p className={'chatContent'}>{chat.text}</p>            
+          </div>
+        ))}
+      </div>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
-          <textarea value={chatData} onChange={onChange} />
+          <input id="chatInput" type="textarea" value={chatData} onChange={onChange}></input>
         </div>
         <div className={'chatEnterArea'}>
           <button type="submit" className={'chatEnterIcon'}></button>
