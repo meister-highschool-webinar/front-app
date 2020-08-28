@@ -73,7 +73,7 @@ const Login = () => {
     loginApi(loginData)
       .then((response) => {
         console.log(response)
-        localStorage.setItem('accessToken', response.accessToken)
+        sessionStorage.setItem('accessToken', response.accessToken)
         userStore.login(response)
         alert('로그인성공')
         history.push('/')
