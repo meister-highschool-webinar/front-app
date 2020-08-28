@@ -3,25 +3,28 @@ import { useHistory } from 'react-router-dom'
 import io from 'socket.io-client'
 import './MainChat.scss'
 
-const getToken = localStorage.getItem('accessToken')
-const socket = io(`http://54.180.138.80:3000`, {
-  query: {
-    token: getToken
-  }
-})
-
 const MainChat = () => {
   let history = useHistory()
   const [chatData, setChatData] = useState('')
   const [chatList, setChatList] = useState([])
 
+  const getToken = sessionStorage.getItem('accessToken')
+  const socket = io(`http://54.180.138.80:3000`, {
+    query: {
+      token: getToken,
+    },
+  })
+
   socket.on('connect', () => {
     console.log('connection')
-    socket.on('connected_change')
+    socket.on('connected_change', (data) => {
+      console.log(data)
+    })
   })
 
   useEffect(() => {
     socket.on('receive message', (message) => {
+      console.log(message)
       setChatList(chatList.concat(message))
     })
   })
@@ -32,10 +35,11 @@ const MainChat = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    if(getToken == null) {
-      alert("로그인이 필요한 서비스 입니다.")
+    if (getToken == null) {
+      alert('로그인이 필요한 서비스 입니다.')
       history.push('/login')
     } else {
+      console.log(chatData)
       socket.emit('send message', chatData)
       setChatData('')
     }
@@ -44,10 +48,10 @@ const MainChat = () => {
   return (
     <div>
       <div className={'chatlogBox'}>
-        {chatList.map(chat => (
+        {chatList.map((chat) => (
           <div className={'inChatBox'}>
             <p className={'chatName'}>{chat.student_name}</p>
-            <p className={'chatContent'}>{chat.text}</p>            
+            <p className={'chatContent'}>{chat.text}</p>
           </div>
         ))}
       </div>
