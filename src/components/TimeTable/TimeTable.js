@@ -1,20 +1,11 @@
 import React from 'react'
 import './timetable.scss'
-import moment from 'moment'
 
-const TimeTable = ({ timeTableListMap, timeTableStartTime, title }) => {
-  console.log('title', title)
+const TimeTable = () => {
   return (
     <div className={'timetable'}>
-      <h1>{title}</h1>
-      <div className={'contents'}>
-        <div className="contents_date">
-          <div>{timeTableStartTime}</div>
-        </div>
-        <div className="contents_table">
-          <table style={{ borderSpacing: '0' }}>{timeTableListMap}</table>
-        </div>
-      </div>
+      <h1>타임테이블</h1>
+      <div className={'contents'}>Time Table</div>
     </div>
   )
 }
