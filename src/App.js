@@ -43,7 +43,7 @@ const App = observer(() => {
           <Switch>
             <Route exact path={'/'} component={MainPage} />
             <Route path={'/test'} component={TestPage} />
-            {/* <Route path={'/login'} component={LoginPage} /> */}
+            <Route path={'/login'} component={LoginPage} />
           </Switch>
         ) : null}
       </Router>
