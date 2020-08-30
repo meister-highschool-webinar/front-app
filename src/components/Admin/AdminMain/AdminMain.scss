@@ -112,6 +112,9 @@
       img {
         width: 323px;
       }
+      &_start {
+        cursor: pointer;
+      }
       &_item {
         display: flex;
         align-items: center;
@@ -122,6 +125,7 @@
           width: 47px;
         }
         &_download {
+          cursor: pointer;
           width: 143px !important;
         }
         span {

@@ -6,6 +6,7 @@ import SurveyStore from './SurveyStore'
 import LuckyStore from './LuckyStore'
 import WebinarInfoStore from './WebinarInfoStore'
 import WebinarTimeTableStore from './WebinarTimeTableStore'
+import AdminStore from './Admin/AdminStore'
 
 export const stores = {
   appStore: new AppStore(),
@@ -13,6 +14,7 @@ export const stores = {
   chatStore: new ChatStore(),
   surveyStore: new SurveyStore(),
   luckyStore: new LuckyStore(),
+  AdminStore: new AdminStore(),
   WebinarInfoStore: new WebinarInfoStore(),
   WebinarTimeTableStore: new WebinarTimeTableStore(),
 }
