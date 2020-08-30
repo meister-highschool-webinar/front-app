@@ -4,7 +4,6 @@ import InfoContainer from 'container/Main/InfoContainer'
 import TimeTableContainer from './TimeTalbeContainer'
 import Main from 'components/Main'
 import MainChat from 'components/Main/MainChat'
-import MainSurvey from 'components/Main/MainSurvey'
 import MainLuckydraw from 'components/Main/MainLuckydraw'
 import chatIcon from 'assets/images/chatting-icon@3x.png'
 import surveyIcon from 'assets/images/survey-icon@3x.png'
@@ -13,6 +12,7 @@ import chatActiveIcon from 'assets/images/chatting-active-icon@3x.png'
 import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
 import { stores } from 'stores'
+import MainSurveyContainer from './MainSurvey/MainSurveyContainer'
 
 const MainContainer = observer(() => {
   const { getWebinarInfo, link, title, detail } = stores.WebinarInfoStore
@@ -41,7 +41,7 @@ const MainContainer = observer(() => {
 
   const SideMenuInfo = [
     { title: '채팅', img: chatIcon, active: chatActiveIcon, content: MainChat },
-    { title: '설문결과', img: surveyIcon, active: surveyActiveIcon, content: MainSurvey },
+    { title: '설문결과', img: surveyIcon, active: surveyActiveIcon, content: MainSurveyContainer },
     { title: '럭키드로우', img: luckydrawIcon, active: luckydrawActiveIcon, content: MainLuckydraw },
   ]
 
