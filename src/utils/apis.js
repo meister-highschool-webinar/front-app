@@ -16,3 +16,7 @@ export const getTimeTable = () => {
 export const getWebinarInfo = () => {
   return axiosApi('/webinar-info', 'GET')
 }
+
+export const getQna = () => {
+  return axiosApi('/qna', 'GET')
+}
