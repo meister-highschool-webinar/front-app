@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap');
+
+.Background-box {
+    width: 512px;
+    height: 898px;
+    background-color: #eeeeee;
+  }
+  .text {
+    width: 92px;
+    height: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-align: left;
+    color: #3399ff;
+    margin-left: 32px;
+  }
+  .Artwork {
+    width: 448px;
+    height: 304px;
+    object-fit: contain;
+    margin-bottom: 19px;
+  }
+  .Lucky-Draw-Area {
+    width: 448px;
+    height: 769px;
+    background-color: #eeeeee;
+    margin: 0 32px;
+  }
+  .chatting-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    margin-right: 42px;
+  }
+  .survey-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    margin-right: 41px;
+  }
+  .luckydraw-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+  .Icons {
+    margin: 0 32px 14px 32px;
+    padding-top: 28px;
+  }
+  
