@@ -3,12 +3,12 @@ import './video.scss'
 import ReactPlayer from 'react-player'
 import homeButton from 'assets/images/home-button@3x.png'
 
-const Video = (link) => {
+const Video = () => {
   return (
     <div className={'video_section'}>
       <img src={homeButton} alt=""></img>
       <div className={'video'}>
-        <ReactPlayer url={link.link} width="100%" height="100%" controls={true} />
+        <ReactPlayer url="" width="100%" height="100%" controls={true} />
       </div>
     </div>
   )

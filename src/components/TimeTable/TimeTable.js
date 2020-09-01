@@ -1,11 +1,11 @@
 import React from 'react'
 import './timetable.scss'
 
-const TimeTable = ({ TimeTableListMap }) => {
+const TimeTable = () => {
   return (
     <div className={'timetable'}>
       <h1>타임테이블</h1>
-      <div className={'contents'}>asdas{TimeTableListMap}</div>
+      <div className={'contents'}>Time Table</div>
     </div>
   )
 }
