@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useStores } from '../../../stores'
 import io from 'socket.io-client'
 import './MainChat.scss'
 
 const MainChat = () => {
   let history = useHistory()
+  const { chatStore } = useStores()
   const [chatData, setChatData] = useState('')
   const [chatList, setChatList] = useState([])
 
@@ -18,13 +20,11 @@ const MainChat = () => {
   socket.on('connect', () => {
     console.log('connection')
     socket.on('connected_change', (data) => {
-      console.log(data)
     })
   })
 
   useEffect(() => {
     socket.on('receive message', (message) => {
-      console.log(message)
       setChatList(chatList.concat(message))
     })
   })
@@ -39,8 +39,8 @@ const MainChat = () => {
       alert('로그인이 필요한 서비스 입니다.')
       history.push('/login')
     } else {
-      console.log(chatData)
       socket.emit('send message', chatData)
+      chatStore.chat(chatData)
       setChatData('')
     }
   }
