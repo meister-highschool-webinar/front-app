@@ -14,26 +14,10 @@ const LuckyDrawTable = () => {
     });
     socket.on('winner', (data) => {
         console.log(data);
-        setData(data);
+        setData(data); 
     })
-
     return (
         <div className="table">
-            <div className="table__flist">
-                <div />
-                <div>
-                    <span>학교</span>
-                </div>
-                <div>
-                    <span>학년</span>
-                </div>
-                <div>
-                    <span>반</span>
-                </div>
-                <div>
-                    <span>번호</span>
-                </div>
-            </div>
             {data.map((data, ix) => {
                 return (
                     <div className="table__list">
