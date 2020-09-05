@@ -6,9 +6,9 @@ const BasicSelect = (props) => {
   return (
     <select {...restProps}>
       {options.map((option, i) => {
-        const { value, name } = option
+        const { value, name, ...restOptions } = option
         return (
-          <option key={`option_${name}${i}`} value={value}>
+          <option key={`option_${name}${i}`} value={value} {...restOptions}>
             {name}
           </option>
         )
