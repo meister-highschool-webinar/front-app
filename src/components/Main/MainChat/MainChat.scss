@@ -1,0 +1,65 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+}
+
+.chatlogBox {
+  margin: 0;
+  margin-top: 30px;
+  width: 453px;
+  height: 543px;
+  text-align:left;
+  overflow: auto;
+  z-index:-1;
+}
+
+.inChatBox {
+  box-sizing: border-box;
+  margin: 0;
+  width: 453px;
+  height: 100x;
+  text-align:left;
+  z-index:1;
+}
+
+.chatName {
+  font-weight: 600;
+  font-size:1.2em;
+  margin:0;
+}
+
+.chatContent {
+  margin-top:0;
+}
+
+.chatBox {
+  width: 100%;
+  height: 140px;
+}
+
+input {
+  margin-top: 10px;
+  padding: 5px;
+  width: 443px;
+  height: 120px;
+  border: none;
+  line-height: 150%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.chatEnterIcon {
+  margin-top: 0px;
+  border: none;
+  cursor: pointer;
+  width: 453px;
+  height: 30px;
+  background-image: url('../../../assets/images/enter.png');
+
+  &:focus {
+    outline: none;
+  }
+}
