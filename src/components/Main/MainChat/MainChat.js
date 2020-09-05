@@ -19,8 +19,7 @@ const MainChat = () => {
 
   socket.on('connect', () => {
     console.log('connection')
-    socket.on('connected_change', (data) => {
-    })
+    socket.on('connected_change', (data) => {})
   })
 
   useEffect(() => {

@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-let URL = 'http://54.180.138.80:3000/api'
+import { SERVER } from 'config/config.json'
+
+let URL = SERVER
 
 const axiosApi = (url, method = 'GET', data, options = {}) => {
   data = method.toUpperCase() === 'GET' ? { params: { ...data } } : { data }

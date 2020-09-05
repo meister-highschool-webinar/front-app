@@ -5,11 +5,11 @@ import VideoSection from 'components/Video'
 import './Main.scss'
 import MainSide from './MainSide'
 
-const Main = ({ InfoMenus, changeMenu, menuIndex, sideMenuIndex, changeSideMenu, SideMenuInfo }) => {
+const Main = ({ InfoMenus, changeMenu, menuIndex, sideMenuIndex, changeSideMenu, SideMenuInfo, link }) => {
   return (
     <div className={'mainpage'}>
       <div className={'main_container'}>
-        <VideoSection />
+        <VideoSection link={link} />
         <InfoLayout menus={InfoMenus} menuIndex={menuIndex} changeMenu={changeMenu} />
       </div>
       <MainSide sideMenuIndex={sideMenuIndex} changeSideMenu={changeSideMenu} SideMenuInfo={SideMenuInfo} />

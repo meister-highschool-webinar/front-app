@@ -1,3 +1,4 @@
+export default class ChatStore {}
 import { observable } from 'mobx'
 
 const ChatStore = observable({
