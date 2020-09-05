@@ -10,7 +10,7 @@ import AdminStore from './Admin/AdminStore'
 
 export const stores = {
   appStore: new AppStore(),
-  userStore: UserStore,
+  userStore: new UserStore(),
   chatStore: new ChatStore(),
   surveyStore: new SurveyStore(),
   luckyStore: new LuckyStore(),
