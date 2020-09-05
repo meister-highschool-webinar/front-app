@@ -1,37 +1,37 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
+import { toJS } from 'mobx'
+import { observer } from 'mobx-react'
 import { useHistory } from 'react-router-dom'
-import { useStores } from '../../../stores'
+import { useStores } from 'stores'
 import io from 'socket.io-client'
 import './MainChat.scss'
 
-const MainChat = () => {
+const getToken = sessionStorage.getItem('accessToken')
+
+const MainChat = observer(() => {
   let history = useHistory()
   const { chatStore } = useStores()
-  const [chatData, setChatData] = useState('')
-  const [chatList, setChatList] = useState([])
-
-  const getToken = sessionStorage.getItem('accessToken')
+  const { chatData, chatList, onChatChange, chatListUpdate } = chatStore
   const socket = io(`http://54.180.138.80:3000`, {
     query: {
       token: getToken,
     },
   })
 
-  socket.on('connect', () => {
-    console.log('connection')
-    socket.on('connected_change', (data) => {})
-  })
-
   useEffect(() => {
-    socket.on('receive message', (message) => {
-      setChatList(chatList.concat(message))
+    socket.on('connect', () => {
+      console.log('connection')
+      socket.on('connected_change', (data) => {})
     })
-  })
 
-  const onChange = (e) => {
-    setChatData(e.target.value)
-  }
+    socket.on('receive message', (message) => {
+      console.log('receive message', message)
+      chatListUpdate(message)
+    })
+    return () => socket.disconnect()
+  }, [])
 
+  const inputChange = (e) => onChatChange(e.target.value)
   const onSubmit = (e) => {
     e.preventDefault()
     if (getToken == null) {
@@ -39,14 +39,15 @@ const MainChat = () => {
       history.push('/login')
     } else {
       socket.emit('send message', chatData)
-      chatStore.chat(chatData)
-      setChatData('')
+      onChatChange('')
     }
   }
 
+  console.log('chatList', toJS(chatList))
+
   return (
-    <div>
-      <div className={'chatlogBox'}>
+    <div className={'chatContainer'}>
+      <div className={'chatLogBox'}>
         {chatList.map((chat) => (
           <div className={'inChatBox'}>
             <p className={'chatName'}>{chat.student_name}</p>
@@ -56,14 +57,14 @@ const MainChat = () => {
       </div>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
-          <input id="chatInput" type="textarea" value={chatData} onChange={onChange}></input>
+          <input id="chatInput" type="textarea" value={chatData} onChange={inputChange} />
         </div>
         <div className={'chatEnterArea'}>
-          <button type="submit" className={'chatEnterIcon'}></button>
+          <button type="submit" className={'chatEnterIcon'} />
         </div>
       </form>
     </div>
   )
-}
+})
 
 export default MainChat

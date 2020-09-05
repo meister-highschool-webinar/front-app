@@ -1,10 +1,21 @@
-import { observable } from 'mobx'
+import { action, observable } from 'mobx'
 
-const ChatStore = observable({
-  chatInfo: {},
-  chat(data) {
-    this.chatInfo = data
-  },
-})
+export default class ChatStore {
+  @observable chatData
+  @observable chatList
 
-export default ChatStore
+  constructor() {
+    this.chatData = ''
+    this.chatList = []
+  }
+
+  @action
+  onChatChange = (value) => {
+    this.chatData = value
+  }
+
+  @action
+  chatListUpdate = (data) => {
+    this.chatList.push(data)
+  }
+}
