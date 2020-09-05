@@ -14,7 +14,7 @@ const CustomizedAxisTick = (props) => {
   )
 }
 
-const MainSurveyBar = ({ datas, title }) => {
+const MainSurveyBar = ({ datas, title, style }) => {
   const sorted = datas.slice(0).sort(function (a, b) {
     return a.count > b.count ? -1 : a.count < b.count ? 1 : 0
   })
@@ -24,8 +24,9 @@ const MainSurveyBar = ({ datas, title }) => {
   }
 
   return (
-    <div className="main-survey-bar">
-      <BarChart width={440} height={220} data={datas} barSize={20}>
+    <div className="main-survey-bar" style={style}>
+      <div className="main-survey-bar-title">{title}</div>
+      <BarChart width={420} height={220} data={datas} barSize={20} margin={{ right: 5 }} style={{ marginTop: 10, marginBottom: 30 }}>
         <XAxis interval={0} dataKey="name" tick={<CustomizedAxisTick />} scale="point" padding={{ left: 10, right: 10 }} width={3} />
         <YAxis valueKey="count" />
         <Tooltip />
@@ -37,7 +38,6 @@ const MainSurveyBar = ({ datas, title }) => {
           })}
         </Bar>
       </BarChart>
-      <div className="main-survey-bar-title">{title}</div>
     </div>
   )
 }
