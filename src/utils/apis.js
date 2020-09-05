@@ -8,3 +8,15 @@ export const testApi = (data) => {
 export const loginApi = (data) => {
   return axiosApi('/auth/login', 'POST', data)
 }
+
+export const getTimeTable = () => {
+  return axiosApi('/timetable-list', 'GET')
+}
+
+export const getWebinarInfo = () => {
+  return axiosApi('/webinar-info', 'GET')
+}
+
+export const getQna = () => {
+  return axiosApi('/qna', 'GET')
+}

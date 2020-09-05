@@ -1,0 +1,35 @@
+.TimeTableTemp {
+  width: 100%;
+  border-spacing: 0;
+  &_table {
+    &_time {
+      height: 45px;
+      border: 0.5px solid #ebebeb;
+      width: 20%;
+      text-align: center;
+    }
+    &_runTime {
+      height: 45px;
+      width: 10%;
+      border: 0.5px solid #ebebeb;
+      text-align: center;
+    }
+    &_title {
+      height: 45px;
+      border: 0.5px solid #ebebeb;
+      width: 50%;
+      text-align: left;
+      padding: 0px 15px 0px 15px;
+    }
+    &_name {
+      height: 45px;
+      border: 0.5px solid #ebebeb;
+      width: 20%;
+      text-align: left;
+      padding: 0px 15px 0px 15px;
+    }
+  }
+}
+td {
+  text-align: center;
+}

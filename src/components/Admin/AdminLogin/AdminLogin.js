@@ -5,7 +5,7 @@ import managerIcon from 'assets/images/manager-icon.png'
 import loginIcon from 'assets/images/login-icon.png'
 import TalkTalkTalkLogo from 'assets/images/TalkTalkTalklogo@3x.png'
 
-const AdminLogin = () => {
+const AdminLogin = ({ requestHandleAdminLogin, password, setPassword }) => {
   return (
     <>
       <div className={'AdminLogin'}>
@@ -20,8 +20,14 @@ const AdminLogin = () => {
               </div>
             </div>
             <div className={'AdminLogin_lineArt_content_loginWrap'}>
-              <input className={'AdminLogin_lineArt_content_loginWrap_loginForm'} type="password" placeholder="비밀번호를 입력하세요" />
-              <div className={'AdminLogin_lineArt_content_loginWrap_loginButton'} onClick={() => console.log('click')}>
+              <input
+                className={'AdminLogin_lineArt_content_loginWrap_loginForm'}
+                type="password"
+                placeholder="비밀번호를 입력하세요"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className={'AdminLogin_lineArt_content_loginWrap_loginButton'} onClick={() => requestHandleAdminLogin()}>
                 <img className={'AdminLogin_lineArt_content_loginWrap_loginButton_loginIcon'} src={loginIcon} alt="" />
               </div>
             </div>
