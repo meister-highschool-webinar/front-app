@@ -1,0 +1,16 @@
+.video_section {
+  width: 100%;
+  & > img {
+    display: flex;
+    width: 276px;
+    height: 64px;
+    margin-bottom: 13px;
+  }
+  .video {
+    background: #282c34;
+    height: 510px;
+    line-height: 480px;
+    color: #fff;
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,19 @@
+.main_side {
+  background-color: #eeeeee;
+  width: 480px;
+  margin-left: 32px;
+  border: 1px solid #818181;
+  padding: 28px 32px;
+  height: 848px;
+  &_nav {
+    display: flex;
+    img {
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      &:nth-child(2) {
+        margin: 0 42px;
+      }
+    }
+  }
+}

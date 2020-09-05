@@ -1,0 +1,128 @@
+.AdminLogin {
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  &_webinarBox {
+    width: 100%;
+    height: 635px;
+    object-fit: contain;
+    background-image: linear-gradient(to top, #209cff, #68e0cf);
+  }
+  &_lineArt {
+    width: 941px;
+    height: 941px;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    &_box {
+      position: absolute;
+      width: 941px;
+      height: 941px;
+      z-index: -1;
+    }
+    &_content {
+      padding: 20px;
+      z-index: 1;
+      &_title {
+        width: 396px;
+        height: 100%;
+        margin: 56px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-self: center;
+        justify-items: center;
+        // margin: auto;
+        // margin-top: 219px;
+        & > * + * {
+          margin-top: 23px;
+        }
+        &_managerIcon {
+          width: 147px;
+          height: 127px;
+          object-fit: contain;
+          margin: auto;
+          &_Webinar {
+            width: 410px;
+            align-self: flex-end;
+            font-size: 96px;
+            font-family: AnjaElianeaccent-Nornal;
+            font-weight: normal;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: #ffffff;
+          }
+        }
+        &_WebinarLogo {
+          width: 396px;
+          height: 254px;
+          & > img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+      &_sub {
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+        &_info {
+          width: 100%;
+          height: 50px;
+          font-family: 'Noto Sans Korean', sans-serif;
+          font-size: 32px;
+          font-weight: 500;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          text-align: center;
+          color: #ffffff;
+        }
+      }
+      &_loginWrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 144px auto 0px;
+        max-width: 520px;
+        &_loginForm {
+          width: calc(100% - 8px);
+          height: 73px;
+          border: solid 2px #cccccc;
+          background-color: #ffffff;
+          padding: 0px 30px;
+          &::placeholder {
+            position: relative;
+            text-align: center;
+            color: #000000;
+            font-size: 30px;
+            font-family: 'Noto Sans Korean', sans-serif;
+            width: 372px;
+            height: 38px;
+            top: 4px;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        &_loginButton {
+          display: flex;
+          justify-content: center;
+          cursor: pointer;
+          &_loginIcon {
+            width: 276px;
+            height: 69px;
+            object-fit: contain;
+            margin-top: 19px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,14 @@
 import React from 'react'
+import LoginSection from 'components/Login'
+import './loginPage.scss'
 
 const LoginPage = () => {
   return (
-    <div>
-      <h1>This is Login Page</h1>
+    <div className={'container'}>
+      <div className={'background'}></div>
+      <div>
+        <LoginSection />
+      </div>
     </div>
   )
 }
