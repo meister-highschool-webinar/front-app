@@ -1,3 +1,1 @@
-export default class ChatStore {
-
-}
+export default class ChatStore {}
