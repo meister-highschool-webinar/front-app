@@ -18,9 +18,9 @@ const AdminMainContainer = observer(() => {
   const handleGetWebinarInfo = useCallback(async () => {
     await getWebinarInfo()
       .then((res) => {
-        setLinkInput(res.data.link)
-        setTitleInput(res.data.title)
-        setDetailInput(res.data.detail)
+        setLinkInput(res.link)
+        setTitleInput(res.title)
+        setDetailInput(res.detail)
       })
       .catch((error) => {
         return error
