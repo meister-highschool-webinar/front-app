@@ -20,3 +20,17 @@ export const getWebinarInfo = () => {
 export const getQna = () => {
   return axiosApi('/qna', 'GET')
 }
+
+export const getFile = (name) => {
+  return axiosApi(`/auth/file-download?dataName=${name}`, 'GET')
+}
+
+export const createWebinarInfo = (data) => {
+  return axiosApi('/auth/webinar-info', 'POST', data, {
+    'x-access-token': sessionStorage.getItem('adminToken'),
+  })
+}
+
+export const adminLogin = (data) => {
+  return axiosApi('/auth/admin-login', 'POST', data)
+}
