@@ -6,14 +6,21 @@ import * as api from 'utils/apis'
 class AdminStore {
   @action
   async handleAdminLogin(data) {
-    const response = api.adminLogin(data)
+    const response = await api.adminLogin(data)
 
     return response
   }
 
   @action
   async createWebinarInfo(data) {
-    const response = api.createWebinarInfo(data)
+    const response = await api.createWebinarInfo(data)
+
+    return response
+  }
+
+  @action
+  async getFile(name) {
+    const response = await api.getFile(name)
 
     return response
   }

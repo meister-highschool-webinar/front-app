@@ -1,4 +1,5 @@
 import axiosApi from './axios'
+import axios from 'axios'
 
 export const testApi = (data) => {
   return axiosApi('/test', 'POST', data, {})
@@ -26,11 +27,11 @@ export const getFile = (name) => {
 }
 
 export const createWebinarInfo = (data) => {
-  return axiosApi('/auth/webinar-info', 'POST', data, {
-    'x-access-token': sessionStorage.getItem('adminToken'),
-  })
+  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
+  return axiosApi('/auth/webinar', 'POST', data)
 }
 
 export const adminLogin = (data) => {
+  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
   return axiosApi('/auth/admin-login', 'POST', data)
 }

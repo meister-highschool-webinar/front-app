@@ -9,7 +9,7 @@ import survey from 'assets/images/survey-icon@3x.png'
 import luckydraw from 'assets/images/luckydraw-icon@3x.png'
 import webinaStart from 'assets/images/webina-start@3x.png'
 
-const AdminMain = ({ handleCreateWebinarInfo, linkInput, setLinkInput, titleInput, setTitleInput, detailInput, setDetailInput }) => {
+const AdminMain = ({ handleCreateWebinarInfo, linkInput, setLinkInput, titleInput, setTitleInput, detailInput, setDetailInput, downloadFile }) => {
   return (
     <>
       <div className={'AdminMain'}>
@@ -53,7 +53,7 @@ const AdminMain = ({ handleCreateWebinarInfo, linkInput, setLinkInput, titleInpu
                 <img src={timetable} alt="timetable_icon" />
                 <span>타임테이블</span>
               </div>
-              <img className={'AdminMain_wrap_item_icon_download'} src={download} alt="download-button" />
+              <img onClick={() => downloadFile('timetable')} className={'AdminMain_wrap_item_icon_download'} src={download} alt="download-button" />
             </div>
             <div className={'AdminMain_wrap_item_timetable'} />
           </div>
@@ -62,7 +62,7 @@ const AdminMain = ({ handleCreateWebinarInfo, linkInput, setLinkInput, titleInpu
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={chat} alt="chatting-icon" />
               <span>채팅내역</span>
-              <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
+              <img onClick={() => downloadFile('chatlog')} className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
             </div>
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={survey} alt="chatting-icon" />

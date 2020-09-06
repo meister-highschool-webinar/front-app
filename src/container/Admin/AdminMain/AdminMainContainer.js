@@ -8,8 +8,8 @@ import Swal from 'sweetalert2'
 const AdminMainContainer = observer(() => {
   const history = useHistory()
 
-  const { getWebinarInfo, link, title, detail } = stores.WebinarInfoStore
-  const { createWebinarInfo } = stores.AdminStore
+  const { getWebinarInfo } = stores.WebinarInfoStore
+  const { createWebinarInfo, getFile } = stores.AdminStore
 
   const [linkInput, setLinkInput] = useState('')
   const [titleInput, setTitleInput] = useState('')
@@ -52,6 +52,10 @@ const AdminMainContainer = observer(() => {
     }
   }, [createWebinarInfo, linkInput, titleInput, detailInput])
 
+  const downloadFile = (name) => {
+    getFile(name)
+  }
+
   useEffect(() => {
     handleGetWebinarInfo()
   }, [handleGetWebinarInfo])
@@ -66,6 +70,7 @@ const AdminMainContainer = observer(() => {
         setTitleInput={setTitleInput}
         detailInput={detailInput}
         setDetailInput={setDetailInput}
+        downloadFile={downloadFile}
       />
     </>
   )
