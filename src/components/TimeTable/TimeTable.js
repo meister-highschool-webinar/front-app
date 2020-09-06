@@ -4,7 +4,7 @@ import './timetable.scss'
 const TimeTable = ({ title, timeTableListMap, timeTableStartTime }) => {
   return (
     <div className={'timetable'}>
-      <h1>{title}</h1>
+      {title && <h1>{title}</h1>}
       <div className={'contents'}>
         <div className="contents_date">
           <div>{timeTableStartTime}</div>
