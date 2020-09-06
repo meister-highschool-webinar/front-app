@@ -12,6 +12,9 @@ config/
 
 # production
 /build
+.build
+/dist
+.dist
 
 # misc
 .DS_Store
@@ -23,3 +26,7 @@ config/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#ide
+.idea/
+idea/
