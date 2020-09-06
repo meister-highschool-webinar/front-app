@@ -4,15 +4,19 @@ import UserStore from './UserStore'
 import ChatStore from './ChatStore'
 import SurveyStore from './SurveyStore'
 import LuckyStore from './LuckyStore'
+import WebinarInfoStore from './WebinarInfoStore'
+import WebinarTimeTableStore from './WebinarTimeTableStore'
 import AdminStore from './Admin/AdminStore'
 
 export const stores = {
   appStore: new AppStore(),
-  userStore: UserStore,
+  userStore: new UserStore(),
   chatStore: new ChatStore(),
   surveyStore: new SurveyStore(),
   luckyStore: new LuckyStore(),
   AdminStore: new AdminStore(),
+  WebinarInfoStore: new WebinarInfoStore(),
+  WebinarTimeTableStore: new WebinarTimeTableStore(),
 }
 
 export const storesContext = React.createContext({
