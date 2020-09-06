@@ -6,15 +6,13 @@ import { useStores } from 'stores'
 import io from 'socket.io-client'
 import './MainChat.scss'
 
-const getToken = sessionStorage.getItem('accessToken')
-
 const MainChat = observer(() => {
   let history = useHistory()
   const { chatStore } = useStores()
   const { chatData, chatList, onChatChange, chatListUpdate } = chatStore
   const socket = io(`http://54.180.138.80:3000`, {
     query: {
-      token: getToken,
+      token: sessionStorage.getItem('accessToken')
     },
   })
 
@@ -34,7 +32,7 @@ const MainChat = observer(() => {
   const inputChange = (e) => onChatChange(e.target.value)
   const onSubmit = (e) => {
     e.preventDefault()
-    if (getToken == null) {
+    if (sessionStorage.getItem('accessToken') == null) {
       alert('로그인이 필요한 서비스 입니다.')
       history.push('/login')
     } else {
