@@ -23,6 +23,7 @@ export const getQna = () => {
 }
 
 export const getFile = (name) => {
+  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
   return axiosApi(`/auth/file-download?dataName=${name}`, 'GET')
 }
 
@@ -32,6 +33,5 @@ export const createWebinarInfo = (data) => {
 }
 
 export const adminLogin = (data) => {
-  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
   return axiosApi('/auth/admin-login', 'POST', data)
 }
