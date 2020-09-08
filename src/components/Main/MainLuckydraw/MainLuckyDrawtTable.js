@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './MainLuckyDrawTable.scss';
 import socketio from 'socket.io-client';
-import { SERVER } from './config/config.json';
+import { SERVER } from '../../../config/config.json';
 import LuckyDrawItem from './LuckyDrawItem';
 
 const MainLuckyDrawTable = () => {
