@@ -5,6 +5,7 @@ import { Router, Route, Switch, render, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { stores } from 'stores'
 import * as Pages from 'pages'
+
 import Header from 'components/Header/Header'
 import MainPage from 'pages/MainPage'
 import TestPage from './pages/TestPage'
