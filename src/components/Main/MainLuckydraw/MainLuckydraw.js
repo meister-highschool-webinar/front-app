@@ -1,5 +1,5 @@
-import React from 'react'
-import './MainLuckydraw.scss'
+import React from 'react';
+import './MainLuckydraw.scss';
 import { artwork, chattingIcon, surveyIcon, luckydrawIcon} from '../../../assets/images/index';
 import LuckyDrawTable from './LuckyDrawTable';
 
