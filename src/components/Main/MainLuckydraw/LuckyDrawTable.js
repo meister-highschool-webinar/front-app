@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './LuckyDrawTable.scss';
 import socketio from 'socket.io-client';
 import { SERVER } from '../../../config/config.json';
