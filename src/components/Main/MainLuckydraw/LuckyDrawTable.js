@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './LuckyDrawTable.scss';
+import { SERVER } from "../../../config/config.json";
 import socketio from 'socket.io-client';
-import { SERVER } from '../../../config/config.json';
 import LuckyDrawItem from './LuckyDrawItem';
 
 const LuckyDrawTable = () => {
@@ -43,6 +43,7 @@ const LuckyDrawTable = () => {
                         grade = { data.grade }
                         class = { data.class}
                         number = { data.number }
+                        key = { ix }
                     />
                 )
             })}
