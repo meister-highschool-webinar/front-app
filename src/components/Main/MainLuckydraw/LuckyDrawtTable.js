@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import './MainLuckyDrawTable.scss';
+import './LuckyDrawTable.scss';
 import socketio from 'socket.io-client';
 import { SERVER } from '../../../config/config.json';
 import LuckyDrawItem from './LuckyDrawItem';
 
-const MainLuckyDrawTable = () => {
-    const [data, setData] = useState([{},{},{},{},{},{},{},{},{},{}])
+const LuckyDrawTable = () => {
+    const [data, setData] = useState(Array(10).fill({}))
     const socket = socketio.connect(SERVER, {
         event: 1-10
     }, {
@@ -50,4 +50,4 @@ const MainLuckyDrawTable = () => {
     );
 }
 
-export default MainLuckyDrawTable;
+export default LuckyDrawTable;

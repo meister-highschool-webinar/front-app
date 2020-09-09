@@ -1,7 +1,7 @@
 import React from 'react'
 import './MainLuckydraw.scss'
-import { artwork, chattingIcon, surveyIcon, luckydrawIcon} from '../../../assets/images';
-import MainLuckyDrawTable from './MainLuckyDrawTable';
+import { artwork, chattingIcon, surveyIcon, luckydrawIcon} from '../../../assets/images/index';
+import LuckyDrawTable from './LuckyDrawTable';
 
 const MainLuckydraw = () => {
   return (
@@ -15,7 +15,7 @@ const MainLuckydraw = () => {
         <div className="text">럭키드로우</div>
         <div className="Lucky-Draw-Area">
           <img src={artwork} className="Artwork"></img>
-          <MainLuckyDrawTable />
+          <LuckyDrawTable />
         </div>
       </div>
     </div>
