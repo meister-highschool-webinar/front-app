@@ -4,28 +4,29 @@ import { observer } from 'mobx-react'
 import { useHistory } from 'react-router-dom'
 import { useStores } from 'stores'
 import io from 'socket.io-client'
+import Swal from 'sweetalert2'
 import './MainChat.scss'
-
-const getToken = sessionStorage.getItem('accessToken')
 
 const MainChat = observer(() => {
   let history = useHistory()
   const { chatStore } = useStores()
   const { chatData, chatList, onChatChange, chatListUpdate } = chatStore
+  const token = sessionStorage.getItem('accessToken')
+
   const socket = io(`http://54.180.138.80:3000`, {
     query: {
-      token: getToken,
+      token: token,
     },
   })
 
   useEffect(() => {
     socket.on('connect', () => {
-      console.log('connection')
+      console.log('connected')
       socket.on('connected_change', (data) => {})
     })
 
     socket.on('receive message', (message) => {
-      console.log('receive message', message)
+      // console.log('receive message', message)
       chatListUpdate(message)
     })
     return () => socket.disconnect()
@@ -34,8 +35,12 @@ const MainChat = observer(() => {
   const inputChange = (e) => onChatChange(e.target.value)
   const onSubmit = (e) => {
     e.preventDefault()
-    if (getToken == null) {
-      alert('로그인이 필요한 서비스 입니다.')
+    if (token == null) {
+      Swal.fire({
+        title: '오류',
+        text: '로그인이 필요한 서비스 입니다.',
+        icon: 'error',
+      })
       history.push('/login')
     } else {
       socket.emit('send message', chatData)
@@ -43,7 +48,7 @@ const MainChat = observer(() => {
     }
   }
 
-  console.log('chatList', toJS(chatList))
+  // console.log('chatList', toJS(chatList))
 
   return (
     <div className={'chatContainer'}>
