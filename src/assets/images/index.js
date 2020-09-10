@@ -1,1 +1,0 @@
-export { default as artwork } from './artwork@3x.png';
