@@ -15,7 +15,7 @@ const MainSurveyPie = ({ datas, title }) => {
 
   return (
     <div className="main-survey-pie">
-      <PieChart width={440} height={200}>
+      <PieChart width={374} height={200}>
         <text style={{ fontWeight: '700' }} x={105} y={105} textAnchor="middle" dominantBaseline="middle">
           {title}
         </text>

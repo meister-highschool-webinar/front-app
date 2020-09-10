@@ -8,7 +8,7 @@ const CustomizedAxisTick = (props) => {
   const { x, y, payload } = props
 
   return (
-    <Text x={x} y={y} width={75} fontSize={11} textAnchor="middle" verticalAnchor="start">
+    <Text x={x} y={y} width={75} fontSize={9} textAnchor="middle" verticalAnchor="start">
       {payload.value}
     </Text>
   )
@@ -26,9 +26,9 @@ const MainSurveyBar = ({ datas, title, style }) => {
   return (
     <div className="main-survey-bar" style={style}>
       <div className="main-survey-bar-title">{title}</div>
-      <BarChart width={420} height={220} data={datas} barSize={20} margin={{ right: 5 }} style={{ marginTop: 10, marginBottom: 30 }}>
+      <BarChart width={374} height={220} data={datas} barSize={15} margin={{ right: 5 }} style={{ marginTop: 10, marginBottom: 30 }}>
         <XAxis interval={0} dataKey="name" tick={<CustomizedAxisTick />} scale="point" padding={{ left: 10, right: 10 }} width={3} />
-        <YAxis valueKey="count" />
+        <YAxis valueKey="count" fontSize={10} />
         <Tooltip />
         <CartesianGrid strokeDasharray="3 3" />
         <Bar dataKey="count" fill="#8884d8" background={{ fill: '#eee' }}>
