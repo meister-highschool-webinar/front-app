@@ -25,6 +25,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    &_add {
+      width: 1600px;
+      font-size: 2rem;
+      text-align: right;
+      span {
+        cursor: pointer;
+      }
+    }
     &_item {
       margin-bottom: 19px;
       font-family: 'Noto Sans Korean', sans-serif;

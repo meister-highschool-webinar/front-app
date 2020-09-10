@@ -6,6 +6,7 @@ import { stores } from 'stores'
 import Swal from 'sweetalert2'
 import moment from 'moment'
 import TimeTableTemp from 'components/TimeTable/TimeTableTemp/TimeTableTemp'
+import AdminTimetable from 'components/Admin/AdminTimetable'
 
 const AdminMainContainer = observer(() => {
   const history = useHistory()
@@ -17,6 +18,7 @@ const AdminMainContainer = observer(() => {
   const [linkInput, setLinkInput] = useState('')
   const [titleInput, setTitleInput] = useState('')
   const [detailInput, setDetailInput] = useState('')
+  const [popup, setPopup] = useState(false)
 
   const handleGetTimeTable = useCallback(() => {
     getTimeTable().catch((error) => {
@@ -80,18 +82,16 @@ const AdminMainContainer = observer(() => {
 
   const timeTableListMap =
     timeTableList &&
-    timeTableList.map((data) => {
+    timeTableList.map((data, i) => {
       const { start_time, end_time, speech, track_name } = data
       const start_time_min = moment.duration(moment(start_time).format('HH:mm'))
       const end_time_min = moment.duration(moment(end_time).format('HH:mm'))
       const time_result = (end_time_min - start_time_min) / 60000
 
       return (
-        <>
-          <tr>
-            <TimeTableTemp start_time={start_time} end_time={end_time} speech={speech} track_name={track_name} result={time_result} />
-          </tr>
-        </>
+        <tr key={i}>
+          <TimeTableTemp start_time={start_time} end_time={end_time} speech={speech} track_name={track_name} result={time_result} />
+        </tr>
       )
     })
 
@@ -121,7 +121,9 @@ const AdminMainContainer = observer(() => {
         timetableFile={timetable}
         timeTableListMap={timeTableListMap}
         timeTableStartTime={timeTableStartTime}
+        setPopup={setPopup}
       />
+      {popup && <AdminTimetable setPopup={setPopup} />}
     </>
   )
 })

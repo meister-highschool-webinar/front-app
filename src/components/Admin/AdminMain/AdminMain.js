@@ -23,6 +23,7 @@ const AdminMain = ({
   timetableFile,
   timeTableListMap,
   timeTableStartTime,
+  setPopup,
 }) => {
   return (
     <>
@@ -61,6 +62,9 @@ const AdminMain = ({
             </div>
           </div>
 
+          <div className="AdminMain_wrap_add">
+            <span onClick={() => setPopup(true)}>+</span>
+          </div>
           <div className={'AdminMain_wrap_item'}>
             <div className="AdminMain_wrap_item_icon">
               <div>
@@ -87,12 +91,12 @@ const AdminMain = ({
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={survey} alt="chatting-icon" />
               <span>설문결과</span>
-              <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
+              {/* <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" /> */}
             </div>
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={luckydraw} alt="chatting-icon" />
               <span>럭키드로우</span>
-              <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
+              {/* <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" /> */}
             </div>
             <img className={'AdminMain_wrap_footer_start'} src={webinaStart} alt="webina_start" onClick={() => handleCreateWebinarInfo()} />
           </div>

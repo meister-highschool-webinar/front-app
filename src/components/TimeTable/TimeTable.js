@@ -10,7 +10,9 @@ const TimeTable = ({ title, timeTableListMap, timeTableStartTime }) => {
           <div>{timeTableStartTime}</div>
         </div>
         <div className="contents_table">
-          <table style={{ borderSpacing: '0' }}>{timeTableListMap}</table>
+          <table style={{ borderSpacing: '0' }}>
+            <tbody>{timeTableListMap}</tbody>
+          </table>
         </div>
       </div>
     </div>
