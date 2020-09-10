@@ -1,5 +1,6 @@
 import React from 'react'
 import './AdminMain.scss'
+import { CSVLink } from 'react-csv'
 import webinar from 'assets/images/logo@3x.png'
 import video from 'assets/images/video-icon@3x.png'
 import timetable from 'assets/images/timetable-icon@3x.png'
@@ -8,8 +9,22 @@ import chat from 'assets/images/chatting-icon@3x.png'
 import survey from 'assets/images/survey-icon@3x.png'
 import luckydraw from 'assets/images/luckydraw-icon@3x.png'
 import webinaStart from 'assets/images/webina-start@3x.png'
+import TimeTable from 'components/TimeTable'
 
-const AdminMain = ({ handleCreateWebinarInfo, linkInput, setLinkInput, titleInput, setTitleInput, detailInput, setDetailInput }) => {
+const AdminMain = ({
+  handleCreateWebinarInfo,
+  linkInput,
+  setLinkInput,
+  titleInput,
+  setTitleInput,
+  detailInput,
+  setDetailInput,
+  chatlogFile,
+  timetableFile,
+  timeTableListMap,
+  timeTableStartTime,
+  setPopup,
+}) => {
   return (
     <>
       <div className={'AdminMain'}>
@@ -47,32 +62,41 @@ const AdminMain = ({ handleCreateWebinarInfo, linkInput, setLinkInput, titleInpu
             </div>
           </div>
 
+          <div className="AdminMain_wrap_add">
+            <span onClick={() => setPopup(true)}>+</span>
+          </div>
           <div className={'AdminMain_wrap_item'}>
             <div className="AdminMain_wrap_item_icon">
               <div>
                 <img src={timetable} alt="timetable_icon" />
                 <span>타임테이블</span>
               </div>
-              <img className={'AdminMain_wrap_item_icon_download'} src={download} alt="download-button" />
+              <CSVLink filename={'time-table.csv'} data={timetableFile}>
+                <img className={'AdminMain_wrap_item_icon_download'} src={download} alt="download-button" />
+              </CSVLink>
             </div>
-            <div className={'AdminMain_wrap_item_timetable'} />
+            <div className={'AdminMain_wrap_item_timetable'}>
+              <TimeTable timeTableListMap={timeTableListMap} timeTableStartTime={timeTableStartTime} />
+            </div>
           </div>
 
           <div className={'AdminMain_wrap_footer'}>
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={chat} alt="chatting-icon" />
               <span>채팅내역</span>
-              <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
+              <CSVLink filename={'chat-log.csv'} data={chatlogFile}>
+                <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
+              </CSVLink>
             </div>
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={survey} alt="chatting-icon" />
               <span>설문결과</span>
-              <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
+              {/* <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" /> */}
             </div>
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={luckydraw} alt="chatting-icon" />
               <span>럭키드로우</span>
-              <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
+              {/* <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" /> */}
             </div>
             <img className={'AdminMain_wrap_footer_start'} src={webinaStart} alt="webina_start" onClick={() => handleCreateWebinarInfo()} />
           </div>

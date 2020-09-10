@@ -21,21 +21,16 @@ const AdminLoginContainer = observer(() => {
       })
       return
     }
-    // console.log(data)
     handleAdminLogin(data)
       .then((response) => {
-        console.log(response.status)
-        const { status } = response
-        const { accessToken } = response.data
-        if (status === 200) {
-          Swal.fire({
-            title: '성공',
-            text: '로그인에 성공했습니다.',
-            icon: 'success',
-          })
-          sessionStorage.setItem('adminToken', accessToken)
-          history.push('/admin')
-        }
+        const { accessToken } = response
+        Swal.fire({
+          title: '성공',
+          text: '로그인에 성공했습니다.',
+          icon: 'success',
+        })
+        sessionStorage.setItem('adminToken', accessToken)
+        history.push('/admin')
       })
       .catch((error) => {
         const { status } = error.response
