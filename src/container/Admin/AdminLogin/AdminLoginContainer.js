@@ -21,7 +21,7 @@ const AdminLoginContainer = observer(() => {
       })
       return
     }
-    console.log(data)
+    // console.log(data)
     handleAdminLogin(data)
       .then((response) => {
         console.log(response.status)
