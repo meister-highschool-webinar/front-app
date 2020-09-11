@@ -6,9 +6,9 @@ import video from 'assets/images/video-icon@3x.png'
 import timetable from 'assets/images/timetable-icon@3x.png'
 import download from 'assets/images/download-button@3x.png'
 import chat from 'assets/images/chatting-icon@3x.png'
-import survey from 'assets/images/survey-icon@3x.png'
 import luckydraw from 'assets/images/luckydraw-icon@3x.png'
 import webinaStart from 'assets/images/webina-start@3x.png'
+import startBtn from 'assets/images/start-button@3x.png'
 import TimeTable from 'components/TimeTable'
 
 const AdminMain = ({
@@ -24,6 +24,7 @@ const AdminMain = ({
   timeTableListMap,
   timeTableStartTime,
   setPopup,
+  luckydrawStart,
 }) => {
   return (
     <>
@@ -88,15 +89,11 @@ const AdminMain = ({
                 <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
               </CSVLink>
             </div>
-            <div className={'AdminMain_wrap_footer_item'}>
-              <img src={survey} alt="chatting-icon" />
-              <span>설문결과</span>
-              {/* <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" /> */}
-            </div>
+
             <div className={'AdminMain_wrap_footer_item'}>
               <img src={luckydraw} alt="chatting-icon" />
               <span>럭키드로우</span>
-              {/* <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" /> */}
+              <img onClick={() => luckydrawStart()} className={'AdminMain_wrap_footer_item_download'} src={startBtn} alt="download-button" />
             </div>
             <img className={'AdminMain_wrap_footer_start'} src={webinaStart} alt="webina_start" onClick={() => handleCreateWebinarInfo()} />
           </div>

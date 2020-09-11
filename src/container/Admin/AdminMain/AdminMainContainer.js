@@ -7,6 +7,10 @@ import Swal from 'sweetalert2'
 import moment from 'moment'
 import TimeTableTemp from 'components/TimeTable/TimeTableTemp/TimeTableTemp'
 import AdminTimetable from 'components/Admin/AdminTimetable'
+import * as apis from 'utils/apis'
+import { DATE } from 'config/config.json'
+
+// config/config.json 에 DATE를 2020-09-11 처럼 특정 날짜로 지정해주세요.
 
 const AdminMainContainer = observer(() => {
   const history = useHistory()
@@ -19,6 +23,62 @@ const AdminMainContainer = observer(() => {
   const [titleInput, setTitleInput] = useState('')
   const [detailInput, setDetailInput] = useState('')
   const [popup, setPopup] = useState(false)
+
+  const [track, setTrack] = useState('')
+  const [speech, setSpeech] = useState('')
+  const [start, setStart] = useState(moment().format('HH:mm'))
+  const [end, setEnd] = useState(moment().format('HH:mm'))
+
+  const luckydrawStart = async () => {
+    const { value: event } = await Swal.fire({
+      title: 'Event를 입력해주세요.',
+      input: 'text',
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return '필수 입력 항목입니다.'
+        }
+      },
+    })
+
+    if (event) {
+      await apis
+        .startLuckyDraw({ event: Number(event) })
+        .then(() => {
+          Swal.fire({ title: 'Success', text: '럭키드로우가 시작되었습니다.', icon: 'success' })
+        })
+        .catch((err) => {
+          if (err.response.status === 400) {
+            Swal.fire({ title: 'Error', text: '해당 상품이 소진되었습니다.', icon: 'error' })
+          }
+        })
+    }
+  }
+
+  const handleTimetable = useCallback(async () => {
+    if (track === '' || speech === '') {
+      Swal.fire({
+        title: '경고',
+        text: '빈칸을 모두 채워주세요.',
+        icon: 'warning',
+      })
+    } else {
+      const start_time = new Date(`${DATE} ${start}:00`)
+      const end_time = new Date(`${DATE} ${end}:00`)
+      console.log(moment.parseZone(start_time).format('YYYY-MM-DD HH:mm:ss'))
+      await apis.createTimetable({
+        tableList: [
+          {
+            track_name: track,
+            speech: speech,
+            start_time: moment.parseZone(start_time).format('YYYY-MM-DD HH:mm:ss'),
+            end_time: moment.parseZone(end_time).format('YYYY-MM-DD HH:mm:ss'),
+          },
+        ],
+      })
+      history.go(0)
+    }
+  }, [end, start, track, speech])
 
   const handleGetTimeTable = useCallback(() => {
     getTimeTable().catch((error) => {
@@ -122,8 +182,20 @@ const AdminMainContainer = observer(() => {
         timeTableListMap={timeTableListMap}
         timeTableStartTime={timeTableStartTime}
         setPopup={setPopup}
+        luckydrawStart={luckydrawStart}
       />
-      {popup && <AdminTimetable setPopup={setPopup} />}
+      {popup && (
+        <AdminTimetable
+          handleTimetable={handleTimetable}
+          track={track}
+          setTrack={setTrack}
+          speech={speech}
+          setSpeech={setSpeech}
+          setStart={setStart}
+          setEnd={setEnd}
+          setPopup={setPopup}
+        />
+      )}
     </>
   )
 })

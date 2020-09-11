@@ -134,6 +134,11 @@
           cursor: pointer;
           width: 143px !important;
         }
+        button {
+          outline: none;
+          width: 143px;
+          background-color: rgb(53, 101, 252);
+        }
         span {
           display: inline-block;
           margin-left: 11px;
