@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useObserver } from 'mobx-react'
 import { useStores } from 'stores'
 import { loginApi } from 'utils/apis'
+import Swal from 'sweetalert2'
 import BasicInput from '../forms/BasicInput'
 import BasicSelect from '../forms/BasicSelect'
 import loginIcon from 'assets/images/login-icon.png'
@@ -72,13 +73,21 @@ const Login = () => {
 
     loginApi(loginData)
       .then((response) => {
-        console.log(response)
         sessionStorage.setItem('accessToken', response.accessToken)
         userStore.login(response)
-        alert('로그인성공')
+        Swal.fire({
+          title: '성공',
+          text: '로그인 되었습니다.',
+          icon: 'success',
+        })
         history.push('/')
       })
       .catch((err) => {
+        Swal.fire({
+          title: '오류',
+          text: '잘못된 로그인 정보입니다.',
+          icon: 'error',
+        })
         console.log('error', err)
       })
   }
