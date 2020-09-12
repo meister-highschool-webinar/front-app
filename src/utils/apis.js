@@ -35,3 +35,12 @@ export const createWebinarInfo = (data) => {
 export const adminLogin = (data) => {
   return axiosApi('/auth/admin-login', 'POST', data)
 }
+
+export const createTimetable = (data) => {
+  return axiosApi('/auth/timetable', 'POST', data)
+}
+
+export const startLuckyDraw = (data) => {
+  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
+  return axiosApi('/auth/luckdraw/start', 'POST', data)
+}
