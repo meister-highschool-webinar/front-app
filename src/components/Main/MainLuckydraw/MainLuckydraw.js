@@ -1,8 +1,20 @@
 import React from 'react'
 import './MainLuckydraw.scss'
+import Artwork from 'assets/images/artwork@3x.png'
+import LuckyDrawTable from './LuckyDrawTable'
 
 const MainLuckydraw = () => {
-  return <div>럭키드로우</div>
+  return (
+    <div className="Background-box">
+      <div className="contents">
+        <div className="text">럭키드로우</div>
+        <div className="Lucky-Draw-Area">
+          <img src={Artwork} className="Artwork" alt="artwork" />
+          <LuckyDrawTable />
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default MainLuckydraw

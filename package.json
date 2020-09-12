@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.6.3",
     "axios": "^0.19.2",
     "core-decorators": "^0.20.0",
     "history": "4.10.1",
@@ -16,6 +17,7 @@
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
+    "react-csv": "^2.0.3",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
     "react-player": "^2.6.1",
@@ -28,7 +30,7 @@
     "sweetalert2": "^9.17.1"
   },
   "scripts": {
-    "start": "PORT=3018 react-app-rewired start",
+    "start": "POST=3018 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject"
