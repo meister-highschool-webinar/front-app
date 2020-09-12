@@ -2,12 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap');
 
 .Background-box {
-    width: 512px;
+    //width: 512px;
     //height: 898px;
     //background-color: #eeeeee;
 }
 .text {
-    width: 92px;
     height: 20px;
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 20px;
@@ -21,13 +20,13 @@
     margin-top: 14px;
 }
 .Artwork {
-    width: 448px;
+    width: 420px;
     height: 304px;
     object-fit: contain;
     margin-bottom: 19px;
 }
 .Lucky-Draw-Area {
-    width: 448px;
+    //width: 448px;
     height: 769px;
     background-color: #eeeeee;
 }
