@@ -5,7 +5,10 @@ import { useHistory } from 'react-router-dom'
 import { useStores } from 'stores'
 import io from 'socket.io-client'
 import Swal from 'sweetalert2'
+import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
 import './MainChat.scss'
+
+const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
 
 const MainChat = observer(() => {
   let history = useHistory()
@@ -13,7 +16,7 @@ const MainChat = observer(() => {
   const { chatData, chatList, onChatChange, chatListUpdate } = chatStore
   const token = sessionStorage.getItem('accessToken')
 
-  const socket = io(`http://54.180.138.80:3000`, {
+  const socket = io(server, {
     query: {
       token: token,
     },

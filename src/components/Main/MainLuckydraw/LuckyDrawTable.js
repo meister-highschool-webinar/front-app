@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import './LuckyDrawTable.scss'
-import { SERVER } from '../../../config/config.json'
 import socketio from 'socket.io-client'
 import LuckyDrawItem from './LuckyDrawItem'
+import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
+import './LuckyDrawTable.scss'
+
+const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
 
 const LuckyDrawTable = () => {
   const [data, setData] = useState(Array(10).fill({}))
   const socket = socketio.connect(
-    SERVER,
+    server,
     {
       event: 1 - 10,
     },
