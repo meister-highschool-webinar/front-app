@@ -22,8 +22,6 @@ const MainSurveyContainer = observer(() => {
     handleSurveyDataCallback()
   }, [handleSurveyDataCallback])
 
-  console.log(surveyData)
-
   return <MainSurvey surveyData={surveyData} loading={loading} />
 })
 

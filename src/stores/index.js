@@ -6,7 +6,7 @@ import SurveyStore from './SurveyStore'
 import LuckyStore from './LuckyStore'
 import WebinarInfoStore from './WebinarInfoStore'
 import WebinarTimeTableStore from './WebinarTimeTableStore'
-import AdminStore from './Admin/AdminStore'
+import AdminStore from './AdminStore'
 
 export const stores = {
   appStore: new AppStore(),

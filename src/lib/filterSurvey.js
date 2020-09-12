@@ -25,7 +25,7 @@ const filterMajor = (datas) => {
   })
 
   if (count !== 0) {
-    console.log(filterdDatas)
+    // console.log(filterdDatas)
     filterdDatas = [...filterdDatas, { name: '기타', count }]
   }
 
@@ -56,7 +56,7 @@ const filterInfo = (datas) => {
   })
 
   if (count !== 0) {
-    console.log(filterdDatas)
+    // console.log(filterdDatas)
     filterdDatas = [...filterdDatas, { name: '기타', count }]
   }
 
@@ -86,7 +86,7 @@ const filterLanguage = (datas) => {
   })
 
   if (count !== 0) {
-    console.log(filterdDatas)
+    // console.log(filterdDatas)
     filterdDatas = [...filterdDatas, { name: '기타', count }]
   }
 
@@ -114,7 +114,7 @@ const filterField = (datas) => {
   })
 
   if (count !== 0) {
-    console.log(filterdDatas)
+    // console.log(filterdDatas)
     filterdDatas = [...filterdDatas, { name: '기타', count }]
   }
 
@@ -144,7 +144,7 @@ const filterCompany = (datas) => {
   })
 
   if (count !== 0) {
-    console.log(filterdDatas)
+    // console.log(filterdDatas)
     filterdDatas = [...filterdDatas, { name: '기타', count }]
   }
 
