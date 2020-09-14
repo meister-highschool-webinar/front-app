@@ -1,22 +1,22 @@
 import React from 'react'
 
-function LuckyDrawItem(props) {
+function LuckyDrawItem({curWinner, ix, schoolName, grade, class: _class, number}) {
   return (
-    <div className="table__list">
+    <div className={`table__list${curWinner === (ix + 1) ? ' new' : ''}`}>
       <div>
-        <span>{props.ix + 1}</span>
+        <span>{ix + 1}</span>
       </div>
       <div>
-        <span className="school">{props.schoolName}</span>
+        <span className="school">{schoolName}</span>
       </div>
       <div>
-        <span className="grade">{props.grade}</span>
+        <span className="grade">{grade}</span>
       </div>
       <div>
-        <span className="class">{props.class}</span>
+        <span className="class">{_class}</span>
       </div>
       <div>
-        <span className="number">{props.number}</span>
+        <span className="number">{number}</span>
       </div>
     </div>
   )
