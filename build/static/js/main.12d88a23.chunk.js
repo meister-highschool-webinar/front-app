@@ -90,7 +90,7 @@
     440: function (A, e, t) {},
     441: function (A, e, t) {},
     50: function (A) {
-      A.exports = JSON.parse('{"b":"https://develop-backend-meister-highschool-webinar.endpoint.ainize.ai","a":"2020-10-10"}')
+      A.exports = JSON.parse('{"b":"https://develop-backend-meister-highschool-webinar.endpoint.ainize.ai","a":"2020-09-23"}')
     },
     710: function (A, e, t) {},
     711: function (A, e, t) {},
@@ -2220,4 +2220,4 @@
   },
   [[352, 1, 2]],
 ])
-//# sourceMappingURL=main.2f810c9f.chunk.js.map
+//# sourceMappingURL=main.12d88a23.chunk.js.map
