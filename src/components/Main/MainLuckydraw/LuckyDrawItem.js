@@ -1,8 +1,8 @@
 import React from 'react'
 
-function LuckyDrawItem({curWinner, ix, schoolName, grade, class: _class, number}) {
+function LuckyDrawItem({ curWinner, ix, schoolName, grade, class: _class, number }) {
   return (
-    <div className={`table__list${curWinner === (ix + 1) ? ' new' : ''}`}>
+    <div className={`table__list${curWinner === ix + 1 ? ' new' : ''}`}>
       <div>
         <span>{ix + 1}</span>
       </div>

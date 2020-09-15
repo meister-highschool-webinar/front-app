@@ -10,28 +10,27 @@ const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
 
 const LuckyDrawTable = () => {
   const [data, setData] = useState(Array(10).fill({}))
-  const [curWinner, setCurWinner] = useState(0);
+  const [curWinner, setCurWinner] = useState(0)
   const socket = socketio(server)
 
   useEffect(() => {
-    getWinnerList()
-      .then(data => {
-        setData([...data])
-      })
+    getWinnerList().then((data) => {
+      setData([...data])
+    })
 
-    socket.on('winner', info => {
+    socket.on('winner', (info) => {
       setCurWinner(info.lucky_flag)
-      setData(prev => [
+      setData((prev) => [
         ...prev.slice(0, info.lucky_flag - 1),
         {
           school_name: info.school_name,
           grade: info.grade,
           class: info.class,
           number: info.number,
-          student_name: info.student_name
+          student_name: info.student_name,
         },
-        ...prev.slice(info.lucky_flag)
-      ]);
+        ...prev.slice(info.lucky_flag),
+      ])
     })
 
     return () => socket.disconnect()
@@ -55,7 +54,17 @@ const LuckyDrawTable = () => {
         </div>
       </div>
       {data.map((data, ix) => {
-        return <LuckyDrawItem curWinner={curWinner} ix={ix} schoolName={data.school_name} grade={data.grade} class={data.class} number={data.number} key={ix} />
+        return (
+          <LuckyDrawItem
+            curWinner={curWinner}
+            ix={ix}
+            schoolName={data.school_name}
+            grade={data.grade}
+            class={data.class}
+            number={data.number}
+            key={ix}
+          />
+        )
       })}
     </div>
   )
