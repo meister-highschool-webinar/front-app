@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import socketio from 'socket.io-client'
 import LuckyDrawItem from './LuckyDrawItem'
-import { DEV_SERVER, PROD_SERVER } from '../../../config/config.json'
+import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
 import './LuckyDrawTable.scss'
 import { getWinnerList } from '../../../utils/apis'
 
