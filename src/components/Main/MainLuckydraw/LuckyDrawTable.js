@@ -1,36 +1,42 @@
 import React, { useState, useEffect } from 'react'
 import socketio from 'socket.io-client'
 import LuckyDrawItem from './LuckyDrawItem'
-import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
-import { getWinnerList } from 'utils/apis'
-
+import { DEV_SERVER, PROD_SERVER } from '../../../config/config.json'
 import './LuckyDrawTable.scss'
+import { getWinnerList } from '../../../utils/apis'
 
 const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
 
 const LuckyDrawTable = () => {
   const [data, setData] = useState(Array(10).fill({}))
-  const [curWinner, setCurWinner] = useState(0)
-  const socket = socketio(server)
+  const [curWinner, setCurWinner] = useState(0);
+  const socket = socketio.connect(server, {
+    event: 1-10
+  }, {
+    extraHeaders: {
+        "x-access-token": sessionStorage.getItem('adminToken')
+    }
+  });
 
   useEffect(() => {
-    getWinnerList().then((data) => {
-      setData([...data])
-    })
-
-    socket.on('winner', (info) => {
+    getWinnerList()
+      .then(data => {
+        setData([...data])
+      })
+    socket.on('winner', info => {
+      console.log(info);
       setCurWinner(info.lucky_flag)
-      setData((prev) => [
+      setData(prev => [
         ...prev.slice(0, info.lucky_flag - 1),
         {
           school_name: info.school_name,
           grade: info.grade,
           class: info.class,
           number: info.number,
-          student_name: info.student_name,
+          student_name: info.student_name
         },
-        ...prev.slice(info.lucky_flag),
-      ])
+        ...prev.slice(info.lucky_flag)
+      ]);
     })
 
     return () => socket.disconnect()
@@ -54,17 +60,7 @@ const LuckyDrawTable = () => {
         </div>
       </div>
       {data.map((data, ix) => {
-        return (
-          <LuckyDrawItem
-            curWinner={curWinner}
-            ix={ix}
-            schoolName={data.school_name}
-            grade={data.grade}
-            class={data.class}
-            number={data.number}
-            key={ix}
-          />
-        )
+        return <LuckyDrawItem curWinner={curWinner} ix={ix} schoolName={data.school_name} grade={data.grade} class={data.class} number={data.number} key={ix} />
       })}
     </div>
   )
