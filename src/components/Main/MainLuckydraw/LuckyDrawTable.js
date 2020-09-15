@@ -3,7 +3,7 @@ import socketio from 'socket.io-client'
 import LuckyDrawItem from './LuckyDrawItem'
 import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
 import './LuckyDrawTable.scss'
-import { getWinnerList } from '../../../utils/apis'
+import { getWinnerList } from 'utils/apis'
 
 const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
 
