@@ -22,6 +22,10 @@ export const getQna = () => {
   return axiosApi('/qna', 'GET')
 }
 
+export const getWinnerList = () => {
+  return axiosApi('/winner', 'GET')
+}
+
 export const getFile = (name) => {
   axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
   return axiosApi(`/auth/file-download?dataName=${name}`, 'GET')
