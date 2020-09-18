@@ -26,7 +26,7 @@ const MainSurveyBar = ({ datas, title, style }) => {
   return (
     <div className="main-survey-bar" style={style}>
       <div className="main-survey-bar-title">{title}</div>
-      <BarChart width={374} height={220} data={datas} barSize={15} margin={{ right: 5 }} style={{ marginTop: 10, marginBottom: 30 }}>
+      <BarChart width={374} height={220} data={datas} barSize={15} margin={{ right: 5, left: -35 }} style={{ marginTop: 10, marginBottom: 30 }}>
         <XAxis interval={0} dataKey="name" tick={<CustomizedAxisTick />} scale="point" padding={{ left: 10, right: 10 }} width={3} />
         <YAxis valueKey="count" fontSize={10} />
         <Tooltip />
