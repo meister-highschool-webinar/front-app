@@ -1,5 +1,5 @@
 import React from 'react'
-import AppStore from './AppStore'
+// import AppStore from './AppStore'
 import UserStore from './UserStore'
 import ChatStore from './ChatStore'
 import SurveyStore from './SurveyStore'
@@ -9,7 +9,7 @@ import WebinarTimeTableStore from './WebinarTimeTableStore'
 import AdminStore from './AdminStore'
 
 export const stores = {
-  appStore: new AppStore(),
+  // appStore: new AppStore(),
   userStore: new UserStore(),
   chatStore: new ChatStore(),
   surveyStore: new SurveyStore(),
