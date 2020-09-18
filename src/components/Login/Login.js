@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useObserver } from 'mobx-react'
+import Swal from 'sweetalert2'
 import { useStores } from 'stores'
 import { loginApi } from 'utils/apis'
-import Swal from 'sweetalert2'
 import BasicInput from '../forms/BasicInput'
 import BasicSelect from '../forms/BasicSelect'
 import loginIcon from 'assets/images/login-icon.png'
@@ -31,7 +31,7 @@ const Login = () => {
   const selectOptions = [
     { id: 1, value: '', name: '학교', disabled: true, selected: true },
     { id: 2, value: '대덕소프트웨어마이스터고등학교', name: '대덕SW마이스터고' },
-    { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW마이스터고' },
+    { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW고등학교' },
     { id: 4, value: '광주소프트웨어마이스터고등학교', name: '광주SW마이스터고' },
   ]
 
@@ -73,8 +73,9 @@ const Login = () => {
 
     loginApi(loginData)
       .then((response) => {
-        sessionStorage.setItem('accessToken', response.accessToken)
-        userStore.login(response)
+        const { accessToken } = response
+        sessionStorage.setItem('accessToken', accessToken)
+        userStore.userLogin(accessToken)
         Swal.fire({
           title: '성공',
           text: '로그인 되었습니다.',
@@ -83,12 +84,12 @@ const Login = () => {
         history.push('/')
       })
       .catch((err) => {
+        userStore.userLogin('')
         Swal.fire({
           title: '오류',
           text: '잘못된 로그인 정보입니다.',
           icon: 'error',
         })
-        console.log('error', err)
       })
   }
 

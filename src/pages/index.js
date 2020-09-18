@@ -1,6 +1,6 @@
-import MainPage from 'pages/MainPage'
-import TestPage from './TestPage'
+import MainPage from './MainPage'
 import AdminLoginPage from './AdminLoginPage'
 import AdminMainPage from './AdminMainPage'
+import LoginPage from './LoginPage'
 
-export { MainPage, TestPage, AdminLoginPage, AdminMainPage }
+export { MainPage, LoginPage, AdminLoginPage, AdminMainPage }

@@ -16,13 +16,14 @@ body {
     height: 600px;
     //height: 543px;
     text-align:left;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     //z-index:-1;
 
     .inChatBox {
       box-sizing: border-box;
       margin: 0;
-      width: 453px;
+      width: 410px;
       height: auto;
       text-align:left;
       z-index:100;
@@ -35,6 +36,9 @@ body {
     }
 
     .chatContent {
+      display: block;
+      word-wrap: break-word;
+      word-break: keep-all;
       margin-top:0;
     }
 

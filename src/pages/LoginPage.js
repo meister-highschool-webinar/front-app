@@ -5,7 +5,7 @@ import './loginPage.scss'
 const LoginPage = () => {
   return (
     <div className={'container'}>
-      <div className={'background'}></div>
+      <div className={'background'} />
       <div>
         <LoginSection />
       </div>

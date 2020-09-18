@@ -1,13 +1,21 @@
 import React from 'react'
+import { Spin } from 'antd'
+import styled from 'styled-components'
 import './MainSurvey.scss'
 import MainSurveyBar from './MainSurveyBar/index'
 import MainSurveyPie from './MainSurveyPie'
+
+const StyledSpin = styled(Spin)`
+  margin-top: 325px;
+`
 
 const MainSurvey = ({ surveyData, loading }) => {
   return (
     <div className="main_survey">
       <div className="main_survey_container">
-        {!loading && (
+        {loading ? (
+          <StyledSpin spinning={loading} tip={'...loading'} />
+        ) : (
           <>
             <MainSurveyPie datas={surveyData.school} title={'학교'} />
             <MainSurveyPie datas={surveyData.grade} title={'학년'} />
