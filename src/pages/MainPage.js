@@ -17,6 +17,10 @@ const MainPage = () => {
       socket.on('receive message', (message) => {
         chatListUpdate(message)
       })
+
+      socket.on('winner', (info) => {
+        console.log('winner', info)
+      })
       return () => socket.disconnect()
     }
   }, [socket])

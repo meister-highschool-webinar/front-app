@@ -29,7 +29,7 @@ const Login = () => {
   })
 
   const selectOptions = [
-    { id: 1, value: '', name: '학교', disabled: true, selected: true },
+    { id: 1, value: '', name: '학교', disabled: true },
     { id: 2, value: '대덕소프트웨어마이스터고등학교', name: '대덕SW마이스터고' },
     { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW고등학교' },
     { id: 4, value: '광주소프트웨어마이스터고등학교', name: '광주SW마이스터고' },
@@ -75,7 +75,7 @@ const Login = () => {
       .then((response) => {
         const { accessToken } = response
         sessionStorage.setItem('accessToken', accessToken)
-        userStore.userLogin(accessToken)
+        userStore.userLogin(loginData, accessToken)
         Swal.fire({
           title: '성공',
           text: '로그인 되었습니다.',
@@ -103,7 +103,7 @@ const Login = () => {
       <form onSubmit={onSubmit}>
         <div className={'divSelect'}>
           <div className={'schoolSelect'}>
-            <BasicSelect options={selectOptions} onChange={onSelectChange} />
+            <BasicSelect options={selectOptions} onChange={onSelectChange} defaultValue={''} />
           </div>
           <div>
             <InputWrapper options={inputOptions} onChange={onInputChange} />
