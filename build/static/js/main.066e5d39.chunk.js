@@ -127,8 +127,8 @@
         B,
         b,
         C,
-        p,
         d,
+        p,
         Q,
         f,
         h,
@@ -303,12 +303,12 @@
             return A.data
           })
         },
-        pA = function (A) {
+        dA = function (A) {
           return (
             (BA.a.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')), CA('/auth/file-download?dataName='.concat(A), 'GET')
           )
         },
-        dA = function (A) {
+        pA = function (A) {
           return (BA.a.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')), CA('/auth/webinar', 'POST', A)
         },
         QA = function (A) {
@@ -464,7 +464,7 @@
           Object(gA.a)(
             ((C = (function () {
               function A() {
-                Object(lA.a)(this, A), Object(sA.a)(this, 'surveyData', p, this)
+                Object(lA.a)(this, A), Object(sA.a)(this, 'surveyData', d, this)
               }
               return (
                 Object(mA.a)(A, [
@@ -510,7 +510,7 @@
                 A
               )
             })()),
-            (p = Object(uA.a)(C.prototype, 'surveyData', [$.observable], {
+            (d = Object(uA.a)(C.prototype, 'surveyData', [$.observable], {
               configurable: !0,
               enumerable: !0,
               writable: !0,
@@ -522,11 +522,11 @@
             (b = C))
           ) || b,
         NA =
-          ((d = Object(Z.persist)('object')),
+          ((p = Object(Z.persist)('object')),
           (Q = function A() {
             Object(X.a)(this, A), Object(P.a)(this, 'winner', f, this), Object(P.a)(this, 'setCurrentWinner', h, this)
           }),
-          (f = Object(_.a)(Q.prototype, 'winner', [d, $.observable], {
+          (f = Object(_.a)(Q.prototype, 'winner', [p, $.observable], {
             configurable: !0,
             enumerable: !0,
             writable: !0,
@@ -725,7 +725,7 @@
                             for (;;)
                               switch ((A.prev = A.next)) {
                                 case 0:
-                                  return (A.next = 2), dA(e)
+                                  return (A.next = 2), pA(e)
                                 case 2:
                                   return (t = A.sent), A.abrupt('return', t)
                                 case 4:
@@ -751,7 +751,7 @@
                               for (;;)
                                 switch ((A.prev = A.next)) {
                                   case 0:
-                                    return (A.next = 2), pA(e)
+                                    return (A.next = 2), dA(e)
                                   case 2:
                                     return (
                                       (t = A.sent),
@@ -1114,10 +1114,9 @@
                     return z.a.createElement(
                       'div',
                       { className: u(A), key: 'chat'.concat(e) },
-                      z.a.createElement('p', { className: 'chatName' }, A.student_name),
-                      z.a.createElement('p', { className: 'chatContent' }, ((t = A.text), yA()(t.replace(/\n/g, '<br/>'))))
+                      z.a.createElement('p', { className: 'chatName' }, A.student_name, ' (', A.school_name, ' / ', A.student_id, ')'),
+                      z.a.createElement('p', { className: 'chatContent' }, A.text)
                     )
-                    var t
                   }),
                   z.a.createElement('div', { ref: l })
                 ),
@@ -1227,14 +1226,14 @@
           )
         },
         Ce = (t(472), t(330)),
-        pe = t(327),
-        de = (t(474), t(26)),
+        de = t(327),
+        pe = (t(474), t(26)),
         Qe = (t(743), ['#ff6666', '#ff9966', '#ffcc99', '#999999', '#cccccc']),
         fe = function (A) {
           var e = A.x,
             t = A.y,
             a = A.payload
-          return z.a.createElement(de.h, { x: e, y: t, width: 75, fontSize: 9, textAnchor: 'middle', verticalAnchor: 'start' }, a.value)
+          return z.a.createElement(pe.h, { x: e, y: t, width: 75, fontSize: 9, textAnchor: 'middle', verticalAnchor: 'start' }, a.value)
         },
         he = function (A) {
           var e = A.datas,
@@ -1248,9 +1247,9 @@
             { className: 'main-survey-bar', style: a },
             z.a.createElement('div', { className: 'main-survey-bar-title' }, t),
             z.a.createElement(
-              de.b,
+              pe.b,
               { width: 374, height: 220, data: e, barSize: 15, margin: { right: 5, left: -35 }, style: { marginTop: 10, marginBottom: 30 } },
-              z.a.createElement(de.j, {
+              z.a.createElement(pe.j, {
                 interval: 0,
                 dataKey: 'name',
                 tick: z.a.createElement(fe, null),
@@ -1258,22 +1257,22 @@
                 padding: { left: 10, right: 10 },
                 width: 3,
               }),
-              z.a.createElement(de.k, { valueKey: 'count', fontSize: 10 }),
-              z.a.createElement(de.i, null),
-              z.a.createElement(de.c, { strokeDasharray: '3 3' }),
+              z.a.createElement(pe.k, { valueKey: 'count', fontSize: 10 }),
+              z.a.createElement(pe.i, null),
+              z.a.createElement(pe.c, { strokeDasharray: '3 3' }),
               z.a.createElement(
-                de.a,
+                pe.a,
                 { dataKey: 'count', fill: '#8884d8', background: { fill: '#eee' } },
                 e.map(function (A, e) {
                   var t,
                     a = (t = n.indexOf(A)) > 4 ? Qe[4] : Qe[t]
-                  return z.a.createElement(de.d, { key: e, fill: a })
+                  return z.a.createElement(pe.d, { key: e, fill: a })
                 })
               )
             )
           )
         },
-        we = (t(744), Object(pe.a)(Ce.a).withConfig({ displayName: 'MainSurvey__StyledSpin', componentId: 'sc-16g4oj2-0' })(['margin-top:325px;'])),
+        we = (t(744), Object(de.a)(Ce.a).withConfig({ displayName: 'MainSurvey__StyledSpin', componentId: 'sc-16g4oj2-0' })(['margin-top:325px;'])),
         Ye = function (A) {
           var e = A.surveyData,
             t = A.loading
@@ -1853,9 +1852,9 @@
             B = Object(j.useState)(''),
             b = Object(y.a)(B, 2),
             C = b[0],
-            p = b[1],
-            d = Object(j.useState)(''),
-            Q = Object(y.a)(d, 2),
+            d = b[1],
+            p = Object(j.useState)(''),
+            Q = Object(y.a)(p, 2),
             f = Q[0],
             h = Q[1],
             w = Object(j.useState)(!1),
@@ -2050,7 +2049,7 @@
                             (A.next = 2),
                             e()
                               .then(function (A) {
-                                E(A.link), p(A.title), h(A.detail)
+                                E(A.link), d(A.title), h(A.detail)
                               })
                               .catch(function (A) {
                                 return A
@@ -2140,7 +2139,7 @@
                 linkInput: g,
                 setLinkInput: E,
                 titleInput: C,
-                setTitleInput: p,
+                setTitleInput: d,
                 detailInput: f,
                 setDetailInput: h,
                 chatlogFile: i,
@@ -2156,10 +2155,10 @@
           )
         }),
         Ct = Object(J.f)(bt),
-        pt = Object(U.b)(function () {
+        dt = Object(U.b)(function () {
           return z.a.createElement(Ct, null)
         }),
-        dt = t(128),
+        pt = t(128),
         Qt =
           (t(184),
           function (A) {
@@ -2223,7 +2222,7 @@
               var e = A.target,
                 t = e.value,
                 a = e.name
-              i(Object(H.a)({}, n, Object(dt.a)({}, a, t)))
+              i(Object(H.a)({}, n, Object(pt.a)({}, a, t)))
             },
             s = function (A) {
               i(Object(H.a)({}, n, { schoolName: A.target.value }))
@@ -2348,7 +2347,7 @@
                 z.a.createElement(J.b, {
                   path: '/admin',
                   render: function () {
-                    return null !== Wt() ? z.a.createElement(pt, null) : z.a.createElement(J.a, { to: '/adminLogin' })
+                    return null !== Wt() ? z.a.createElement(dt, null) : z.a.createElement(J.a, { to: '/adminLogin' })
                   },
                 }),
                 t
@@ -2382,4 +2381,4 @@
   },
   [[374, 1, 2]],
 ])
-//# sourceMappingURL=main.97acd950.chunk.js.map
+//# sourceMappingURL=main.066e5d39.chunk.js.map
