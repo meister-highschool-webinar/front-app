@@ -17,18 +17,17 @@ const TimeTableContainer = observer(() => {
 
   const timeTableListMap =
     timeTableList &&
-    timeTableList.map((data) => {
+    timeTableList.map((data, idx) => {
       const { start_time, end_time, speech, track_name } = data
-      const start_time_min = moment.duration(moment(start_time).format('HH:mm'))
-      const end_time_min = moment.duration(moment(end_time).format('HH:mm'))
-      const time_result = (end_time_min - start_time_min) / 60000
+      // const start_time_min = moment.duration(moment(start_time).format('HH:mm'))
+      // const end_time_min = moment.duration(moment(end_time).format('HH:mm'))
+      // const time_result = (end_time_min - start_time_min) / 60000
+      const time_result = (moment(end_time) - moment(start_time)) / 60000
 
       return (
-        <>
-          <tr>
-            <TimeTableTemp start_time={start_time} end_time={end_time} speech={speech} track_name={track_name} result={time_result} />
-          </tr>
-        </>
+        <tr key={`timetable_${idx}`}>
+          <TimeTableTemp start_time={start_time} end_time={end_time} speech={speech} track_name={track_name} result={time_result} />
+        </tr>
       )
     })
 

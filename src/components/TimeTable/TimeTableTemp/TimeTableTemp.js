@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import { makeLineBreak } from 'utils/stringFormat'
 import './TimeTableTemp.scss'
 
 const TimeTableTemp = ({ start_time, end_time, speech, track_name, result }) => {
@@ -10,7 +11,7 @@ const TimeTableTemp = ({ start_time, end_time, speech, track_name, result }) => 
       </td>
       <td className="TimeTableTemp_table_runTime">{result}분</td>
       <td className="TimeTableTemp_table_title">{track_name}</td>
-      <td className="TimeTableTemp_table_name">{speech}</td>
+      <td className="TimeTableTemp_table_name">{makeLineBreak(speech)}</td>
     </>
   )
 }

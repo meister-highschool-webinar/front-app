@@ -1,41 +1,45 @@
 import React, { useState, useEffect } from 'react'
+import { observer } from 'mobx-react'
 import LuckyDrawItem from './LuckyDrawItem'
 import { getWinnerList } from 'utils/apis'
 import { useStores } from 'stores'
-
 import './LuckyDrawTable.scss'
 
-const LuckyDrawTable = () => {
+const LuckyDrawTable = observer(() => {
+  // const {
+  //   userStore: { socket },
+  // } = useStores()
   const {
-    userStore: { socket },
+    luckyStore: { winner },
   } = useStores()
   const [data, setData] = useState(Array(10).fill({}))
-  const [curWinner, setCurWinner] = useState(0)
+  // const [curWinner, setCurWinner] = useState(0)
 
   useEffect(() => {
     getWinnerList().then((data) => {
       setData([...data])
     })
 
-    if (socket) {
-      socket.on('winner', (info) => {
-        setCurWinner(info.lucky_flag)
-        setData((prev) => [
-          ...prev.slice(0, info.lucky_flag - 1),
-          {
-            school_name: info.school_name,
-            grade: info.grade,
-            class: info.class,
-            number: info.number,
-            student_name: info.student_name,
-          },
-          ...prev.slice(info.lucky_flag),
-        ])
-      })
-
-      return () => socket.disconnect()
-    }
-  }, [])
+    // if (socket) {
+    //
+    //   socket.on('winner', (info) => {
+    //     setCurWinner(info.lucky_flag)
+    //     setData((prev) => [
+    //       ...prev.slice(0, info.lucky_flag - 1),
+    //       {
+    //         school_name: info.school_name,
+    //         grade: info.grade,
+    //         class: info.class,
+    //         number: info.number,
+    //         student_name: info.student_name,
+    //       },
+    //       ...prev.slice(info.lucky_flag),
+    //     ])
+    //   })
+    //   return () => socket.disconnect()
+    // }
+  }, [winner])
+  // console.log('data', data)
 
   return (
     <div className="table">
@@ -57,7 +61,7 @@ const LuckyDrawTable = () => {
       {data.map((data, ix) => {
         return (
           <LuckyDrawItem
-            curWinner={curWinner}
+            curWinner={winner}
             ix={ix}
             schoolName={data.school_name}
             grade={data.grade}
@@ -69,6 +73,6 @@ const LuckyDrawTable = () => {
       })}
     </div>
   )
-}
+})
 
 export default LuckyDrawTable
