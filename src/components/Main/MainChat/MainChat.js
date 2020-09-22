@@ -79,8 +79,10 @@ const MainChat = observer(() => {
         {showImg()}
         {chatList.map((chat, idx) => (
           <div className={checkMyMsg(chat)} key={`chat${idx}`}>
-            <p className={'chatName'}>{chat.student_name}</p>
-            <p className={'chatContent'}>{enterLineBreak(chat.text)}</p>
+            <p className={'chatName'}>
+              {chat.student_name} ({chat.school_name} / {chat.student_id})
+            </p>
+            <p className={'chatContent'}>{chat.text}</p>
           </div>
         ))}
         <div ref={chatRef} />
