@@ -13,10 +13,12 @@ const App = () => {
   const [storeLoaded, setStoreLoaded] = useState(false)
 
   useEffect(() => {
-    const hydrate = create({})
-    hydrate('userStore', stores.userStore).then(() => {
-      setStoreLoaded(true)
-    })
+    const hydrate = create()
+    async function hydrateStore() {
+      await hydrate('userStore', stores.userStore)
+      await hydrate('chatStore', stores.chatStore)
+    }
+    hydrateStore().then(() => setStoreLoaded(true))
   }, [])
 
   return (
