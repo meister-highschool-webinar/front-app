@@ -30,9 +30,9 @@ const Login = () => {
 
   const selectOptions = [
     { id: 1, value: '', name: '학교', disabled: true },
-    { id: 2, value: '대덕소프트웨어마이스터고등학교', name: '대덕SW마이스터고' },
-    { id: 3, value: '대구소프트웨어마이스터고등학교', name: '대구SW고등학교' },
-    { id: 4, value: '광주소프트웨어마이스터고등학교', name: '광주SW마이스터고' },
+    { id: 2, value: '대덕SW마이스터고', name: '대덕SW마이스터고' },
+    { id: 3, value: '대구SW고등학교', name: '대구SW고등학교' },
+    { id: 4, value: '광주SW마이스터고', name: '광주SW마이스터고' },
   ]
 
   const inputOptions = [
