@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react'
 import { useHistory } from 'react-router-dom'
 import { useStores } from 'stores'
+import { enterLineBreak } from 'utils/stringFormat'
 import Swal from 'sweetalert2'
 import nonConnectIcon from 'assets/images/non-connect-icon@2x.png'
 import connectIcon from 'assets/images/connect-icon@2x.png'
@@ -61,6 +62,13 @@ const MainChat = observer(() => {
     }
   }
 
+  const handleUserKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      // e.preventDefault();
+      onSubmit(e) // this won't be triggered
+    }
+  }
+
   useEffect(() => {
     chatRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
   }, [chatList[chatList.length - 1]])
@@ -72,14 +80,14 @@ const MainChat = observer(() => {
         {chatList.map((chat, idx) => (
           <div className={checkMyMsg(chat)} key={`chat${idx}`}>
             <p className={'chatName'}>{chat.student_name}</p>
-            <p className={'chatContent'}>{chat.text}</p>
+            <p className={'chatContent'}>{enterLineBreak(chat.text)}</p>
           </div>
         ))}
         <div ref={chatRef} />
       </div>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
-          <input id="chatInput" type="textarea" value={chatData} onChange={inputChange} placeholder={'대화 내용을 입력...'} />
+          <textarea id="chatInput" value={chatData} onKeyPress={handleUserKeyPress} onChange={inputChange} placeholder={'대화 내용을 입력...'} />
         </div>
         <div className={'chatEnterArea'}>
           <button type="submit" className={'chatEnterIcon'} />
