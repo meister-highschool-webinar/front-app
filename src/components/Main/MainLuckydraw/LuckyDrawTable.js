@@ -6,9 +6,9 @@ import { useStores } from 'stores'
 import './LuckyDrawTable.scss'
 
 const LuckyDrawTable = () => {
-  const {
-    userStore: { socket },
-  } = useStores()
+  // const {
+  //   userStore: { socket },
+  // } = useStores()
   const [data, setData] = useState(Array(10).fill({}))
   const [curWinner, setCurWinner] = useState(0)
 
@@ -17,24 +17,24 @@ const LuckyDrawTable = () => {
       setData([...data])
     })
 
-    if (socket) {
-      socket.on('winner', (info) => {
-        setCurWinner(info.lucky_flag)
-        setData((prev) => [
-          ...prev.slice(0, info.lucky_flag - 1),
-          {
-            school_name: info.school_name,
-            grade: info.grade,
-            class: info.class,
-            number: info.number,
-            student_name: info.student_name,
-          },
-          ...prev.slice(info.lucky_flag),
-        ])
-      })
-
-      return () => socket.disconnect()
-    }
+    // if (socket) {
+    //
+    //   socket.on('winner', (info) => {
+    //     setCurWinner(info.lucky_flag)
+    //     setData((prev) => [
+    //       ...prev.slice(0, info.lucky_flag - 1),
+    //       {
+    //         school_name: info.school_name,
+    //         grade: info.grade,
+    //         class: info.class,
+    //         number: info.number,
+    //         student_name: info.student_name,
+    //       },
+    //       ...prev.slice(info.lucky_flag),
+    //     ])
+    //   })
+    //   return () => socket.disconnect()
+    // }
   }, [])
 
   return (
