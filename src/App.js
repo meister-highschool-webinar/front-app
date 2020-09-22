@@ -17,6 +17,7 @@ const App = () => {
     async function hydrateStore() {
       await hydrate('userStore', stores.userStore)
       await hydrate('chatStore', stores.chatStore)
+      await hydrate('luckyStore', stores.luckyStore)
     }
     hydrateStore().then(() => setStoreLoaded(true))
   }, [])

@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import { observer } from 'mobx-react'
 import LuckyDrawItem from './LuckyDrawItem'
 import { getWinnerList } from 'utils/apis'
 import { useStores } from 'stores'
-
 import './LuckyDrawTable.scss'
 
-const LuckyDrawTable = () => {
+const LuckyDrawTable = observer(() => {
   // const {
   //   userStore: { socket },
   // } = useStores()
+  const {
+    luckyStore: { winner },
+  } = useStores()
   const [data, setData] = useState(Array(10).fill({}))
-  const [curWinner, setCurWinner] = useState(0)
+  // const [curWinner, setCurWinner] = useState(0)
 
   useEffect(() => {
     getWinnerList().then((data) => {
@@ -35,7 +38,8 @@ const LuckyDrawTable = () => {
     //   })
     //   return () => socket.disconnect()
     // }
-  }, [])
+  }, [winner])
+  // console.log('data', data)
 
   return (
     <div className="table">
@@ -57,7 +61,7 @@ const LuckyDrawTable = () => {
       {data.map((data, ix) => {
         return (
           <LuckyDrawItem
-            curWinner={curWinner}
+            curWinner={winner}
             ix={ix}
             schoolName={data.school_name}
             grade={data.grade}
@@ -69,6 +73,6 @@ const LuckyDrawTable = () => {
       })}
     </div>
   )
-}
+})
 
 export default LuckyDrawTable

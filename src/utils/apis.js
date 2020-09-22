@@ -51,5 +51,5 @@ export const startLuckyDraw = (data) => {
 
 export const resetLuckyDraw = () => {
   axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
-  return axiosApi('/auth/luckdraw/reset', 'POST')
+  return axiosApi('/auth/luckdraw/reset', 'PATCH')
 }
