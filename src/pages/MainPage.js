@@ -3,7 +3,7 @@ import MainContainer from 'container/Main/MainContainer'
 import { useStores } from 'stores'
 
 const MainPage = () => {
-  const { chatStore, userStore } = useStores()
+  const { chatStore, userStore, luckyStore } = useStores()
   const { chatListUpdate } = chatStore
   const { socket } = userStore
 
@@ -16,6 +16,11 @@ const MainPage = () => {
 
       socket.on('receive message', (message) => {
         chatListUpdate(message)
+      })
+
+      socket.on('winner', (info) => {
+        // console.log('winner', info)
+        luckyStore.setCurrentWinner(info)
       })
       return () => socket.disconnect()
     }

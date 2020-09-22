@@ -7,7 +7,6 @@ const MainLuckydraw = () => {
   return (
     <div className="Background-box">
       <div className="contents">
-        <div className="text">럭키드로우</div>
         <div className="Lucky-Draw-Area">
           <img src={Artwork} className="Artwork" alt="artwork" />
           <LuckyDrawTable />

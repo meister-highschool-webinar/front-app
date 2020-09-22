@@ -119,6 +119,7 @@
         width: 323px;
       }
       &_start {
+        margin-left: 270px;
         cursor: pointer;
       }
       &_item {
@@ -131,6 +132,11 @@
           width: 47px;
         }
         &_download {
+          cursor: pointer;
+          width: 143px !important;
+        }
+        &_reset {
+          margin-left: 10px;
           cursor: pointer;
           width: 143px !important;
         }

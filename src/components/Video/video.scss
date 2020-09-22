@@ -1,10 +1,21 @@
 .video_section {
   width: 100%;
-  & > img {
+  .img_container {
     display: flex;
-    width: 276px;
-    height: 64px;
-    margin-bottom: 13px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+    .talk {
+      display: flex;
+      width: 276px;
+      height: 64px;
+      margin-bottom: 13px;
+    }
+    .ainize {
+      width: 160px;
+      //height: 30px;
+      margin: 0;
+    }
   }
   .video {
     background: #282c34;

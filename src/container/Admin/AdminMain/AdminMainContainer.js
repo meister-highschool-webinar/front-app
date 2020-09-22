@@ -55,6 +55,25 @@ const AdminMainContainer = observer(() => {
     }
   }
 
+  const luckydrawReset = async () => {
+    const { isConfirmed } = await Swal.fire({
+      title: '정말 초기화 하시겠습니까?',
+      showCancelButton: true,
+    })
+    if (isConfirmed) {
+      await apis
+        .resetLuckyDraw()
+        .then(() => {
+          Swal.fire({ title: 'Success', text: '럭키드로우가 초기화되었습니다.', icon: 'success' })
+        })
+        .catch((err) => {
+          if (err.response.status === 400) {
+            Swal.fire({ title: 'Error', text: '럭키드로우 초기화에 실패했습니다.', icon: 'error' })
+          }
+        })
+    }
+  }
+
   const handleTimetable = useCallback(async () => {
     if (track === '' || speech === '') {
       Swal.fire({
@@ -184,6 +203,7 @@ const AdminMainContainer = observer(() => {
         timeTableStartTime={timeTableStartTime}
         setPopup={setPopup}
         luckydrawStart={luckydrawStart}
+        luckydrawReset={luckydrawReset}
       />
       {popup && (
         <AdminTimetable

@@ -8,9 +8,11 @@ const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
 export default class UserStore {
   @persist @observable accessToken = ''
   @persist @observable adminToken = ''
+  @persist('object') @observable userData = {}
 
   @action
-  userLogin = (token) => {
+  userLogin = (data, token) => {
+    this.userData = data
     this.accessToken = token
   }
 
@@ -21,6 +23,7 @@ export default class UserStore {
 
   @computed
   get socket() {
+    // console.log('get socket')
     let socket
     if (this.accessToken.length === 0) {
       socket = io(server)

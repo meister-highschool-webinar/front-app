@@ -9,6 +9,7 @@ import chat from 'assets/images/chatting-icon@3x.png'
 import luckydraw from 'assets/images/luckydraw-icon@3x.png'
 import webinaStart from 'assets/images/webina-start@3x.png'
 import startBtn from 'assets/images/start-button@3x.png'
+import resetIcon from 'assets/images/reset.png'
 import TimeTable from 'components/TimeTable'
 
 const AdminMain = ({
@@ -25,6 +26,7 @@ const AdminMain = ({
   timeTableStartTime,
   setPopup,
   luckydrawStart,
+  luckydrawReset,
 }) => {
   return (
     <>
@@ -94,6 +96,7 @@ const AdminMain = ({
               <img src={luckydraw} alt="chatting-icon" />
               <span>럭키드로우</span>
               <img onClick={() => luckydrawStart()} className={'AdminMain_wrap_footer_item_download'} src={startBtn} alt="download-button" />
+              <img onClick={() => luckydrawReset()} className={'AdminMain_wrap_footer_item_reset'} src={resetIcon} alt="reset-button" />
             </div>
             <img className={'AdminMain_wrap_footer_start'} src={webinaStart} alt="webina_start" onClick={() => handleCreateWebinarInfo()} />
           </div>
