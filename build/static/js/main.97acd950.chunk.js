@@ -2209,21 +2209,9 @@
             i = a[1],
             r = [
               { id: 1, value: '', name: '\ud559\uad50', disabled: !0 },
-              {
-                id: 2,
-                value: '\ub300\ub355\uc18c\ud504\ud2b8\uc6e8\uc5b4\ub9c8\uc774\uc2a4\ud130\uace0\ub4f1\ud559\uad50',
-                name: '\ub300\ub355SW\ub9c8\uc774\uc2a4\ud130\uace0',
-              },
-              {
-                id: 3,
-                value: '\ub300\uad6c\uc18c\ud504\ud2b8\uc6e8\uc5b4\ub9c8\uc774\uc2a4\ud130\uace0\ub4f1\ud559\uad50',
-                name: '\ub300\uad6cSW\uace0\ub4f1\ud559\uad50',
-              },
-              {
-                id: 4,
-                value: '\uad11\uc8fc\uc18c\ud504\ud2b8\uc6e8\uc5b4\ub9c8\uc774\uc2a4\ud130\uace0\ub4f1\ud559\uad50',
-                name: '\uad11\uc8fcSW\ub9c8\uc774\uc2a4\ud130\uace0',
-              },
+              { id: 2, value: '\ub300\ub355SW\ub9c8\uc774\uc2a4\ud130\uace0', name: '\ub300\ub355SW\ub9c8\uc774\uc2a4\ud130\uace0' },
+              { id: 3, value: '\ub300\uad6cSW\uace0\ub4f1\ud559\uad50', name: '\ub300\uad6cSW\uace0\ub4f1\ud559\uad50' },
+              { id: 4, value: '\uad11\uc8fcSW\ub9c8\uc774\uc2a4\ud130\uace0', name: '\uad11\uc8fcSW\ub9c8\uc774\uc2a4\ud130\uace0' },
             ],
             c = [
               { value: n.grade, name: 'grade', placeholder: '\ud559\ub144' },
@@ -2394,4 +2382,4 @@
   },
   [[374, 1, 2]],
 ])
-//# sourceMappingURL=main.1a8151b3.chunk.js.map
+//# sourceMappingURL=main.97acd950.chunk.js.map
