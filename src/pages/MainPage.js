@@ -10,7 +10,7 @@ const MainPage = () => {
   useEffect(() => {
     if (socket) {
       socket.on('connect', () => {
-        console.log('connected')
+        // console.log('connected')
         socket.on('connected_change', (data) => {})
       })
 

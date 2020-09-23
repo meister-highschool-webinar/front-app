@@ -50,13 +50,18 @@ body {
       }
       .chatName {
         font-weight: 600;
-        font-size:1.2em;
+        font-size: 1.2em;
         margin:0;
+        em {
+          font-style: normal;
+          font-size: 0.8em;
+        }
       }
       .chatContent {
         display: block;
         word-wrap: break-word;
-        word-break: keep-all;
+        white-space: pre-line;
+        //word-break: keep-all;
         margin:0;
       }
     }
