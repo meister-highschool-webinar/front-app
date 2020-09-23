@@ -26,6 +26,7 @@ const Login = () => {
     sclass: '',
     number: '',
     studentName: '',
+    code: '',
   })
 
   const selectOptions = [
@@ -40,6 +41,7 @@ const Login = () => {
     { value: userData.sclass, name: 'sclass', placeholder: '반' },
     { value: userData.number, name: 'number', placeholder: '번호' },
     { value: userData.studentName, name: 'studentName', placeholder: '이름' },
+    { value: userData.code, name: 'code', placeholder: '코드' },
   ]
 
   const onInputChange = (e) => {
@@ -60,7 +62,7 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    const { schoolName, grade, sclass, number, studentName } = userData
+    const { schoolName, grade, sclass, number, studentName, code } = userData
     const studentId = parseInt(`${grade}${sclass}${number < 10 ? `0${number}` : number}`)
     const loginData = {
       schoolName: schoolName,
@@ -69,6 +71,7 @@ const Login = () => {
       number: parseInt(number),
       studentId: studentId,
       studentName: studentName,
+      code: code,
     }
 
     loginApi(loginData)

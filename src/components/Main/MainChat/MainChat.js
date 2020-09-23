@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react'
 import { useHistory } from 'react-router-dom'
 import { useStores } from 'stores'
-import { enterLineBreak } from 'utils/stringFormat'
+import { limitEnterNum, checkLineOver, checkLength } from 'utils/stringFormat'
 import Swal from 'sweetalert2'
 import nonConnectIcon from 'assets/images/non-connect-icon@2x.png'
 import connectIcon from 'assets/images/connect-icon@2x.png'
@@ -15,7 +15,27 @@ const MainChat = observer(() => {
   const { accessToken, socket, userData } = userStore
   const chatRef = useRef()
 
-  const inputChange = (e) => onChatChange(e.target.value)
+  const inputChange = (e) => {
+    let chat = limitEnterNum(e.target.value)
+    const maxRow = e.target.rows
+    if (checkLineOver(chat, maxRow)) {
+      Swal.fire({
+        title: '줄 제한',
+        text: '7줄 이상 입력할 수 없습니다.',
+        icon: 'warning',
+      })
+      return
+    }
+    if (checkLength(chat, 300)) {
+      Swal.fire({
+        title: '300자 제한',
+        text: '300자 이상 채팅할 수 없습니다.',
+        icon: 'warning',
+      })
+      chat = chat.substring(0, 300)
+    }
+    onChatChange(chat)
+  }
   const onSubmit = (e) => {
     e.preventDefault()
     if (accessToken.length === 0) {
@@ -26,7 +46,7 @@ const MainChat = observer(() => {
       })
       history.push('/login')
     } else {
-      if (chatData.length > 0) socket.emit('send message', chatData)
+      if (chatData.length > 0 && (chatData.trim() !== '' || chatData.trim().length !== 0)) socket.emit('send message', chatData)
       onChatChange('')
     }
   }
@@ -71,7 +91,7 @@ const MainChat = observer(() => {
 
   useEffect(() => {
     chatRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
-  }, [chatList[chatList.length - 1]])
+  }, [])
 
   return (
     <div className={'chatContainer'}>
@@ -80,7 +100,10 @@ const MainChat = observer(() => {
         {chatList.map((chat, idx) => (
           <div className={checkMyMsg(chat)} key={`chat${idx}`}>
             <p className={'chatName'}>
-              {chat.student_name} ({chat.school_name} / {chat.student_id})
+              {chat.student_name}{' '}
+              <em>
+                ({chat.student_name === '01' ? 'MIT' : chat.school_name} | {chat.student_name === '01' ? '0000' : chat.student_id})
+              </em>
             </p>
             <p className={'chatContent'}>{chat.text}</p>
           </div>
@@ -89,7 +112,14 @@ const MainChat = observer(() => {
       </div>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
-          <textarea id="chatInput" value={chatData} onKeyPress={handleUserKeyPress} onChange={inputChange} placeholder={'대화 내용을 입력...'} />
+          <textarea
+            rows={6}
+            id="chatInput"
+            value={chatData}
+            onKeyPress={handleUserKeyPress}
+            onChange={inputChange}
+            placeholder={'대화 내용을 입력...'}
+          />
         </div>
         <div className={'chatEnterArea'}>
           <button type="submit" className={'chatEnterIcon'} />
