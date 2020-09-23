@@ -89,9 +89,9 @@ const MainChat = observer(() => {
     }
   }
 
-  // useEffect(() => {
-  //   chatRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
-  // }, [chatList[chatList.length - 1]])
+  useEffect(() => {
+    chatRef.current.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
+  }, [])
 
   return (
     <div className={'chatContainer'}>
