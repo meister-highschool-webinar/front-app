@@ -1,12 +1,18 @@
 .container{
-    display: grid;
-    grid-template-rows: 635px 345px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    //display: grid;
+    //grid-template-rows: 635px 345px;
 }
 
 .background{
-    background-image: url('../assets/images/login_back@3x.png');
-    background-position: center;
-    background-size: cover;
+    width: 100%;
+    min-height: 835px;
+    background: url('../assets/images/login_back@3x.png') center 0 no-repeat;
+    background-size: contain;
+    margin-top: 60px;
     z-index: 0;
 }
 
