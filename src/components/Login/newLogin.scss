@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+}
+
+.loginSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 490px;
+  height: 100%;
+  background-image: linear-gradient(to top, #209cff, #68e0cf);
+  z-index: 0;
+
+  img {
+    width: 322px;
+    margin-top: 159px;
+  }
+}
