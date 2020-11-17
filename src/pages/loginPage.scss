@@ -1,4 +1,4 @@
-.container{
+.container {
     width: 100%;
     height: 100%;
     display: block;
@@ -7,13 +7,20 @@
     //grid-template-rows: 635px 345px;
 }
 
-.background{
+.background {
     width: 100%;
-    min-height: 835px;
+    height: 835px;
     background: url('../assets/images/login_back@3x.png') center 0 no-repeat;
     background-size: contain;
     margin-top: 60px;
     z-index: 0;
+}
+
+@media screen and (min-width: 1440px) and (max-width: 1920px) {
+    .background {
+        width: 100%;
+        background-size: auto 835px;
+    }
 }
 
 // .gradientBox{
