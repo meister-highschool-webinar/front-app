@@ -3,9 +3,9 @@ import { observer } from 'mobx-react'
 import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
 import { GOOGLE_ID } from 'config/config.json'
 import { useStores } from 'stores'
-import googleIcon from 'assets/images/google@2x.png'
+import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import './newLogin.scss'
-import { refreshTokenSetup } from '../../utils/refreshLoginToken'
+import googleIcon from 'assets/images/google@2x.png'
 
 const LoginBtn = observer(() => {
   const { userStore: { accessToken } } = useStores()
