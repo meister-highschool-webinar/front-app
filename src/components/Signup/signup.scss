@@ -3,6 +3,8 @@
   height: 100%;
   display: block;
   overflow: hidden;
+  text-align: center;
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
 
   .talkLogo {
     width: 180px;
@@ -13,5 +15,34 @@
     background: #eeeeee;
     background-size: auto 835px;
     z-index: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
+    .signupLabel {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 25%;
+      height: 835px;
+      background-image: linear-gradient(to top, #209cff, #68e0cf);
+      z-index: 1;
+      color: #fff;
+
+      .engTitle {
+        margin-top: 157px;
+        font-size: 70px;
+        font-weight: 900;
+        line-height: 1.14;
+        p {
+          margin: 0;
+        }
+      }
+      .korTitle {
+        margin-top: 34px;
+        font-size: 21px;
+      }
+    }
   }
 }
