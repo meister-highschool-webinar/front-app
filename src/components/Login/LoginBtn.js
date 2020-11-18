@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
+import Swal from "sweetalert2"
 import { GOOGLE_ID } from 'config/config.json'
 import { useStores } from 'stores'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
@@ -11,13 +12,21 @@ const LoginBtn = observer(({ history }) => {
   const {
     userStore: { accessToken },
   } = useStores()
+
   const onSuccess = (res) => {
     console.log('login success', res)
     refreshTokenSetup(res)
     history.push('/signup')
   }
-  const onFailure = (err) => {
-    console.log('fail', err)
+  const onFailure = (res) => {
+    console.log('fail', res)
+    if(res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
+      Swal.fire({
+        title: '브라우저 쿠키 설정',
+        text: '브라우저 설정에서 쿠키를 허용해주세요.',
+        icon: 'warning',
+      })
+    }
   }
   const onLogoutSuccess = (res) => {
     console.log('logout success', res)

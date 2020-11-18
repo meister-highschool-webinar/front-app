@@ -11,6 +11,9 @@ const Signup = () => {
           <span className={'engTitle'}><p>Create</p> <p>Account</p></span>
           <span className={'korTitle'}>회원가입</span>
         </div>
+        <div className={'signupForm'}>
+
+        </div>
       </div>
     </div>
   )
