@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../Login/login.scss'
+import 'components/Login/pastLogin.scss'
 
 const BasicSelect = (props) => {
   const { options, ...restProps } = props

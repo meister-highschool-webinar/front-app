@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+}
+
+.loginSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.divSelect > div {
+  float: left;
+  & input {
+    margin-left: 30px;
+    width: 12rem;
+    font-size: 2rem;
+    height: 3.8rem;
+    line-height: 3.6rem;
+    padding: 0 0.5em;
+    border: 2px solid #cccccc;
+  }
+}
+
+input::placeholder {
+    font-weight: 700;
+    color:black;
+}
+
+.loginTitle {
+  font-size: 2.5em;
+  font-weight: 400;
+  & a{
+      font-weight: 900;
+  }
+}
+
+select {
+  appearance: none;
+  padding: 0 0.5em;
+  cursor: pointer;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: 700;
+  border: 2px solid #cccccc;
+  width: 26rem;
+  &::-ms-expand{
+    display: none;
+  }
+}
+
+.schoolSelect {
+  position: relative;
+  display: flex;
+  width: 26em;
+  height: 3.8rem;
+  line-height: 4;
+  background: grey;
+  overflow: hidden;
+}
+
+.schoolSelect::after {
+  content: '\25BC';
+  //position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1.5em;
+  background: grey;
+  cursor: pointer;
+  pointer-events: none;
+  transition: 0.25s all ease;
+  color: white;
+}
+
+.schoolSelect:hover::after {
+  color: black;
+}
+
+.submitArea {
+  text-align: center;
+}
+
+.loginButton {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-top: 2%;
+}

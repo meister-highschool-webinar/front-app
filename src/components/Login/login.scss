@@ -1,91 +1,109 @@
-@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+//@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+//
+//body {
+//  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+//}
 
-body {
-  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
-}
+.loginPage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow-y: hidden;
+  //display: grid;
+  //grid-template-rows: 635px 345px;
 
-.loginSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+  .background {
+    min-width: 960px;
+    width: 100%;
+    height: 835px;
+    background: url('../../assets/images/login_back@3x.png') center 0 no-repeat;
+    background-size: auto 835px;
+    margin-top: 60px;
+    z-index: 0;
 
-.divSelect > div {
-  float: left;
-  & input {
-    margin-left: 30px;
-    width: 12rem;
-    font-size: 2rem;
-    height: 3.8rem;
-    line-height: 3.6rem;
-    padding: 0 0.5em;
-    border: 2px solid #cccccc;
+    .loginSection {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      float: right;
+      width: 25%;
+      height: 835px;
+      margin-right: 11%;
+      background-image: linear-gradient(to top, #209cff, #68e0cf);
+      z-index: 1;
+
+      .mainLogo {
+        width: 70%;
+        margin-top: 160px;
+      }
+      .loginBtn {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        background: #ffffff;
+        width: 70%;
+        height: 44px;
+        margin-top: 120px;
+        padding: 0;
+        border-radius: 10px;
+        border: 0;
+        overflow: hidden;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+        .googleIcon {
+          margin: 0;
+          width: 25px;
+        }
+        .loginBtnText {
+          margin-left: 10px;
+          margin-bottom: 1px;
+          font-size: 20px;
+          color: #3f3d3d;
+        }
+      }
+    }
   }
 }
 
-input::placeholder {
-    font-weight: 700;
-    color:black;
-}
 
-.loginTitle {
-  font-size: 2.5em;
-  font-weight: 400;
-  & a{
-      font-weight: 900;
+@media screen and (min-width: 1440px) and (max-width: 1920px) {
+  .loginPage {
+    .background {
+      width: 100%;
+      background-size: auto 835px;
+
+      .loginSection {
+        //width: 25%;
+        //height: 835px;
+        //margin-right: 11%;
+        .mainLogo {
+          width: 70%;
+        }
+        .loginBtn {
+          width: 70%;
+        }
+      }
+    }
   }
 }
 
-select {
-  appearance: none;
-  padding: 0 0.5em;
-  cursor: pointer;
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: 700;
-  border: 2px solid #cccccc;
-  width: 26rem;
-  &::-ms-expand{
-    display: none;
+@media screen and (max-width: 1439px) {
+  .loginPage {
+    .background {
+      width: 100%;
+      background-size: auto 835px;
+
+      .loginSection {
+        margin-right: 130px;
+        width: 360px;
+      }
+    }
   }
-}
-
-.schoolSelect {
-  position: relative;
-  display: flex;
-  width: 26em;
-  height: 3.8rem;
-  line-height: 4;
-  background: grey;
-  overflow: hidden;
-}
-
-.schoolSelect::after {
-  content: '\25BC';
-  //position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 1.5em;
-  background: grey;
-  cursor: pointer;
-  pointer-events: none;
-  transition: 0.25s all ease;
-  color: white;
-}
-
-.schoolSelect:hover::after {
-  color: black;
-}
-
-.submitArea {
-  text-align: center;
-}
-
-.loginButton {
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding-top: 2%;
 }

@@ -1,0 +1,17 @@
+.signupPage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+
+  .talkLogo {
+    width: 180px;
+  }
+  .background {
+    width: 100%;
+    height: 835px;
+    background: #eeeeee;
+    background-size: auto 835px;
+    z-index: 0;
+  }
+}
