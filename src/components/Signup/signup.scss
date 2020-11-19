@@ -44,5 +44,21 @@
         font-size: 21px;
       }
     }
+    .signupForm {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      //align-items: center;
+      margin-left: 200px;
+      padding: 0 15px;
+      width: 550px;
+
+      .detailInfo {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    }
   }
 }
