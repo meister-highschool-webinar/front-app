@@ -9,10 +9,14 @@ const MainSide = ({ sideMenuIndex, changeSideMenu, SideMenuInfo }) => {
     <div className="main_side">
       <div className="main_side_nav">
         {SideMenuInfo.map((menu, i) => {
-          return <img key={i} src={sideMenuIndex === i ? menu.active : menu.img} alt="icon" onClick={() => changeSideMenu(i)} />
+          return (
+            <div className={i !== 2 ? "menu" : "menu timetable"}>
+              <img key={i} src={sideMenuIndex === i ? menu.active : menu.img} alt="icon" onClick={() => changeSideMenu(i)} />
+              <div className={sideMenuIndex === i ? "menu_title active" : "menu_title" }>{SideMenuInfo[i].title}</div>
+            </div>
+          )
         })}
       </div>
-      <div className="main_side_title">{title}</div>
       {MainSideContent}
     </div>
   )
