@@ -49,7 +49,7 @@ const LoginBtn = observer(({ history }) => {
   const googleBtnClick = () => {
     if(accessToken.length === 0) {
       // window.location.href = `${PROD_SERVER}/auth/google`
-      window.location.href = `${PROD_SERVER}/auth/google`
+      window.location.href = `${DEV_SERVER}/auth/google`
       // history.push(`${PROD_SERVER}/auth/google`)
     } else {
       userLogout()
