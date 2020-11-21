@@ -1,16 +1,8 @@
 import React from 'react'
-import LoginSection from 'components/Login'
-import './loginPage.scss'
+import LoginContainer from 'container/Login'
 
 const LoginPage = () => {
-  return (
-    <div className={'container'}>
-      <div className={'background'} />
-      <div>
-        <LoginSection />
-      </div>
-    </div>
-  )
+  return <LoginContainer />
 }
 
 export default LoginPage

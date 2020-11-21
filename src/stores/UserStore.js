@@ -21,6 +21,12 @@ export default class UserStore {
     this.adminToken = data
   }
 
+  @action
+  userLogout = () => {
+    this.userData = {}
+    this.accessToken = ''
+  }
+
   @computed
   get socket() {
     // console.log('get socket')
