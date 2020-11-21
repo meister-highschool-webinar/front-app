@@ -1,0 +1,66 @@
+.signupPage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+
+  .talkLogo {
+    width: 180px;
+    margin: 14px 0;
+  }
+  .background {
+    width: 100%;
+    height: 835px;
+    background: url('../../assets/images/signup_background@3x.png') center 0 no-repeat;
+    background-size: auto 835px;
+    z-index: 0;
+    display: flex;
+    flex-flow: row nowrap;
+
+    .signupLabel {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      background-image: linear-gradient(to top, #209cff, #68e0cf);
+      min-width: 360px;
+      width: 25%;
+      height: 835px;
+      margin-left: 12%;
+      z-index: 1;
+      color: #fff;
+
+      .engTitle {
+        margin-top: 157px;
+        font-size: 70px;
+        font-weight: 900;
+        line-height: 1.14;
+        p {
+          margin: 0;
+        }
+      }
+      .korTitle {
+        margin-top: 34px;
+        font-size: 21px;
+      }
+    }
+    .signupForm {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      //align-items: center;
+      margin-left: 13%;
+      padding: 0 15px;
+      width: 550px;
+
+      .detailInfo {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    }
+  }
+}

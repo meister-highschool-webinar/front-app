@@ -3,7 +3,9 @@ import { persist } from 'mobx-persist'
 import io from 'socket.io-client'
 import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
 
-const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
+// const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
+// const server = PROD_SERVER
+const server = DEV_SERVER
 
 export default class UserStore {
   @persist @observable accessToken = ''
@@ -19,6 +21,12 @@ export default class UserStore {
   @action
   adminLogin = (data) => {
     this.adminToken = data
+  }
+
+  @action
+  userLogout = () => {
+    this.userData = {}
+    this.accessToken = ''
   }
 
   @computed

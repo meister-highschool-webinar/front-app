@@ -7,7 +7,25 @@ export default class ChatStore {
 
   constructor() {
     this.chatData = ''
-    this.chatList = []
+    this.chatList = [
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
+    ]
   }
 
   @action

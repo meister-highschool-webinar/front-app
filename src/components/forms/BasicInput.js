@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Login/login.scss'
+import 'components/Login/pastLogin.scss'
 
 const BasicInput = (props) => {
   const { name, type = 'text', value, required = true, onChange, placeholder, autoComplete = 'off' } = props
