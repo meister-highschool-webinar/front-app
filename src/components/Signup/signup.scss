@@ -8,6 +8,7 @@
 
   .talkLogo {
     width: 180px;
+    margin: 14px 0;
   }
   .background {
     width: 100%;
@@ -17,16 +18,17 @@
     z-index: 0;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
 
     .signupLabel {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
+      background-image: linear-gradient(to top, #209cff, #68e0cf);
+      min-width: 360px;
       width: 25%;
       height: 835px;
-      background-image: linear-gradient(to top, #209cff, #68e0cf);
+      margin-left: 12%;
       z-index: 1;
       color: #fff;
 
@@ -49,7 +51,7 @@
       flex-flow: column nowrap;
       justify-content: center;
       //align-items: center;
-      margin-left: 200px;
+      margin-left: 13%;
       padding: 0 15px;
       width: 550px;
 
