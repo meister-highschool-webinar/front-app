@@ -69,7 +69,7 @@ const Signup = observer(() => {
   }
   const onSubmit = () => {
     let signupData = form.getFieldsValue()
-    signupData = { ...signupData, grade: Number(signupData.grade), number: Number(signupData.number), schoolCode: checkEmail(email) }
+    signupData = { ...signupData, class: Number(signupData.class), number: Number(signupData.number), schoolCode: checkEmail(email) }
     signup(signupData)
       .then((res) => {
         console.log('success', signupData, res)
