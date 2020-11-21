@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { observer } from 'mobx-react'
 import { useHistory } from 'react-router-dom'
+import { Checkbox } from 'antd'
 import { useStores } from 'stores'
 import { limitEnterNum, checkLineOver, checkLength } from 'utils/stringFormat'
 import Swal from 'sweetalert2'
@@ -82,6 +83,10 @@ const MainChat = observer(() => {
     }
   }
 
+  const qnaCheck = (e) => {
+    console.log('checked?', e.target.checked)
+  }
+
   const handleUserKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       // e.preventDefault();
@@ -110,6 +115,7 @@ const MainChat = observer(() => {
         ))}
         <div ref={chatRef} />
       </div>
+      <Checkbox className={'checkbox'} onChange={qnaCheck}>Q&A 탭에 노출하기</Checkbox>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
           <textarea
