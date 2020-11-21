@@ -1,12 +1,12 @@
 .info_layout {
   display: flex;
   flex-flow: row nowrap;
-  border: 1px solid #c7c6c6;
+  //border: 1px solid #c7c6c6;
   margin: 16px 0 0;
-  height: 300px;
+  height: 250px;
   .contents_container {
     width: 100%;
-    padding: 22px 32px;
+    padding: 5px 0 20px;
     background-color: #fff;
   }
   .menu_container {
