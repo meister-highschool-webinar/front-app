@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/0.fc67dfe0a38e6cf50a35.css",
-    "main.js": "/static/js/main.fb066159.chunk.js",
-    "main.js.map": "/static/js/main.fb066159.chunk.js.map",
+    "main.css": "/0.809f12b782ff05db0973.css",
+    "main.js": "/static/js/main.a3f76282.chunk.js",
+    "main.js.map": "/static/js/main.a3f76282.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.2b4e7897.js",
     "runtime-main.js.map": "/static/js/runtime-main.2b4e7897.js.map",
     "static/css/2.6df4c8f8.chunk.css": "/static/css/2.6df4c8f8.chunk.css",
-    "2.fc67dfe0a38e6cf50a35.css": "/2.fc67dfe0a38e6cf50a35.css",
-    "static/js/2.c8a5ccbe.chunk.js": "/static/js/2.c8a5ccbe.chunk.js",
-    "static/js/2.c8a5ccbe.chunk.js.map": "/static/js/2.c8a5ccbe.chunk.js.map",
-    "0.fc67dfe0a38e6cf50a35.css.map": "/0.fc67dfe0a38e6cf50a35.css.map",
-    "2.fc67dfe0a38e6cf50a35.css.map": "/2.fc67dfe0a38e6cf50a35.css.map",
+    "2.809f12b782ff05db0973.css": "/2.809f12b782ff05db0973.css",
+    "static/js/2.382e722b.chunk.js": "/static/js/2.382e722b.chunk.js",
+    "static/js/2.382e722b.chunk.js.map": "/static/js/2.382e722b.chunk.js.map",
+    "0.809f12b782ff05db0973.css.map": "/0.809f12b782ff05db0973.css.map",
+    "2.809f12b782ff05db0973.css.map": "/2.809f12b782ff05db0973.css.map",
     "index.html": "/index.html",
-    "precache-manifest.67c2542bf50a4472b2f01af4337ec0ba.js": "/precache-manifest.67c2542bf50a4472b2f01af4337ec0ba.js",
+    "precache-manifest.a73d06318d2b95f0e22b42019512db13.js": "/precache-manifest.a73d06318d2b95f0e22b42019512db13.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.6df4c8f8.chunk.css.map": "/static/css/2.6df4c8f8.chunk.css.map",
     "static/css/main.10ed251a.chunk.css.map": "/static/css/main.10ed251a.chunk.css.map",
-    "static/js/2.c8a5ccbe.chunk.js.LICENSE.txt": "/static/js/2.c8a5ccbe.chunk.js.LICENSE.txt",
+    "static/js/2.382e722b.chunk.js.LICENSE.txt": "/static/js/2.382e722b.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Recipekorea.9d88903f.ttf",
     "static/media/TalkTalkTalklogo@3x.png": "/static/media/TalkTalkTalklogo@3x.2e1c85c9.png",
     "static/media/artwork@3x.png": "/static/media/artwork@3x.4db3a0ce.png",
@@ -36,10 +36,10 @@
   "entrypoints": [
     "static/js/runtime-main.2b4e7897.js",
     "static/css/2.6df4c8f8.chunk.css",
-    "2.fc67dfe0a38e6cf50a35.css",
-    "static/js/2.c8a5ccbe.chunk.js",
+    "2.809f12b782ff05db0973.css",
+    "static/js/2.382e722b.chunk.js",
     "static/css/main.10ed251a.chunk.css",
-    "0.fc67dfe0a38e6cf50a35.css",
-    "static/js/main.fb066159.chunk.js"
+    "0.809f12b782ff05db0973.css",
+    "static/js/main.a3f76282.chunk.js"
   ]
 }

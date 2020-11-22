@@ -73,7 +73,6 @@ const MainContainer = observer(() => {
     getUserInfo({ email: res.profileObj.email })
       .then((result) => {
         const { userInfo, accessToken='' } = result
-        console.log('login complete userData: ', userInfo, accessToken)
         userLogin(userInfo, accessToken)
       })
       .catch((err) => {

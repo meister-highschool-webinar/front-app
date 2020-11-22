@@ -32,8 +32,7 @@ export default class ChatStore {
 
   @action
   toggleCheck = (e) => {
-    console.log('toggle checked', e.target.checked)
-    this.qnaCheck = e.target.checked
+    this.qnaCheck = !this.qnaCheck
   }
 
   @action
