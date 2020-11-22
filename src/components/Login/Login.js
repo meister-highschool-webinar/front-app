@@ -10,7 +10,7 @@ const Login = (props) => {
       <div className={'background'}>
         <div className={'loginSection'}>
           <img className={'mainLogo'} src={mainLogo} alt={'main_logo'} />
-          <LoginBtn history={history} />
+          <LoginBtn />
         </div>
       </div>
     </div>
