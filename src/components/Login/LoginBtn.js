@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
+import { useGoogleLogout } from 'react-google-login'
 import Swal from 'sweetalert2'
 import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 import { useStores } from 'stores'
