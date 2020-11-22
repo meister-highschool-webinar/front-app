@@ -1,8 +1,9 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import axios from 'axios'
+import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
 import talkLogo from 'assets/images/logo-talk@3x.png'
 import './header.scss'
-import { DEV_SERVER, PROD_SERVER } from '../../config/config.json'
 
 const Header = (props) => {
   const history = useHistory()
@@ -13,7 +14,14 @@ const Header = (props) => {
         props.login ?
           <span onClick={() => {
             props.logout()
-            window.location.href = `${DEV_SERVER}/auth/logout`
+            // axios.get(`${PROD_SERVER}/auth/logout`)
+            //   .then((res) => {
+            //     console.log('logout complete', res)
+            //     history.replace('/')
+            //   })
+            //   .catch((err) => {
+            //     console.log('logout fail', err)
+            //   })
           }}>로그아웃</span>
           :
           <span onClick={() => history.push('/login')}>로그인</span>

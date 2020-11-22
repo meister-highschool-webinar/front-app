@@ -15,7 +15,8 @@ export default class UserStore {
   @action
   userLogin = (data, token) => {
     this.userData = data
-    this.accessToken = token
+    if(token === null) this.accessToken = ''
+    else this.accessToken = token
   }
 
   @action
