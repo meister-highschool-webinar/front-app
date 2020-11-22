@@ -10,6 +10,10 @@ export const loginApi = (data) => {
   return axiosApi('/auth/login', 'POST', data)
 }
 
+export const logout = () => {
+  return axiosApi('/auth/logout')
+}
+
 export const signup = (data) => {
   return axiosApi('/auth/signup', 'POST', data)
 }

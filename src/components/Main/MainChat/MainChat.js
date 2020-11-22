@@ -12,7 +12,7 @@ import './MainChat.scss'
 const MainChat = observer(() => {
   let history = useHistory()
   const { chatStore, userStore } = useStores()
-  const { chatData, chatList, onChatChange } = chatStore
+  const { chatText, chatList, onChatChange, qnaCheck, toggleCheck } = chatStore
   const { accessToken, socket, userData } = userStore
   const chatRef = useRef()
 
@@ -37,6 +37,7 @@ const MainChat = observer(() => {
     }
     onChatChange(chat)
   }
+
   const onSubmit = (e) => {
     e.preventDefault()
     if (accessToken.length === 0) {
@@ -47,7 +48,16 @@ const MainChat = observer(() => {
       })
       history.push('/login')
     } else {
-      if (chatData.length > 0 && (chatData.trim() !== '' || chatData.trim().length !== 0)) socket.emit('send message', chatData)
+      if (chatText.length > 0 && (chatText.trim() !== '' || chatText.trim().length !== 0)) {
+        const chatData = {
+          text: chatText,
+          question: qnaCheck
+        }
+        console.log('send msg', chatData)
+
+        socket.emit('send message', chatData)
+        if(qnaCheck) toggleCheck()
+      }
       onChatChange('')
     }
   }
@@ -83,10 +93,6 @@ const MainChat = observer(() => {
     }
   }
 
-  const qnaCheck = (e) => {
-    console.log('checked?', e.target.checked)
-  }
-
   const handleUserKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       // e.preventDefault();
@@ -115,13 +121,13 @@ const MainChat = observer(() => {
         ))}
         <div ref={chatRef} />
       </div>
-      <Checkbox className={'checkbox'} onChange={qnaCheck}>Q&A 탭에 노출하기</Checkbox>
+      <Checkbox className={'checkbox'} onChange={toggleCheck}>Q&A 탭에 노출하기</Checkbox>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
           <textarea
             rows={6}
             id="chatInput"
-            value={chatData}
+            value={chatText}
             onKeyPress={handleUserKeyPress}
             onChange={inputChange}
             placeholder={'대화 내용을 입력...'}
