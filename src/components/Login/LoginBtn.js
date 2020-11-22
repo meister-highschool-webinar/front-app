@@ -7,6 +7,7 @@ import { useStores } from 'stores'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import 'components/Login/login.scss'
 import googleIcon from 'assets/images/google@2x.png'
+import { logout } from 'utils/apis'
 
 const LoginBtn = observer(({ history }) => {
   const {
@@ -52,6 +53,13 @@ const LoginBtn = observer(({ history }) => {
       window.location.href = `${DEV_SERVER}/auth/google`
       // history.push(`${PROD_SERVER}/auth/google`)
     } else {
+      logout()
+        .then((res) => {
+          console.log('res', res)
+        })
+        .catch((err) => {
+          console.log('err', err)
+        })
       userLogout()
     }
   }

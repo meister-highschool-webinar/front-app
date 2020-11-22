@@ -31,14 +31,13 @@ export default class UserStore {
 
   @computed
   get socket() {
-    // console.log('get socket')
     let socket
     if (this.accessToken.length === 0) {
       socket = io(server)
     } else {
       socket = io(server, {
         query: {
-          token: this.accessToken,
+          user_token: this.accessToken,
         },
       })
     }

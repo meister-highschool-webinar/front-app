@@ -10,11 +10,12 @@ const MainPage = () => {
   useEffect(() => {
     if (socket) {
       socket.on('connect', () => {
-        // console.log('connected')
+        console.log('socket connected', socket)
         socket.on('connected_change', (data) => {})
       })
 
       socket.on('receive message', (message) => {
+        console.log('receive message', message)
         chatListUpdate(message)
       })
 
