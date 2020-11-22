@@ -21,11 +21,11 @@ const LoginBtn = observer(() => {
   //       const { userInfo, accessToken='' } = result
   //       console.log('login complete userData: ', userInfo, accessToken)
   //       userLogin(userInfo, accessToken)
-  //       window.location.href = `${TEST_SERVER}/auth/google`
+  //       window.location.href = `${DEV_SERVER}/auth/google`
   //     })
   //     .catch((err) => {
   //       console.log('get user info err', err)
-  //       window.location.href = `${TEST_SERVER}/auth/google`
+  //       window.location.href = `${DEV_SERVER}/auth/google`
   //
   //     })
   //   refreshTokenSetup(res)
@@ -65,7 +65,7 @@ const LoginBtn = observer(() => {
   const googleBtnClick = () => {
     if(accessToken.length === 0) {
       // signIn()
-      window.location.href = `${PROD_SERVER}/auth/google`
+      window.location.href = `${DEV_SERVER}/auth/google`
     } else {
       userLogout()
       signOut()
