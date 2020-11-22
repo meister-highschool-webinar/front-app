@@ -1,0 +1,76 @@
+.timeTableContainer {
+  width: 400px;
+  height: calc(100% - 58px);
+  padding: 16px 20px 0;
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+
+  .mainDate {
+    height: 40px;
+    line-height: 40px;
+    background: #313131;
+    font-size: 18px;
+    text-align: center;
+    color: #fff
+  }
+  .timeTable {
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    //align-items: center;
+    border: solid 2px #313131;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #aaaaaa;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: inset 0px 0px 5px white;
+    }
+
+    &__list {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      border: 1px none #d2d2d2;
+      border-bottom-style: solid;
+      background: #eeeeee;
+
+      &:last-child {
+        border-bottom: none;
+      }
+      &.odd {
+        background: #ffffff;
+      }
+
+      &-number {
+        width: 50px;
+      }
+      &-data {
+        display: flex;
+        flex-flow: column nowrap;
+        width: 100%;
+
+        & > div {
+          width: 100%;
+          padding: 5px;
+          border: solid 1px #c9c9c9;
+          border-top: none;
+          border-right: none;
+          text-align: left;
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}

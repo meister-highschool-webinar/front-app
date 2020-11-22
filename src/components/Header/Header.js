@@ -1,19 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import talkLogo from 'assets/images/logo-talk@3x.png'
 import './header.scss'
 
 const Header = () => {
+  const history = useHistory()
   return (
     <header className={'header'}>
-      <p>
-        <Link to={'/'}>HOME</Link>
-      </p>
-      <p>
-        <Link to={'/test'}>TEST</Link>
-      </p>
-      <p>
-        <Link to={'/login'}>LOGIN</Link>
-      </p>
+      <img src={talkLogo} onClick={() => history.push('/')} alt={'talk_logo'}/>
+      <span onClick={() => history.push('/login')}>로그인</span>
     </header>
   )
 }
