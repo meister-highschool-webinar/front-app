@@ -25,7 +25,7 @@ const LoginBtn = observer(({ history }) => {
       .catch((err) => {
         console.log('get user info err', err)
       })
-    window.location.href = `${PROD_SERVER}/auth/google`
+    window.location.href = `${DEV_SERVER}/auth/google`
     refreshTokenSetup(res)
   }
   const onFailure = (res) => {
