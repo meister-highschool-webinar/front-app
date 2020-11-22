@@ -56,7 +56,7 @@ const MainChat = observer(() => {
         }
 
         socket.emit('send message', chatData)
-        console.log('send msg', chatData, socket)
+        // console.log('send msg', chatData, socket)
         if(qnaCheck) toggleCheck()
       }
       onChatChange('')

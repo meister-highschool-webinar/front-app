@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { observer, useLocalStore } from 'mobx-react'
-import { useGoogleLogin } from 'react-google-login'
+import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
 import Swal from "sweetalert2"
 import { useStores } from 'stores'
 import { GOOGLE_ID } from 'config/config.json'
@@ -29,7 +29,7 @@ import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
 const MainContainer = observer(() => {
   const { WebinarInfoStore, userStore } = useStores()
   const { getWebinarInfo, link, title, detail } = WebinarInfoStore
-  const { userLogin, userLogout, accessToken } = userStore
+  const { userLogout, accessToken } = userStore
   const store = useLocalStore(() => ({
     menuIndex: 0,
     changeMenu: (index) => {
@@ -52,40 +52,30 @@ const MainContainer = observer(() => {
     { title: '정보', contents: InfoContainer },
     { title: '타임테이블', contents: TimeTableContainer },
   ]
-
   const SideMenuInfo = [
     { title: '채팅', img: chatIcon, active: chatActiveIcon, content: <MainChat /> },
     { title: 'Q&A', img: qnaIcon, active: qnaActiveIcon, content: <MainSurveyContainer /> },
     { title: '타임테이블', img: timeTableIcon, active: timeTableActiveIcon, content: <MainTimeTable /> },
   ]
 
-  const onSuccess = (res) => {
-    getUserInfo({ email: res.profileObj.email })
-      .then((result) => {
-        const { userInfo, accessToken } = result
-        console.log('login complete userData: ', userInfo, accessToken)
-        userLogin(userInfo, accessToken)
-      })
-    refreshTokenSetup(res)
-  }
-  const onFailure = (res) => {
-    console.log('login fail', res)
-    if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
-      Swal.fire({
-        title: '브라우저 쿠키 설정',
-        text: '브라우저 설정에서 쿠키를 허용해주세요.',
-        icon: 'warning',
-      })
-    }
+  const onLogoutSuccess = (res) => {
+    console.log('logout success', res)
+    Swal.fire({
+      title: '로그아웃 완료',
+      text: '로그아웃 되었습니다.',
+      icon: 'info',
+    })
   }
 
-  const { signIn } = useGoogleLogin({
-    onSuccess,
-    onFailure,
+  const { signOut } = useGoogleLogout({
     clientId: GOOGLE_ID,
-    isSignedIn: true,
-    accessType: 'offline',
+    onLogoutSuccess,
   })
+
+  const logout = () => {
+    userLogout()
+    signOut()
+  }
 
   useEffect(() => {
     handleGetWebinarInfo()
@@ -93,7 +83,7 @@ const MainContainer = observer(() => {
 
   return (
     <>
-      <Header login={accessToken.length !== 0} logout={userLogout}/>
+      <Header login={accessToken.length !== 0} logout={logout}/>
       <Main
         InfoMenus={InfoMenus}
         menuIndex={menuIndex}
