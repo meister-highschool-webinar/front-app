@@ -10,6 +10,7 @@ import InfoContainer from './InfoContainer'
 import TimeTableContainer from './TimeTableContainer'
 import Main from 'components/Main'
 import MainChat from 'components/Main/MainChat'
+import MainQna from 'components/Main/MainQna'
 import MainTimeTable from 'components/Main/MainTimeTable'
 import MainLuckydraw from 'components/Main/MainLuckydraw'
 import MainSurveyContainer from './MainSurvey/MainSurveyContainer'
@@ -25,11 +26,12 @@ import qnaActiveIcon from 'assets/images/qna-active-icon@3x.png'
 import timeTableActiveIcon from 'assets/images/timetable-active-icon@3x.png'
 import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
+import { TEST_SERVER } from '../../config/config.json'
 
 const MainContainer = observer(() => {
   const { WebinarInfoStore, userStore } = useStores()
   const { getWebinarInfo, link, title, detail } = WebinarInfoStore
-  const { userLogout, accessToken } = userStore
+  const { userLogin, userLogout, accessToken } = userStore
   const store = useLocalStore(() => ({
     menuIndex: 0,
     changeMenu: (index) => {
@@ -54,7 +56,7 @@ const MainContainer = observer(() => {
   ]
   const SideMenuInfo = [
     { title: '채팅', img: chatIcon, active: chatActiveIcon, content: <MainChat /> },
-    { title: 'Q&A', img: qnaIcon, active: qnaActiveIcon, content: <MainSurveyContainer /> },
+    { title: 'Q&A', img: qnaIcon, active: qnaActiveIcon, content: <MainQna /> },
     { title: '타임테이블', img: timeTableIcon, active: timeTableActiveIcon, content: <MainTimeTable /> },
   ]
 
@@ -66,6 +68,39 @@ const MainContainer = observer(() => {
       icon: 'info',
     })
   }
+
+  const onSuccess = (res) => {
+    getUserInfo({ email: res.profileObj.email })
+      .then((result) => {
+        const { userInfo, accessToken='' } = result
+        console.log('login complete userData: ', userInfo, accessToken)
+        userLogin(userInfo, accessToken)
+      })
+      .catch((err) => {
+        console.log('get user info err', err)
+      })
+    refreshTokenSetup(res)
+  }
+
+  const onFailure = (res) => {
+    console.log('fail', res)
+    // if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
+    //   Swal.fire({
+    //     title: '브라우저 쿠키 설정',
+    //     text: '브라우저 설정에서 쿠키를 허용해주세요.',
+    //     icon: 'warning',
+    //   })
+    // }
+  }
+
+  const { signIn } = useGoogleLogin({
+    onSuccess,
+    onFailure,
+    autoLoad: true,
+    clientId: GOOGLE_ID,
+    isSignedIn: true,
+    accessType: 'offline',
+  })
 
   const { signOut } = useGoogleLogout({
     clientId: GOOGLE_ID,

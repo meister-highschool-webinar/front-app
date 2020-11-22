@@ -1,0 +1,43 @@
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+}
+
+.qnaContainer {
+  width: 400px;
+  height: calc(100% - 58px);
+  //margin-top: 38px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
+
+  .qnaBox {
+    margin-top: 20px;
+    padding: 0 20px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    &__header {
+      height: 23px;
+      background: #68e0cf;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        width: 10px;
+        height: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+    }
+    &__contents {
+      padding: 15px 20px;
+      background: #fff;
+    }
+  }
+}

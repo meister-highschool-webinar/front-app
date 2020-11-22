@@ -1,8 +1,8 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
+import { GoogleLogin, useGoogleLogin, useGoogleLogout } from 'react-google-login'
 import Swal from 'sweetalert2'
-import { GOOGLE_ID, DEV_SERVER, PROD_SERVER } from 'config/config.json'
+import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 import { useStores } from 'stores'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import 'components/Login/login.scss'
@@ -14,30 +14,32 @@ const LoginBtn = observer(({ history }) => {
   const {
     userStore: { accessToken, userLogin, userLogout },
   } = useStores()
-
-  const onSuccess = (res) => {
-    getUserInfo({ email: res.profileObj.email })
-      .then((result) => {
-        const { userInfo, accessToken='' } = result
-        console.log('login complete userData: ', userInfo, accessToken)
-        userLogin(userInfo, accessToken)
-      })
-      .catch((err) => {
-        console.log('get user info err', err)
-      })
-    window.location.href = `${PROD_SERVER}/auth/google`
-    refreshTokenSetup(res)
-  }
-  const onFailure = (res) => {
-    console.log('fail', res)
-    if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
-      Swal.fire({
-        title: '브라우저 쿠키 설정',
-        text: '브라우저 설정에서 쿠키를 허용해주세요.',
-        icon: 'warning',
-      })
-    }
-  }
+  //
+  // const onSuccess = (res) => {
+  //   getUserInfo({ email: res.profileObj.email })
+  //     .then((result) => {
+  //       const { userInfo, accessToken='' } = result
+  //       console.log('login complete userData: ', userInfo, accessToken)
+  //       userLogin(userInfo, accessToken)
+  //       window.location.href = `${TEST_SERVER}/auth/google`
+  //     })
+  //     .catch((err) => {
+  //       console.log('get user info err', err)
+  //       window.location.href = `${TEST_SERVER}/auth/google`
+  //
+  //     })
+  //   refreshTokenSetup(res)
+  // }
+  // const onFailure = (res) => {
+  //   console.log('fail', res)
+  //   if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
+  //     Swal.fire({
+  //       title: '브라우저 쿠키 설정',
+  //       text: '브라우저 설정에서 쿠키를 허용해주세요.',
+  //       icon: 'warning',
+  //     })
+  //   }
+  // }
   const onLogoutSuccess = (res) => {
     console.log('logout success', res)
     Swal.fire({
@@ -46,14 +48,14 @@ const LoginBtn = observer(({ history }) => {
       icon: 'info',
     })
   }
-
-  const { signIn } = useGoogleLogin({
-    onSuccess,
-    onFailure,
-    clientId: GOOGLE_ID,
-    isSignedIn: true,
-    accessType: 'offline',
-  })
+  //
+  // const { signIn } = useGoogleLogin({
+  //   onSuccess,
+  //   onFailure,
+  //   clientId: GOOGLE_ID,
+  //   isSignedIn: true,
+  //   accessType: 'offline',
+  // })
 
   const { signOut } = useGoogleLogout({
     clientId: GOOGLE_ID,
@@ -62,7 +64,8 @@ const LoginBtn = observer(({ history }) => {
 
   const googleBtnClick = () => {
     if(accessToken.length === 0) {
-      signIn()
+      // signIn()
+      window.location.href = `${PROD_SERVER}/auth/google`
     } else {
       userLogout()
       signOut()
@@ -70,7 +73,15 @@ const LoginBtn = observer(({ history }) => {
   }
 
   return (
-    <button onClick={googleBtnClick} className={'loginBtn'}>
+    // <GoogleLogin
+    //   onSuccess={onSuccess}
+    //   onFailure={onFailure}
+    //   clientId={GOOGLE_ID}
+    //   cookiePolicy={'single_host_origin'}
+    //   onClick={() => googleBtnClick()}
+    //   className={'loginBtn'}
+    // >
+    <button onClick={() => googleBtnClick()} className={'loginBtn'}>
       <img className={'googleIcon'} src={googleIcon} alt={'google'} />
       <span className={'loginBtnText'}>{accessToken.length === 0 ? 'LOGIN with Google' : 'LOGOUT'}</span>
     </button>
