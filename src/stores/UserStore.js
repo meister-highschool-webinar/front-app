@@ -1,10 +1,9 @@
 import { observable, action, computed } from 'mobx'
 import { persist } from 'mobx-persist'
 import io from 'socket.io-client'
-import { DEV_SERVER, PROD_SERVER } from 'config/config.json'
+import { DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 
 // const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
-// const server = PROD_SERVER
 const server = DEV_SERVER
 
 export default class UserStore {
