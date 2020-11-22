@@ -54,7 +54,6 @@ const MainChat = observer(() => {
           text: chatText,
           question: qnaCheck
         }
-
         socket.emit('send message', chatData)
         console.log('send msg', chatData, socket)
         if(qnaCheck) toggleCheck()
