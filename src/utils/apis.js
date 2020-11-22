@@ -18,6 +18,10 @@ export const signup = (data) => {
   return axiosApi('/auth/signup', 'POST', data)
 }
 
+export const getUserInfo = (data) => {
+  return axiosApi('/user-info', 'POST', data)
+}
+
 export const getTimeTable = () => {
   return axiosApi('/timetable-list', 'GET')
 }
