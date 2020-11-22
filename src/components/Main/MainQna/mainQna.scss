@@ -10,9 +10,24 @@ body {
   //margin-top: 38px;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   font-family: 'Noto Sans CJK KR', Noto Sans KR, sans-serif;
-
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #aaaaaa;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
   .qnaBox {
     margin-top: 20px;
     padding: 0 20px;
