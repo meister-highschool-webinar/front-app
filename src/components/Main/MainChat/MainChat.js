@@ -7,6 +7,7 @@ import { limitEnterNum, checkLineOver, checkLength } from 'utils/stringFormat'
 import Swal from 'sweetalert2'
 import nonConnectIcon from 'assets/images/non-connect-icon@2x.png'
 import connectIcon from 'assets/images/connect-icon@2x.png'
+import exclamationIcon from 'assets/images/exclamation-icon@3x.png'
 import './MainChat.scss'
 
 const MainChat = observer(() => {
@@ -53,21 +54,20 @@ const MainChat = observer(() => {
           text: chatText,
           question: qnaCheck
         }
-        console.log('send msg', chatData)
 
         socket.emit('send message', chatData)
+        console.log('send msg', chatData, socket)
         if(qnaCheck) toggleCheck()
       }
       onChatChange('')
     }
   }
 
-  const showImg = () => {
+  const checkChatAccess = () => {
     if (accessToken.length === 0) {
       return (
-        <img
-          src={nonConnectIcon}
-          alt={'non_connect'}
+        <div
+          className={'noAccess'}
           onClick={() => {
             Swal.fire({
               title: '로그인 필요',
@@ -76,12 +76,22 @@ const MainChat = observer(() => {
             })
             history.push('/login')
           }}
-        />
+        >
+          <img src={exclamationIcon} alt={'exclamation_mark'}/>
+          <p>로그인이 필요합니다.</p>
+        </div>
       )
     } else {
-      if (chatList.length === 0) {
-        return <img src={connectIcon} alt={'connect'} />
-      }
+      return (
+        <textarea
+          rows={6}
+          id="chatInput"
+          value={chatText}
+          onKeyPress={handleUserKeyPress}
+          onChange={inputChange}
+          placeholder={'대화 내용을 입력...'}
+        />
+      )
     }
   }
 
@@ -107,7 +117,6 @@ const MainChat = observer(() => {
   return (
     <div className={'chatContainer'}>
       <div className={'chatLogBox'}>
-        {showImg()}
         {chatList.map((chat, idx) => (
           <div className={checkMyMsg(chat)} key={`chat${idx}`}>
             <p className={'chatName'}>
@@ -124,14 +133,7 @@ const MainChat = observer(() => {
       <Checkbox className={'checkbox'} onChange={toggleCheck}>Q&A 탭에 노출하기</Checkbox>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
-          <textarea
-            rows={6}
-            id="chatInput"
-            value={chatText}
-            onKeyPress={handleUserKeyPress}
-            onChange={inputChange}
-            placeholder={'대화 내용을 입력...'}
-          />
+          {checkChatAccess()}
         </div>
         <div className={'chatEnterArea'}>
           <button type="submit" className={'chatEnterIcon'} />
