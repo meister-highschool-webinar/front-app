@@ -65,7 +65,7 @@ const LoginBtn = observer(({ history }) => {
   const googleBtnClick = () => {
     if(accessToken.length === 0) {
       // signIn()
-      window.location.href = `${TEST_SERVER}/auth/google`
+      window.location.href = `${PROD_SERVER}/auth/google`
     } else {
       userLogout()
       signOut()
