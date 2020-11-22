@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import { GoogleLogin, useGoogleLogin, useGoogleLogout } from 'react-google-login'
+import { useGoogleLogout } from 'react-google-login'
 import Swal from 'sweetalert2'
 import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 import { useStores } from 'stores'
@@ -10,9 +10,9 @@ import googleIcon from 'assets/images/google@2x.png'
 import axios from 'axios'
 import { getUserInfo } from '../../utils/apis'
 
-const LoginBtn = observer(({ history }) => {
+const LoginBtn = observer(() => {
   const {
-    userStore: { accessToken, userLogin, userLogout },
+    userStore: { accessToken, userLogout },
   } = useStores()
   //
   // const onSuccess = (res) => {
@@ -73,14 +73,6 @@ const LoginBtn = observer(({ history }) => {
   }
 
   return (
-    // <GoogleLogin
-    //   onSuccess={onSuccess}
-    //   onFailure={onFailure}
-    //   clientId={GOOGLE_ID}
-    //   cookiePolicy={'single_host_origin'}
-    //   onClick={() => googleBtnClick()}
-    //   className={'loginBtn'}
-    // >
     <button onClick={() => googleBtnClick()} className={'loginBtn'}>
       <img className={'googleIcon'} src={googleIcon} alt={'google'} />
       <span className={'loginBtnText'}>{accessToken.length === 0 ? 'LOGIN with Google' : 'LOGOUT'}</span>
