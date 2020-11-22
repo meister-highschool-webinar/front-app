@@ -1,6 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
 import { observer, useLocalStore } from 'mobx-react'
+import { useGoogleLogin } from 'react-google-login'
+import Swal from "sweetalert2"
 import { useStores } from 'stores'
+import { GOOGLE_ID } from 'config/config.json'
+import { getUserInfo } from 'utils/apis'
+import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import InfoContainer from './InfoContainer'
 import TimeTableContainer from './TimeTableContainer'
 import Main from 'components/Main'
@@ -9,6 +14,7 @@ import MainTimeTable from 'components/Main/MainTimeTable'
 import MainLuckydraw from 'components/Main/MainLuckydraw'
 import MainSurveyContainer from './MainSurvey/MainSurveyContainer'
 import Header from 'components/Header'
+
 import chatIcon from 'assets/images/chatting-icon@3x.png'
 import qnaIcon from 'assets/images/qna-icon@3x.png'
 import timeTableIcon from 'assets/images/timetable-icon@3x.png'
@@ -21,8 +27,9 @@ import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
 
 const MainContainer = observer(() => {
-  const { WebinarInfoStore } = useStores()
+  const { WebinarInfoStore, userStore } = useStores()
   const { getWebinarInfo, link, title, detail } = WebinarInfoStore
+  const { userLogin, userLogout, accessToken } = userStore
   const store = useLocalStore(() => ({
     menuIndex: 0,
     changeMenu: (index) => {
@@ -52,13 +59,41 @@ const MainContainer = observer(() => {
     { title: '타임테이블', img: timeTableIcon, active: timeTableActiveIcon, content: <MainTimeTable /> },
   ]
 
+  const onSuccess = (res) => {
+    getUserInfo({ email: res.profileObj.email })
+      .then((result) => {
+        const { userInfo, accessToken } = result
+        console.log('login complete userData: ', userInfo, accessToken)
+        userLogin(userInfo, accessToken)
+      })
+    refreshTokenSetup(res)
+  }
+  const onFailure = (res) => {
+    console.log('login fail', res)
+    if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
+      Swal.fire({
+        title: '브라우저 쿠키 설정',
+        text: '브라우저 설정에서 쿠키를 허용해주세요.',
+        icon: 'warning',
+      })
+    }
+  }
+
+  const { signIn } = useGoogleLogin({
+    onSuccess,
+    onFailure,
+    clientId: GOOGLE_ID,
+    isSignedIn: true,
+    accessType: 'offline',
+  })
+
   useEffect(() => {
     handleGetWebinarInfo()
   }, [])
 
   return (
     <>
-      <Header />
+      <Header login={accessToken.length !== 0} logout={userLogout}/>
       <Main
         InfoMenus={InfoMenus}
         menuIndex={menuIndex}

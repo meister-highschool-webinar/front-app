@@ -13,25 +13,25 @@ const LoginBtn = observer(({ history }) => {
   const {
     userStore: { accessToken, userLogout },
   } = useStores()
-
-  const onSuccess = (res) => {
-    console.log('login success', res)
-    refreshTokenSetup(res)
-    history.push('/signup')
-  }
-  const onFailure = (res) => {
-    console.log('fail', res)
-    if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
-      Swal.fire({
-        title: '브라우저 쿠키 설정',
-        text: '브라우저 설정에서 쿠키를 허용해주세요.',
-        icon: 'warning',
-      })
-    }
-  }
-  const onLogoutSuccess = (res) => {
-    console.log('logout success', res)
-  }
+  //
+  // const onSuccess = (res) => {
+  //   console.log('login success', res)
+  //   refreshTokenSetup(res)
+  //   history.push('/signup')
+  // }
+  // const onFailure = (res) => {
+  //   console.log('fail', res)
+  //   if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
+  //     Swal.fire({
+  //       title: '브라우저 쿠키 설정',
+  //       text: '브라우저 설정에서 쿠키를 허용해주세요.',
+  //       icon: 'warning',
+  //     })
+  //   }
+  // }
+  // const onLogoutSuccess = (res) => {
+  //   console.log('logout success', res)
+  // }
 
   // const { signIn } = useGoogleLogin({
   //   onSuccess,
@@ -51,19 +51,20 @@ const LoginBtn = observer(({ history }) => {
     if(accessToken.length === 0) {
       window.location.href = `${PROD_SERVER}/auth/google`
     } else {
-      logout()
-        .then((res) => {
-          console.log('res', res)
-        })
-        .catch((err) => {
-          console.log('err', err)
-        })
       userLogout()
+      window.location.href = `${PROD_SERVER}/auth/logout`
+      // logout()
+      //   .then((res) => {
+      //     console.log('res', res)
+      //   })
+      //   .catch((err) => {
+      //     console.log('err', err)
+      //   })
     }
   }
 
   return (
-    <button onClick={googleBtnClick} className={'loginBtn'}>
+    <button onClick={googleBtnClick} className={'loginBtn'} data-onsuccess="onSignIn">
       <img className={'googleIcon'} src={googleIcon} alt={'google'} />
       <span className={'loginBtnText'}>{accessToken.length === 0 ? 'LOGIN with Google' : 'LOGOUT'}</span>
     </button>
