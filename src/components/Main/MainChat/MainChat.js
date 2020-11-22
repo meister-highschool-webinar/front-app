@@ -9,6 +9,8 @@ import nonConnectIcon from 'assets/images/non-connect-icon@2x.png'
 import connectIcon from 'assets/images/connect-icon@2x.png'
 import exclamationIcon from 'assets/images/exclamation-icon@3x.png'
 import './MainChat.scss'
+import { GOOGLE_ID } from '../../../config/config.json'
+import { GoogleLogin } from 'react-google-login'
 
 const MainChat = observer(() => {
   let history = useHistory()
