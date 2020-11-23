@@ -1,13 +1,12 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import { useStores } from 'stores'
 import xIcon from 'assets/images/x-icon@3x.png'
 import './mainQna.scss'
 
-const MainQna = () => {
+const MainQna = observer(() => {
   const { chatStore } = useStores()
   const { chatList, questionList } = chatStore
-
-  console.log('chatList', chatList, questionList)
 
   return (
     <div className={'qnaContainer'}>
@@ -23,6 +22,6 @@ const MainQna = () => {
       }
     </div>
   )
-}
+})
 
 export default MainQna
