@@ -27,6 +27,7 @@ import timeTableActiveIcon from 'assets/images/timetable-active-icon@3x.png'
 import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
 import { TEST_SERVER } from '../../config/config.json'
+import { reaction } from 'mobx'
 
 const MainContainer = observer(() => {
   const { WebinarInfoStore, userStore } = useStores()
@@ -44,6 +45,20 @@ const MainContainer = observer(() => {
   }))
   const { menuIndex, changeMenu, sideMenuIndex, changeSideMenu } = store
 
+  // reaction(
+  //   () => {},
+  //   () => {
+  //     getUserInfo()
+  //       .then((result) => {
+  //         const { userInfo, accessToken='' } = result
+  //         console.log('login complete userData: ', userInfo, accessToken)
+  //         userLogin(userInfo, accessToken)
+  //       })
+  //       .catch((err) => {
+  //         console.log('get user info err', err)
+  //       })
+  //   },{ fireImmediately: true }
+  // )
   const handleGetWebinarInfo = useCallback(() => {
     getWebinarInfo().catch((error) => {
       return error
@@ -68,38 +83,39 @@ const MainContainer = observer(() => {
       icon: 'info',
     })
   }
-
-  const onSuccess = (res) => {
-    getUserInfo({ email: res.profileObj.email })
-      .then((result) => {
-        const { userInfo, accessToken='' } = result
-        userLogin(userInfo, accessToken)
-      })
-      .catch((err) => {
-        console.log('get user info err', err)
-      })
-    refreshTokenSetup(res)
-  }
-
-  const onFailure = (res) => {
-    console.log('fail', res)
-    // if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
-    //   Swal.fire({
-    //     title: '브라우저 쿠키 설정',
-    //     text: '브라우저 설정에서 쿠키를 허용해주세요.',
-    //     icon: 'warning',
-    //   })
-    // }
-  }
-
-  const { signIn } = useGoogleLogin({
-    onSuccess,
-    onFailure,
-    autoLoad: true,
-    clientId: GOOGLE_ID,
-    isSignedIn: true,
-    accessType: 'offline',
-  })
+  //
+  // const onSuccess = (res) => {
+  //   getUserInfo()
+  //     .then((result) => {
+  //       const { userInfo, accessToken='' } = result
+  //       console.log('login complete userData: ', userInfo, accessToken)
+  //       userLogin(userInfo, accessToken)
+  //     })
+  //     .catch((err) => {
+  //       console.log('get user info err', err)
+  //     })
+  //   refreshTokenSetup(res)
+  // }
+  //
+  // const onFailure = (res) => {
+  //   console.log('fail', res)
+  //   if (res.error === 'idpiframe_initialization_failed' || res.error === 'popup_closed_by_user') {
+  //     Swal.fire({
+  //       title: '브라우저 쿠키 설정',
+  //       text: '브라우저 설정에서 쿠키를 허용해주세요.',
+  //       icon: 'warning',
+  //     })
+  //   }
+  // }
+  //
+  // const { signIn } = useGoogleLogin({
+  //   onSuccess,
+  //   onFailure,
+  //   autoLoad: true,
+  //   clientId: GOOGLE_ID,
+  //   isSignedIn: true,
+  //   accessType: 'offline',
+  // })
 
   const { signOut } = useGoogleLogout({
     clientId: GOOGLE_ID,
@@ -113,6 +129,15 @@ const MainContainer = observer(() => {
 
   useEffect(() => {
     handleGetWebinarInfo()
+    getUserInfo()
+      .then((result) => {
+        const { userInfo, accessToken='' } = result
+        console.log('login complete userData: ', userInfo, accessToken)
+        userLogin(userInfo, accessToken)
+      })
+      .catch((err) => {
+        console.log('get user info err', err)
+      })
   }, [])
 
   return (
