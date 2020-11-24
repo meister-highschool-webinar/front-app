@@ -21,11 +21,11 @@ const LoginBtn = observer(() => {
   //       const { userInfo, accessToken='' } = result
   //       console.log('login complete userData: ', userInfo, accessToken)
   //       userLogin(userInfo, accessToken)
-  //       window.location.href = `${DEV_SERVER}/auth/google`
+  //       window.location.href = `${TEST_SERVER}/auth/google`
   //     })
   //     .catch((err) => {
   //       console.log('get user info err', err)
-  //       window.location.href = `${DEV_SERVER}/auth/google`
+  //       window.location.href = `${TEST_SERVER}/auth/google`
   //
   //     })
   //   refreshTokenSetup(res)

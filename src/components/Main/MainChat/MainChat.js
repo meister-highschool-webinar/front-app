@@ -132,7 +132,7 @@ const MainChat = observer(() => {
         ))}
         <div ref={chatRef} />
       </div>
-      <Checkbox className={'checkbox'} onChange={toggleCheck}>Q&A 탭에 노출하기</Checkbox>
+      <Checkbox className={'checkbox'} checked={qnaCheck} onChange={toggleCheck}>Q&A 탭에 노출하기</Checkbox>
       <form onSubmit={onSubmit}>
         <div className={'chatBox'}>
           {checkChatAccess()}
