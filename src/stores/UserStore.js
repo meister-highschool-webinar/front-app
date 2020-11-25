@@ -55,4 +55,3 @@ export default class UserStore {
     return socket
   }
 }
->>>>>>> 822b6e2040fbf326917b7421d319b01d093ff10f
