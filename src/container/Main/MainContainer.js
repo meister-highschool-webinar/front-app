@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect } from 'react'
 import { observer, useLocalStore } from 'mobx-react'
 import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
+import axios from 'axios'
 import Swal from "sweetalert2"
 import { useStores } from 'stores'
-import { GOOGLE_ID } from 'config/config.json'
-import { getUserInfo } from 'utils/apis'
+import { GOOGLE_ID, DEV_SERVER, TEST_SERVER } from 'config/config.json'
+import { getUserInfo, logoutApi } from 'utils/apis'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import InfoContainer from './InfoContainer'
 import TimeTableContainer from './TimeTableContainer'
@@ -26,7 +27,6 @@ import qnaActiveIcon from 'assets/images/qna-active-icon@3x.png'
 import timeTableActiveIcon from 'assets/images/timetable-active-icon@3x.png'
 import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
-import { TEST_SERVER } from '../../config/config.json'
 import { reaction } from 'mobx'
 
 const MainContainer = observer(() => {
@@ -45,20 +45,6 @@ const MainContainer = observer(() => {
   }))
   const { menuIndex, changeMenu, sideMenuIndex, changeSideMenu } = store
 
-  // reaction(
-  //   () => {},
-  //   () => {
-  //     getUserInfo()
-  //       .then((result) => {
-  //         const { userInfo, accessToken='' } = result
-  //         console.log('login complete userData: ', userInfo, accessToken)
-  //         userLogin(userInfo, accessToken)
-  //       })
-  //       .catch((err) => {
-  //         console.log('get user info err', err)
-  //       })
-  //   },{ fireImmediately: true }
-  // )
   const handleGetWebinarInfo = useCallback(() => {
     getWebinarInfo().catch((error) => {
       return error
@@ -75,14 +61,14 @@ const MainContainer = observer(() => {
     { title: '타임테이블', img: timeTableIcon, active: timeTableActiveIcon, content: <MainTimeTable /> },
   ]
 
-  const onLogoutSuccess = (res) => {
-    console.log('logout success', res)
-    Swal.fire({
-      title: '로그아웃 완료',
-      text: '로그아웃 되었습니다.',
-      icon: 'info',
-    })
-  }
+  // const onLogoutSuccess = (res) => {
+  //   console.log('logout success', res)
+  //   Swal.fire({
+  //     title: '로그아웃 완료',
+  //     text: '로그아웃 되었습니다.',
+  //     icon: 'info',
+  //   })
+  // }
   //
   // const onSuccess = (res) => {
   //   getUserInfo()
@@ -117,14 +103,20 @@ const MainContainer = observer(() => {
   //   accessType: 'offline',
   // })
 
-  const { signOut } = useGoogleLogout({
-    clientId: GOOGLE_ID,
-    onLogoutSuccess,
-  })
+  // const { signOut } = useGoogleLogout({
+  //   clientId: GOOGLE_ID,
+  //   onLogoutSuccess,
+  // })
 
   const logout = () => {
-    userLogout()
-    signOut()
+    const wnd = window.open('https://accounts.google.com/logout','_blank')
+    setTimeout(() => {
+      wnd.close()
+    }, 300)
+    axios.post(`${DEV_SERVER}/auth/logout`,{ access_token: accessToken }).then(() => {
+      userLogout()
+    })
+    // signOut()
   }
 
   useEffect(() => {
@@ -132,7 +124,6 @@ const MainContainer = observer(() => {
     getUserInfo()
       .then((result) => {
         const { userInfo, accessToken='' } = result
-        console.log('login complete userData: ', userInfo, accessToken)
         userLogin(userInfo, accessToken)
       })
       .catch((err) => {

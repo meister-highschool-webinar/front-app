@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { useGoogleLogout } from 'react-google-login'
 import Swal from 'sweetalert2'
-import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
+import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER, DEV_CLIENT } from 'config/config.json'
 import { useStores } from 'stores'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import 'components/Login/login.scss'
@@ -40,14 +40,14 @@ const LoginBtn = observer(() => {
   //     })
   //   }
   // }
-  const onLogoutSuccess = (res) => {
-    console.log('logout success', res)
-    Swal.fire({
-      title: '로그아웃 완료',
-      text: '로그아웃 되었습니다.',
-      icon: 'info',
-    })
-  }
+  // const onLogoutSuccess = (res) => {
+  //   console.log('logout success', res)
+  //   Swal.fire({
+  //     title: '로그아웃 완료',
+  //     text: '로그아웃 되었습니다.',
+  //     icon: 'info',
+  //   })
+  // }
   //
   // const { signIn } = useGoogleLogin({
   //   onSuccess,
@@ -57,18 +57,21 @@ const LoginBtn = observer(() => {
   //   accessType: 'offline',
   // })
 
-  const { signOut } = useGoogleLogout({
-    clientId: GOOGLE_ID,
-    onLogoutSuccess,
-  })
+  // const { signOut } = useGoogleLogout({
+  //   clientId: GOOGLE_ID,
+  //   onLogoutSuccess,
+  // })
 
   const googleBtnClick = () => {
     if(accessToken.length === 0) {
       // signIn()
       window.location.href = `${DEV_SERVER}/auth/google`
     } else {
+      const wnd = window.open('https://accounts.google.com/logout','_blank')
+      setTimeout(() => {
+        wnd.close()
+      }, 300)      // signOut()
       userLogout()
-      signOut()
     }
   }
 

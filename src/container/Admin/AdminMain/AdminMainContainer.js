@@ -134,7 +134,7 @@ const AdminMainContainer = observer(() => {
           history.push('/')
         })
         .catch((err) => {
-          console.log('create err', err)
+          console.log('create webinar info err', err)
           if (err.response && err.response.status === 401) {
             history.push('/adminLogin')
           }
@@ -150,7 +150,7 @@ const AdminMainContainer = observer(() => {
 
   const getFileInfo = (name) => {
     getFile(name).catch((err) => {
-      console.log('err', err)
+      console.log('get file err', err)
       if (err.response && err.response.status === 401) {
         history.push('/adminLogin')
       }

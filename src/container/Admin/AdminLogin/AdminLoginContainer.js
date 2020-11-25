@@ -33,14 +33,13 @@ const AdminLoginContainer = observer(() => {
         history.push('/admin')
       })
       .catch((error) => {
-        const { status } = error.response
-        if (status === 403) {
+        if (error.response && error.response.status === 403) {
           Swal.fire({
             title: '오류',
             text: '비밀번호가 틀렸어요.',
             icon: 'error',
           })
-        } else if (status === 500) {
+        } else if (error.response && error.response.status === 500) {
           Swal.fire({
             title: '서버 오류',
             text: '서버 오류 입니다.',

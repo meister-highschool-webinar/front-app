@@ -1,6 +1,7 @@
 import { observable, action, computed } from 'mobx'
 import { persist } from 'mobx-persist'
 import io from 'socket.io-client'
+import { getTokenVerification } from 'utils/token'
 import { DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 
 // const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
@@ -32,8 +33,8 @@ export default class UserStore {
   @computed
   get socket() {
     let socket
-    const adminToken = sessionStorage.getItem('adminToken')
-    if (adminToken && adminToken.length > 0) {
+    const adminToken = getTokenVerification()
+    if (adminToken.length > 0) {
       socket = io(server, {
         query: {
           admin_token: adminToken
@@ -54,3 +55,4 @@ export default class UserStore {
     return socket
   }
 }
+>>>>>>> 822b6e2040fbf326917b7421d319b01d093ff10f
