@@ -5,8 +5,8 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { stores } from 'stores'
 import { AdminLoginPage, AdminMainPage, LoginPage, SignupPage, MainPage } from 'pages'
+import { getTokenVerification } from 'utils/token'
 
-import GetTokenVerification from 'token/GetTokenVerification'
 const browserHistory = createBrowserHistory()
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
     <Provider {...stores}>
       <Router history={browserHistory}>
         <Route path={'/adminLogin'} component={AdminLoginPage} />
-        <Route path={'/admin'} render={() => (GetTokenVerification() !== null ? <AdminMainPage /> : <Redirect to={'/adminLogin'} />)} />
+        <Route path={'/admin'} render={() => (getTokenVerification().length > 0 ? <AdminMainPage /> : <Redirect to={'/adminLogin'} />)} />
         {storeLoaded ? (
           <Switch>
             <Route exact path={'/'} component={MainPage} />

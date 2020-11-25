@@ -29,9 +29,15 @@
     }
     .detail {
       font-size: 14px;
-      height: 150px;
+      min-height: 50px;
+      max-height: 150px;
+      //height: 150px;
+      //width: calc(100% - 100px);
       overflow-y: scroll;
       text-overflow: clip;
+      overflow-x: hidden;
+      word-break: break-all;
+      white-space: pre-line;
 
       &::-webkit-scrollbar {
         width: 10px;
