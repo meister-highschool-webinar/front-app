@@ -14,6 +14,7 @@ const Header = (props) => {
         props.login ?
           <span onClick={() => {
             props.logout()
+            window.open('https://accounts.google.com/logout', '_blank')
             // axios.get(`${PROD_SERVER}/auth/logout`)
             //   .then((res) => {
             //     console.log('logout complete', res)
