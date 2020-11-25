@@ -69,6 +69,10 @@ body {
         font-weight: 600;
         font-size: 13.5px;
         margin:0;
+
+        &.teacher {
+          color: #38d6be;
+        }
         em {
           font-style: normal;
           font-size: 0.8em;
@@ -86,6 +90,7 @@ body {
   }
 
   .checkbox {
+    margin-bottom: 5px;
     font-size: 12px;
     color: #666;
   }
