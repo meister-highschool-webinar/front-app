@@ -14,18 +14,15 @@ const SignupContainer = () => {
   const { email } = queryString.parse(history.location.search)
   const { userStore } = useStores()
 
-  console.log('history', history)
   const checkEmail = (email) => {
     if(gsmReg.test(email)) {
       return 'GSM'
-      // form.setFieldsValue({ schoolCode: 'GSM' })
     } else if(dsmReg.test(email)) {
       return 'DSM'
     } else if(dgswReg.test(email)) {
       return 'DGSW'
     } else {
-      return 'ADMIN'
-      // return false
+      return 'GUEST'
     }
   }
   const onSubmit = () => {
@@ -48,7 +45,7 @@ const SignupContainer = () => {
   }
 
   const onFail = (err) => {
-    console.log('fail', err)
+    console.log('signup fail', err)
     Swal.fire({
       title: '회원가입 실패',
       text: '값을 제대로 입력해주세요.',

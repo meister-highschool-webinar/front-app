@@ -9,25 +9,7 @@ export default class ChatStore {
   constructor() {
     this.qnaCheck = false
     this.chatText = ''
-    this.chatList = [
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      // { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'blah blah blah' },
-      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'test sample' },
-      { student_name: '조영일', school_name: 'MIT', student_id: '0000', text: 'qna test sample', question: true },
-    ]
+    this.chatList = []
   }
 
   @action
@@ -44,6 +26,11 @@ export default class ChatStore {
   chatListUpdate = (data) => {
     if (this.chatList.length > 99) this.chatList.splice(0, this.chatList.length - 99)
     this.chatList.push(data)
+  }
+
+  @action
+  removeChat = (id) => {
+    this.chatList.splice(this.chatList.findIndex((chat) => chat.id === id), 1)
   }
 
   @computed

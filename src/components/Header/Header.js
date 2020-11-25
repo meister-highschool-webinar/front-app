@@ -12,17 +12,7 @@ const Header = (props) => {
       <img src={talkLogo} onClick={() => history.push('/')} alt={'talk_logo'}/>
       {
         props.login ?
-          <span onClick={() => {
-            props.logout()
-            // axios.get(`${PROD_SERVER}/auth/logout`)
-            //   .then((res) => {
-            //     console.log('logout complete', res)
-            //     history.replace('/')
-            //   })
-            //   .catch((err) => {
-            //     console.log('logout fail', err)
-            //   })
-          }}>로그아웃</span>
+          <span onClick={props.logout}>로그아웃</span>
           :
           <span onClick={() => history.push('/login')}>로그인</span>
       }
