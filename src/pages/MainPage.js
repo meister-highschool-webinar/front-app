@@ -4,24 +4,24 @@ import { useStores } from 'stores'
 
 const MainPage = () => {
   const { chatStore, userStore, luckyStore } = useStores()
-  const { chatListUpdate } = chatStore
+  const { chatListUpdate, removeChat } = chatStore
   const { socket } = userStore
 
   useEffect(() => {
     if (socket) {
       socket.on('connect', () => {
-        console.log('socket connected', socket)
+        // console.log('socket connected', socket)
         socket.on('connected_change', (data) => {})
       })
 
       socket.on('receive message', (message) => {
         // console.log('receive message', message)
-        console.log('receive message', message)
         chatListUpdate(message)
       })
 
       socket.on('delete receive message', (id) => {
-        console.log('deleted msg id', id)
+        // console.log('deleted msg id', id)
+        removeChat(id)
       })
 
       socket.on('winner', (info) => {
