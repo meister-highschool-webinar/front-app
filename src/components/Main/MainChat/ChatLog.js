@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react'
+import { observer } from 'mobx-react'
 import './MainChat.scss'
 
-const ChatLog = (props) => {
+const ChatLog = observer((props) => {
   const { chatList, userData } = props
   const chatRef = useRef()
 
@@ -38,6 +39,6 @@ const ChatLog = (props) => {
       <div ref={chatRef} />
     </div>
   )
-}
+})
 
 export default ChatLog
