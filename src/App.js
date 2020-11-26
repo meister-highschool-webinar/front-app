@@ -4,7 +4,7 @@ import { Provider } from 'mobx-react'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { stores } from 'stores'
-import { AdminLoginPage, AdminMainPage, LoginPage, SignupPage, MainPage } from 'pages'
+import { AdminLoginPage, AdminMainPage, LoginPage, LoginSuccessPage, SignupPage, MainPage } from 'pages'
 import { getTokenVerification } from 'utils/token'
 
 const browserHistory = createBrowserHistory()
@@ -31,6 +31,7 @@ const App = () => {
           <Switch>
             <Route exact path={'/'} component={MainPage} />
             <Route path={'/login'} component={LoginPage} />
+            <Route path={'/loginSuccess'} component={LoginSuccessPage} />
             <Route path={'/signup'} component={SignupPage} />
           </Switch>
         ) : null}
