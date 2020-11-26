@@ -17,6 +17,6 @@ export const checkLength = (text, maxLen) => {
   return text.length > maxLen
 }
 
-export const gsmReg = /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)\@gsm([\.])hs([\.])kr/g
-export const dsmReg = /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)\@dsm([\.])hs([\.])kr/g
-export const dgswReg = /([a-zA-Z0-9]+)([\.{1}])?([a-zA-Z0-9]+)\@dgsw([\.])hs([\.])kr/g
+export const gsmReg = /([a-zA-Z0-9]+)([a-zA-Z0-9._]*)\@gsm([\.])hs([\.])kr/g
+export const dsmReg = /([a-zA-Z0-9]+)([a-zA-Z0-9._]*)\@dsm([\.])hs([\.])kr/g
+export const dgswReg = /([a-zA-Z0-9]+)([a-zA-Z0-9._]*)\@dgsw([\.])hs([\.])kr/g
