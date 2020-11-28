@@ -21,7 +21,7 @@ const MainTimeTable = observer(() => {
   }, [])
 
   const getMainDate = () => {
-    if(timeTableList.length !== 0) return moment(timeTableList[0].start_time).format('MM/DD')
+    if(timeTableList.length !== 0) return moment.parseZone(timeTableList[0].start_time).format('MM/DD')
   }
 
   return (
