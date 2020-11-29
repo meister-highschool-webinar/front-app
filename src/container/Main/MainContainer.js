@@ -28,9 +28,12 @@ import timeTableActiveIcon from 'assets/images/timetable-active-icon@3x.png'
 import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
 import { reaction } from 'mobx'
+import { useHistory } from 'react-router'
+
 
 const MainContainer = observer(() => {
   const { WebinarInfoStore, userStore } = useStores()
+  const history = useHistory()
   const { getWebinarInfo, link, title, detail } = WebinarInfoStore
   const { userLogin, userLogout, accessToken } = userStore
   const store = useLocalStore(() => ({
@@ -109,19 +112,21 @@ const MainContainer = observer(() => {
   // })
 
   const logout = () => {
+    userLogout()
     const wnd = window.open('https://accounts.google.com/logout','_blank')
     setTimeout(() => {
       wnd.close()
     }, 300)
     axios.post(`${DEV_SERVER}/auth/logout`,{ access_token: accessToken }).then(() => {
-      userLogout()
+      history.go(0);
     })
+
     // signOut()
   }
 
   useEffect(() => {
     handleGetWebinarInfo()
-    getUserInfo()
+    getUserInfo({access_token: accessToken})
       .then((result) => {
         const { userInfo, accessToken='' } = result
         userLogin(userInfo, accessToken)
