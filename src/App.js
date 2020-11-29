@@ -10,7 +10,7 @@ import { getTokenVerification } from 'utils/token'
 import { GA_CODE } from 'config/config.json'
 
 const browserHistory = createBrowserHistory()
-ReactGA.initialize(GA_CODE, { debug: true })
+ReactGA.initialize(GA_CODE)
 
 browserHistory.listen((location) => {
   ReactGA.set({ page: location.pathname } )
