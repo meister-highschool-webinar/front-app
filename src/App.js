@@ -1,13 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { create } from 'mobx-persist'
 import { Provider } from 'mobx-react'
+import ReactGA from 'react-ga'
 import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { stores } from 'stores'
 import { AdminLoginPage, AdminMainPage, LoginPage, LoginSuccessPage, SignupPage, MainPage } from 'pages'
 import { getTokenVerification } from 'utils/token'
+import { GA_CODE } from 'config/config.json'
 
 const browserHistory = createBrowserHistory()
+ReactGA.initialize(GA_CODE, { debug: true })
+
+browserHistory.listen((location) => {
+  ReactGA.set({ page: location.pathname } )
+  ReactGA.pageview(location.pathname)
+})
 
 const App = () => {
   const [storeLoaded, setStoreLoaded] = useState(false)
