@@ -11,8 +11,8 @@ config/
 
 
 # production
-#/build
-#.build
+/build
+.build
 /dist
 .dist
 
