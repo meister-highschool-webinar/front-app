@@ -9,7 +9,7 @@ const usePageTracking = (name) => {
 
   useEffect(() => {
     if(!window.location.href.includes('localhost')) {
-      ReactGA.initialize(GA_CODE, { debug: true, gaOptions: { name: name } })
+      ReactGA.initialize(GA_CODE, { gaOptions: { name: name } })
       setInitialized(true)
     }
   }, [])
