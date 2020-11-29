@@ -3,7 +3,7 @@ import axios from 'axios'
 import { DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 
 // let URL = process.env.NODE_ENV === 'production' ? `${PROD_SERVER}/api` : `${DEV_SERVER}/api`
-let URL = `${TEST_SERVER}/api`
+let URL = `${PROD_SERVER}/api`
 
 const axiosApi = (url, method = 'GET', data, options = {}) => {
   data = method.toUpperCase() === 'GET' ? { params: { ...data } } : { data }
