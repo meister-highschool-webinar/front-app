@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 import { useStores } from 'stores'
 import { limitEnterNum, checkLineOver, checkLength } from 'utils/stringFormat'
 import { getTokenVerification } from 'utils/token'
+import usePageTracking from 'utils/ga'
 import ChatLog from './ChatLog'
 import nonConnectIcon from 'assets/images/non-connect-icon@2x.png'
 import connectIcon from 'assets/images/connect-icon@2x.png'
@@ -19,6 +20,7 @@ const MainChat = observer(() => {
   const { chatStore, userStore } = useStores()
   const { chatText, chatList, onChatChange, qnaCheck, toggleCheck } = chatStore
   const { accessToken, socket, userData } = userStore
+  usePageTracking('chat')
 
   const inputChange = (e) => {
     let chat = limitEnterNum(e.target.value)
