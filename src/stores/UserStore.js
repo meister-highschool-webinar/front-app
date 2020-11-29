@@ -5,7 +5,7 @@ import { getTokenVerification } from 'utils/token'
 import { DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 
 // const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
-const server = TEST_SERVER
+const server = PROD_SERVER
 
 export default class UserStore {
   @persist @observable accessToken = ''
