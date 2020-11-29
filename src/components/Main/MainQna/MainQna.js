@@ -2,6 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { useStores } from 'stores'
 import { getTokenVerification } from 'utils/token'
+import usePageTracking from 'utils/ga'
 import xIcon from 'assets/images/x-icon@3x.png'
 import './mainQna.scss'
 
@@ -9,6 +10,7 @@ const MainQna = observer(() => {
   const { chatStore, userStore } = useStores()
   const { questionList } = chatStore
   const { socket } = userStore
+  usePageTracking('qna')
 
   const removeMsg = (id) => {
     socket.emit('delete message', { msgId: id })
