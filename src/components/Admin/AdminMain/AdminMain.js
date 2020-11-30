@@ -27,7 +27,8 @@ const AdminMain = ({
   setPopup,
   luckydrawStart,
   luckydrawReset,
-  initLogs
+  initLogs,
+  refreshPage
 }) => {
   return (
     <>
@@ -95,6 +96,10 @@ const AdminMain = ({
             <div className={'AdminMain_wrap_footer_item'}>
               <span>채팅기록 초기화</span>
               <img onClick={() => initLogs()} className={'AdminMain_wrap_footer_item_download'} src={startBtn} alt="remove_chat_btn" />
+            </div>
+            <div className={'AdminMain_wrap_footer_item'}>
+              <span>새로고침</span>
+              <img onClick={() => refreshPage()} className={'AdminMain_wrap_footer_item_download'} src={startBtn} alt="refresh_btn" />
             </div>
             {/*<div className={'AdminMain_wrap_footer_item'}>*/}
             {/*  <img src={luckydraw} alt="chatting-icon" />*/}

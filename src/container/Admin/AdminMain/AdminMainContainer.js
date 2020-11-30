@@ -9,7 +9,7 @@ import TimeTableTemp from 'components/TimeTable/TimeTableTemp/TimeTableTemp'
 import AdminTimetable from 'components/Admin/AdminTimetable'
 import * as apis from 'utils/apis'
 import { DATE } from 'config/config.json'
-import { initChatLog, initQnaLog, initChatLogs } from 'utils/apis'
+import { initChatLogs, refresh } from 'utils/apis'
 
 // config/config.json 에 DATE를 2020-09-11 처럼 특정 날짜로 지정해주세요.
 
@@ -109,6 +109,24 @@ const AdminMainContainer = observer(() => {
             }
           })
       }
+    }
+  }
+
+  const refreshPage = async () => {
+    const { isConfirmed } = await Swal.fire({
+      title: '페이지 업데이트를 하시겠습니까?',
+      showCancelButton: true,
+    })
+    if (isConfirmed) {
+      refresh()
+        .then(() => {
+          Swal.fire({ title: 'Success', text: '페이지 업데이트 성공!', icon: 'success' })
+        })
+        .catch((err) => {
+          if (err.response.status === 400) {
+            Swal.fire({ title: 'Error', text: '페이지 업데이트를 실패했습니다.', icon: 'error' })
+          }
+        })
     }
   }
 
@@ -241,6 +259,7 @@ const AdminMainContainer = observer(() => {
         luckydrawStart={luckydrawStart}
         luckydrawReset={luckydrawReset}
         initLogs={initLogs}
+        refreshPage={refreshPage}
       />
       {popup && (
         <AdminTimetable

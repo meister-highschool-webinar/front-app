@@ -84,3 +84,8 @@ export const initQnaLog = () => {
   axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
   return axiosApi('/auth/remove_all_qna', 'GET')
 }
+
+export const refresh = () => {
+  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
+  return axiosApi('/auth/refresh_page', 'GET')
+}
