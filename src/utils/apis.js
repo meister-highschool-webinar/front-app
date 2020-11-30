@@ -82,5 +82,5 @@ export const initChatLog = () => {
 
 export const initQnaLog = () => {
   axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
-  return axiosApi('/auth/remove_all_qna_chat', 'GET')
+  return axiosApi('/auth/remove_all_qna', 'GET')
 }
