@@ -65,3 +65,22 @@ export const resetLuckyDraw = () => {
   axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
   return axiosApi('/auth/luckdraw/reset', 'PATCH')
 }
+
+export const initChatLogs = (type) => {
+  switch(type) {
+    case 'chat':
+      return initChatLog()
+    case 'qna':
+      return initQnaLog()
+  }
+}
+
+export const initChatLog = () => {
+  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
+  return axiosApi('/auth/remove_all_chat', 'GET')
+}
+
+export const initQnaLog = () => {
+  axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
+  return axiosApi('/auth/remove_all_qna_chat', 'GET')
+}

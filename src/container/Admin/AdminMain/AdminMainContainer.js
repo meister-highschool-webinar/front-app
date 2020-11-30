@@ -9,6 +9,7 @@ import TimeTableTemp from 'components/TimeTable/TimeTableTemp/TimeTableTemp'
 import AdminTimetable from 'components/Admin/AdminTimetable'
 import * as apis from 'utils/apis'
 import { DATE } from 'config/config.json'
+import { initChatLog, initQnaLog, initChatLogs } from 'utils/apis'
 
 // config/config.json 에 DATE를 2020-09-11 처럼 특정 날짜로 지정해주세요.
 
@@ -71,6 +72,43 @@ const AdminMainContainer = observer(() => {
             Swal.fire({ title: 'Error', text: '럭키드로우 초기화에 실패했습니다.', icon: 'error' })
           }
         })
+    }
+  }
+
+  const initLogs = async (type) => {
+    const { isConfirmed } = await Swal.fire({
+      title: '정말 초기화 하시겠습니까?',
+      showCancelButton: true,
+    })
+    if(isConfirmed) {
+      if(type === undefined) {
+        await initChatLogs('chat')
+          .catch((err) => {
+            if (err.response.status === 400) {
+              Swal.fire({ title: 'Error', text: `채팅 초기화에 실패했습니다.`, icon: 'error' })
+            }
+          })
+        await initChatLogs('qna')
+          .then((res) => {
+            Swal.fire({ title: 'Success', text: `모든 채팅로그가 초기화되었습니다.`, icon: 'success' })
+          })
+          .catch((err) => {
+            if (err.response.status === 400) {
+              Swal.fire({ title: 'Error', text: `Q&A 초기화에 실패했습니다.`, icon: 'error' })
+            }
+          })
+      } else {
+        console.log('type', type)
+        initChatLogs(type)
+          .then((res) => {
+            Swal.fire({ title: 'Success', text: `${type}이/가 초기화되었습니다.`, icon: 'success' })
+          })
+          .catch((err) => {
+            if (err.response.status === 400) {
+              Swal.fire({ title: 'Error', text: `${type} 초기화에 실패했습니다.`, icon: 'error' })
+            }
+          })
+      }
     }
   }
 
@@ -202,6 +240,7 @@ const AdminMainContainer = observer(() => {
         setPopup={setPopup}
         luckydrawStart={luckydrawStart}
         luckydrawReset={luckydrawReset}
+        initLogs={initLogs}
       />
       {popup && (
         <AdminTimetable

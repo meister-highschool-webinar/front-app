@@ -27,13 +27,14 @@ const AdminMain = ({
   setPopup,
   luckydrawStart,
   luckydrawReset,
+  initLogs
 }) => {
   return (
     <>
       <div className={'AdminMain'}>
         <div className={'AdminMain_header'}>
           <img src={webinar} alt="webinar" />
-          <h3>{'SW마이스터고 온라인 톡톡톡 관리자'}</h3>
+          <h3>{'SW마이스터고 온라인 톡톡톡 관리자'}</h3>
         </div>
         <div className={'AdminMain_wrap'}>
           <div className={'AdminMain_wrap_item'}>
@@ -91,13 +92,16 @@ const AdminMain = ({
                 <img className={'AdminMain_wrap_footer_item_download'} src={download} alt="download-button" />
               </CSVLink>
             </div>
-
             <div className={'AdminMain_wrap_footer_item'}>
-              <img src={luckydraw} alt="chatting-icon" />
-              <span>럭키드로우</span>
-              <img onClick={() => luckydrawStart()} className={'AdminMain_wrap_footer_item_download'} src={startBtn} alt="download-button" />
-              <img onClick={() => luckydrawReset()} className={'AdminMain_wrap_footer_item_reset'} src={resetIcon} alt="reset-button" />
+              <span>채팅기록 초기화</span>
+              <img onClick={() => initLogs()} className={'AdminMain_wrap_footer_item_download'} src={startBtn} alt="remove_chat_btn" />
             </div>
+            {/*<div className={'AdminMain_wrap_footer_item'}>*/}
+            {/*  <img src={luckydraw} alt="chatting-icon" />*/}
+            {/*  <span>럭키드로우</span>*/}
+            {/*  <img onClick={() => luckydrawStart()} className={'AdminMain_wrap_footer_item_download'} src={startBtn} alt="download-button" />*/}
+            {/*  <img onClick={() => luckydrawReset()} className={'AdminMain_wrap_footer_item_reset'} src={resetIcon} alt="reset-button" />*/}
+            {/*</div>*/}
             <img className={'AdminMain_wrap_footer_start'} src={webinaStart} alt="webina_start" onClick={() => handleCreateWebinarInfo()} />
           </div>
         </div>
