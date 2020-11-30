@@ -33,6 +33,16 @@ export default class ChatStore {
     this.chatList.splice(this.chatList.findIndex((chat) => chat.id === id), 1)
   }
 
+  @action
+  removeAllChat = () => {
+    this.chatList = []
+  }
+
+  @action
+  removeQnaList = () => {
+    this.chatList = this.chatList.filter((chatData) => chatData.question === false)
+  }
+
   @computed
   get questionList() {
     return this.chatList.filter((chatData) => chatData.question === true)
