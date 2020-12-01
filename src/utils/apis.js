@@ -67,7 +67,7 @@ export const resetLuckyDraw = () => {
 }
 
 export const initChatLogs = (type) => {
-  switch(type) {
+  switch (type) {
     case 'chat':
       return initChatLog()
     case 'qna':

@@ -18,16 +18,23 @@ const MainQna = observer(() => {
 
   return (
     <div className={'qnaContainer'}>
-      {
-        questionList && questionList.map((qna, idx) => (
+      {questionList &&
+        questionList.map((qna, idx) => (
           <div key={`qna_${idx}`} className={'qnaBox'}>
             <div className={'qnaBox__header'}>
-              { getTokenVerification().length > 0 && <img src={xIcon} alt={'xIcon'} onClick={() => {removeMsg(qna.msg_id)}}/> }
+              {getTokenVerification().length > 0 && (
+                <img
+                  src={xIcon}
+                  alt={'xIcon'}
+                  onClick={() => {
+                    removeMsg(qna.msg_id)
+                  }}
+                />
+              )}
             </div>
             <div className={'qnaBox__contents'}>Q. {qna.text}</div>
           </div>
-        ))
-      }
+        ))}
     </div>
   )
 })

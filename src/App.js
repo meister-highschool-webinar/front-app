@@ -13,7 +13,7 @@ ReactGA.initialize(GA_CODE)
 const browserHistory = createBrowserHistory()
 
 browserHistory.listen((location) => {
-  ReactGA.set({ page: location.pathname } )
+  ReactGA.set({ page: location.pathname })
   ReactGA.pageview(location.pathname)
 })
 

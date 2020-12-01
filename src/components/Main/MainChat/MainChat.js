@@ -57,12 +57,12 @@ const MainChat = observer(() => {
       if (chatText.length > 0 && (chatText.trim() !== '' || chatText.trim().length !== 0)) {
         const chatData = {
           text: chatText,
-          question: qnaCheck
+          question: qnaCheck,
         }
 
         socket.emit('send message', chatData)
         // console.log('send msg', chatData, socket)
-        if(qnaCheck) toggleCheck()
+        if (qnaCheck) toggleCheck()
       }
       onChatChange('')
     }
@@ -83,7 +83,7 @@ const MainChat = observer(() => {
             history.push('/login')
           }}
         >
-          <img src={exclamationIcon} alt={'exclamation_mark'}/>
+          <img src={exclamationIcon} alt={'exclamation_mark'} />
           <p>어드민 계정 이용 불가</p>
         </div>
       )
@@ -101,12 +101,12 @@ const MainChat = observer(() => {
             history.push('/login')
           }}
         >
-          <img src={exclamationIcon} alt={'exclamation_mark'}/>
+          <img src={exclamationIcon} alt={'exclamation_mark'} />
           <p>로그인이 필요합니다.</p>
         </div>
       )
     } else {
-      if(userData.school_code === 'GUEST') {
+      if (userData.school_code === 'GUEST') {
         return (
           <div
             className={'noAccess'}
@@ -119,7 +119,7 @@ const MainChat = observer(() => {
               history.push('/login')
             }}
           >
-            <img src={exclamationIcon} alt={'exclamation_mark'}/>
+            <img src={exclamationIcon} alt={'exclamation_mark'} />
             <p>로그인이 필요합니다.</p>
           </div>
         )
@@ -147,11 +147,11 @@ const MainChat = observer(() => {
   return (
     <div className={'chatContainer'}>
       <ChatLog chatList={chatList} userData={userData} />
-      <Checkbox className={'checkbox'} checked={qnaCheck} onChange={toggleCheck}>Q&A 탭에 노출하기</Checkbox>
+      <Checkbox className={'checkbox'} checked={qnaCheck} onChange={toggleCheck}>
+        Q&A 탭에 노출하기
+      </Checkbox>
       <form onSubmit={onSubmit}>
-        <div className={'chatBox'}>
-          {checkChatAccess()}
-        </div>
+        <div className={'chatBox'}>{checkChatAccess()}</div>
         <div className={'chatEnterArea'}>
           <button type="submit" className={'chatEnterIcon'} />
         </div>
