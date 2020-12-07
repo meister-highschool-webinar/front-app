@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Redirect, useLocation } from 'react-router-dom'
 import queryString from 'query-string'
-import { Base64 } from 'js-base64';
+import { Base64 } from 'js-base64'
 
 import { useStores } from 'stores'
 

@@ -89,3 +89,7 @@ export const refresh = () => {
   axios.defaults.headers['x-access-token'] = sessionStorage.getItem('adminToken')
   return axiosApi('/auth/refresh_page', 'GET')
 }
+
+export const getAllChat = () => {
+  return axiosApi('/get_all_chat', 'GET')
+}

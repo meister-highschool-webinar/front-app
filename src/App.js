@@ -9,11 +9,11 @@ import { AdminLoginPage, AdminMainPage, LoginPage, LoginSuccessPage, SignupPage,
 import { getTokenVerification } from 'utils/token'
 import { GA_CODE } from 'config/config.json'
 
-const browserHistory = createBrowserHistory()
 ReactGA.initialize(GA_CODE)
+const browserHistory = createBrowserHistory()
 
 browserHistory.listen((location) => {
-  ReactGA.set({ page: location.pathname } )
+  ReactGA.set({ page: location.pathname })
   ReactGA.pageview(location.pathname)
 })
 

@@ -6,9 +6,7 @@ import { stores } from 'stores'
 
 const InfoContainer = observer(() => {
   const { title, detail } = stores.WebinarInfoStore
-  getWebinarInfo().then(({ data }) => {
-
-  })
+  getWebinarInfo().then(({ data }) => {})
 
   return <Info title={title} detail={detail} />
 })

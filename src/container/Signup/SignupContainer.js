@@ -2,7 +2,7 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form } from 'antd'
 import queryString from 'query-string'
-import Swal from "sweetalert2"
+import Swal from 'sweetalert2'
 import Signup from 'components/Signup'
 import { useStores } from 'stores'
 import { dgswReg, dsmReg, gsmReg } from 'utils/stringFormat'
@@ -15,11 +15,11 @@ const SignupContainer = () => {
   const { userStore } = useStores()
 
   const checkEmail = (email) => {
-    if(gsmReg.test(email)) {
+    if (gsmReg.test(email)) {
       return 'GSM'
-    } else if(dsmReg.test(email)) {
+    } else if (dsmReg.test(email)) {
       return 'DSM'
-    } else if(dgswReg.test(email)) {
+    } else if (dgswReg.test(email)) {
       return 'DGSW'
     } else {
       return 'GUEST'
@@ -53,14 +53,7 @@ const SignupContainer = () => {
     })
   }
 
-  return (
-    <Signup
-      onSubmit={onSubmit}
-      onFail={onFail}
-      form={form}
-      email={email}
-    />
-  )
+  return <Signup onSubmit={onSubmit} onFail={onFail} form={form} email={email} />
 }
 
 export default SignupContainer
