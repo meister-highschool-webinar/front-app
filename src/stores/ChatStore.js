@@ -5,11 +5,13 @@ export default class ChatStore {
   @observable qnaCheck
   @observable chatText
   @observable @persist('list') chatList = []
+  @observable @persist('list') qnaList = []
 
   constructor() {
     this.qnaCheck = false
     this.chatText = ''
     this.chatList = []
+    this.qnaList = []
   }
 
   @action
@@ -26,11 +28,14 @@ export default class ChatStore {
   chatListUpdate = (data) => {
     if (this.chatList.length > 99) this.chatList.splice(0, this.chatList.length - 99)
     this.chatList.push(data)
+    // this.setQnaList(this.chatList)
+    this.qnaList = this.qnaList.concat(this.chatList.filter((chatData) => chatData.question === true))
   }
 
   @action
   removeChat = (id) => {
     this.chatList.splice(this.chatList.findIndex((chat) => chat.id === id), 1)
+    this.qnaList.splice(this.qnaList.findIndex((qna) => qna.id === id), 1)
   }
 
   @action
@@ -40,11 +45,18 @@ export default class ChatStore {
 
   @action
   removeQnaList = () => {
+    this.qnaList = []
     this.chatList = this.chatList.filter((chatData) => chatData.question === false)
   }
 
-  @computed
-  get questionList() {
-    return this.chatList.filter((chatData) => chatData.question === true)
+  @action
+  setQnaList = (chatList) => {
+    this.qnaList = []
+    this.qnaList = chatList.filter((chatData) => chatData.question === true)
   }
+
+  // @computed
+  // get questionList() {
+  //   return this.chatList.filter((chatData) => chatData.question === true)
+  // }
 }
