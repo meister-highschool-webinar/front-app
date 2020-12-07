@@ -117,7 +117,7 @@ const MainContainer = observer(() => {
     setTimeout(() => {
       wnd.close()
     }, 300)
-    axios.post(`${PROD_SERVER}/auth/logout`,{ access_token: accessToken }).then(() => {
+    axios.post(`${TEST_SERVER}/auth/logout`,{ access_token: accessToken }).then(() => {
       history.go(0);
     })
 
