@@ -4,7 +4,7 @@ import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useStores } from 'stores'
-import { GOOGLE_ID, TEST_SERVER, PROD_SERVER } from 'config/config.json'
+import { GOOGLE_ID, DEV_SERVER, TEST_SERVER } from 'config/config.json'
 import { getUserInfo, logoutApi } from 'utils/apis'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import InfoContainer from './InfoContainer'
@@ -116,7 +116,7 @@ const MainContainer = observer(() => {
     setTimeout(() => {
       wnd.close()
     }, 300)
-    axios.post(`${PROD_SERVER}/auth/logout`, { access_token: accessToken }).then(() => {
+    axios.post(`${DEV_SERVER}/auth/logout`, { access_token: accessToken }).then(() => {
       history.go(0)
     })
 
