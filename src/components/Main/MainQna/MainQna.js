@@ -17,7 +17,7 @@ const MainQna = observer(() => {
 
   const removeMsg = async (id) => {
     const { isConfirmed } = await Swal.fire({
-      title: '정말 초기화 하시겠습니까?',
+      title: '정말 삭제 하시겠습니까?',
       showCancelButton: true,
     })
     if (isConfirmed) socket.emit('delete message', { msgId: id })
