@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect } from 'react'
+import { useHistory } from 'react-router'
 import { observer, useLocalStore } from 'mobx-react'
 import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useStores } from 'stores'
-import { GOOGLE_ID, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 import { getUserInfo, logoutApi } from 'utils/apis'
+import { setServerUrl } from 'utils/server'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import InfoContainer from './InfoContainer'
 import TimeTableContainer from './TimeTableContainer'
@@ -27,8 +28,9 @@ import qnaActiveIcon from 'assets/images/qna-active-icon@3x.png'
 import timeTableActiveIcon from 'assets/images/timetable-active-icon@3x.png'
 import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
-import { reaction } from 'mobx'
-import { useHistory } from 'react-router'
+
+const host = window.location.hostname
+let SERVER_URL = setServerUrl(host)
 
 const MainContainer = observer(() => {
   const { WebinarInfoStore, userStore } = useStores()
@@ -116,7 +118,7 @@ const MainContainer = observer(() => {
     setTimeout(() => {
       wnd.close()
     }, 300)
-    axios.post(`${PROD_SERVER}/auth/logout`, { access_token: accessToken }).then(() => {
+    axios.post(`${SERVER_URL}/auth/logout`, { access_token: accessToken }).then(() => {
       history.go(0)
     })
 
