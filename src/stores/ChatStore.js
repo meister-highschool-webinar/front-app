@@ -33,9 +33,15 @@ export default class ChatStore {
   }
 
   @action
-  removeChat = (id) => {
-    this.chatList.splice(this.chatList.findIndex((chat) => chat.id === id), 1)
-    this.qnaList.splice(this.qnaList.findIndex((qna) => qna.id === id), 1)
+  removeChat = (msg_id) => {
+    this.chatList.splice(
+      this.chatList.findIndex((chat) => chat.msg_id === msg_id),
+      1
+    )
+    this.qnaList.splice(
+      this.qnaList.findIndex((qna) => qna.msg_id === msg_id),
+      1
+    )
   }
 
   @action
