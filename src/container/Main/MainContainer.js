@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect } from 'react'
+import { useHistory } from 'react-router'
 import { observer, useLocalStore } from 'mobx-react'
 import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import { useStores } from 'stores'
-import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 import { getUserInfo, logoutApi } from 'utils/apis'
+import { setServerUrl } from 'utils/server'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import InfoContainer from './InfoContainer'
 import TimeTableContainer from './TimeTableContainer'
@@ -27,22 +28,9 @@ import qnaActiveIcon from 'assets/images/qna-active-icon@3x.png'
 import timeTableActiveIcon from 'assets/images/timetable-active-icon@3x.png'
 import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
-import { reaction } from 'mobx'
-import { useHistory } from 'react-router'
 
-let SERVER_URL
 const host = window.location.hostname
-switch (host) {
-  case 'test-front-app-meister-highschool-webinar.endpoint.ainize.ai':
-    SERVER_URL = `${DEV_SERVER}`
-    break
-  case 'master-backend-meister-highschool-webinar.endpoint.ainize.ai':
-  case 'www.sw-webinar.com':
-    SERVER_URL = `${PROD_SERVER}`
-    break
-  default:
-    SERVER_URL = `${TEST_SERVER}`
-}
+let SERVER_URL = setServerUrl(host)
 
 const MainContainer = observer(() => {
   const { WebinarInfoStore, userStore } = useStores()

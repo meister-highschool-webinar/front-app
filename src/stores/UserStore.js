@@ -2,22 +2,11 @@ import { observable, action, computed } from 'mobx'
 import { persist } from 'mobx-persist'
 import io from 'socket.io-client'
 import { getTokenVerification } from 'utils/token'
-import { DEV_SERVER, TEST_SERVER, PROD_SERVER } from 'config/config.json'
+import { setServerUrl } from '../utils/server'
 
 // const server = process.env.NODE_ENV === 'production' ? PROD_SERVER : DEV_SERVER
-let SERVER_URL
 const host = window.location.hostname
-switch (host) {
-  case 'test-front-app-meister-highschool-webinar.endpoint.ainize.ai':
-    SERVER_URL = `${DEV_SERVER}`
-    break
-  case 'master-backend-meister-highschool-webinar.endpoint.ainize.ai':
-  case 'www.sw-webinar.com':
-    SERVER_URL = `${PROD_SERVER}`
-    break
-  default:
-    SERVER_URL = `${TEST_SERVER}`
-}
+let SERVER_URL = setServerUrl(host)
 
 export default class UserStore {
   @persist @observable accessToken = ''

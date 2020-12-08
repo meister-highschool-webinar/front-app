@@ -2,27 +2,16 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { useGoogleLogout } from 'react-google-login'
 import Swal from 'sweetalert2'
-import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER, DEV_CLIENT } from 'config/config.json'
 import { useStores } from 'stores'
+import { setServerUrl } from 'utils/server'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import 'components/Login/login.scss'
 import googleIcon from 'assets/images/google@2x.png'
 import axios from 'axios'
 import { getUserInfo } from '../../utils/apis'
 
-let SERVER_URL
 const host = window.location.hostname
-switch (host) {
-  case 'test-front-app-meister-highschool-webinar.endpoint.ainize.ai':
-    SERVER_URL = `${DEV_SERVER}`
-    break
-  case 'master-backend-meister-highschool-webinar.endpoint.ainize.ai':
-  case 'www.sw-webinar.com':
-    SERVER_URL = `${PROD_SERVER}`
-    break
-  default:
-    SERVER_URL = `${TEST_SERVER}`
-}
+let SERVER_URL = setServerUrl(host)
 
 const LoginBtn = observer(() => {
   const {
