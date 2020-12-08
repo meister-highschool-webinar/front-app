@@ -2,13 +2,16 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { useGoogleLogout } from 'react-google-login'
 import Swal from 'sweetalert2'
-import { GOOGLE_ID, DEV_SERVER, TEST_SERVER, PROD_SERVER, DEV_CLIENT } from 'config/config.json'
 import { useStores } from 'stores'
+import { setServerUrl } from 'utils/server'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import 'components/Login/login.scss'
 import googleIcon from 'assets/images/google@2x.png'
 import axios from 'axios'
 import { getUserInfo } from '../../utils/apis'
+
+const host = window.location.hostname
+let SERVER_URL = setServerUrl(host)
 
 const LoginBtn = observer(() => {
   const {
@@ -63,14 +66,14 @@ const LoginBtn = observer(() => {
   // })
 
   const googleBtnClick = () => {
-    if(accessToken.length === 0) {
+    if (accessToken.length === 0) {
       // signIn()
-      window.location.href = `${DEV_SERVER}/auth/google`
+      window.location.href = `${SERVER_URL}/auth/google`
     } else {
-      const wnd = window.open('https://accounts.google.com/logout','_blank')
+      const wnd = window.open('https://accounts.google.com/logout', '_blank')
       setTimeout(() => {
         wnd.close()
-      }, 300)      // signOut()
+      }, 300) // signOut()
       userLogout()
     }
   }
