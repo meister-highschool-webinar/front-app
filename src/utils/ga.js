@@ -8,18 +8,18 @@ const usePageTracking = (name) => {
   const [initialized, setInitialized] = useState(false)
 
   useEffect(() => {
-    if(!window.location.href.includes('localhost')) {
+    if (!window.location.href.includes('localhost')) {
       ReactGA.initialize(GA_CODE, { gaOptions: { name: name } })
       setInitialized(true)
     }
   }, [])
 
   useEffect(() => {
-    if(initialized) {
-      ReactGA.set({ page: location.pathname } )
+    if (initialized) {
+      ReactGA.set({ page: location.pathname })
       ReactGA.pageview(location.pathname + location.search)
     }
   }, [initialized, location])
 }
 
-export default usePageTracking;
+export default usePageTracking

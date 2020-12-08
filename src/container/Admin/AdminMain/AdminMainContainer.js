@@ -80,14 +80,13 @@ const AdminMainContainer = observer(() => {
       title: '정말 초기화 하시겠습니까?',
       showCancelButton: true,
     })
-    if(isConfirmed) {
-      if(type === undefined) {
-        await initChatLogs('chat')
-          .catch((err) => {
-            if (err.response.status === 400) {
-              Swal.fire({ title: 'Error', text: `채팅 초기화에 실패했습니다.`, icon: 'error' })
-            }
-          })
+    if (isConfirmed) {
+      if (type === undefined) {
+        await initChatLogs('chat').catch((err) => {
+          if (err.response.status === 400) {
+            Swal.fire({ title: 'Error', text: `채팅 초기화에 실패했습니다.`, icon: 'error' })
+          }
+        })
         await initChatLogs('qna')
           .then((res) => {
             Swal.fire({ title: 'Success', text: `모든 채팅로그가 초기화되었습니다.`, icon: 'success' })

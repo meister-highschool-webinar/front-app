@@ -2,9 +2,9 @@ import React, { useCallback, useEffect } from 'react'
 import { observer, useLocalStore } from 'mobx-react'
 import { useGoogleLogin, useGoogleLogout } from 'react-google-login'
 import axios from 'axios'
-import Swal from "sweetalert2"
+import Swal from 'sweetalert2'
 import { useStores } from 'stores'
-import { GOOGLE_ID, TEST_SERVER } from 'config/config.json'
+import { GOOGLE_ID, TEST_SERVER, PROD_SERVER } from 'config/config.json'
 import { getUserInfo, logoutApi } from 'utils/apis'
 import { refreshTokenSetup } from 'utils/refreshLoginSetup'
 import InfoContainer from './InfoContainer'
@@ -29,7 +29,6 @@ import surveyActiveIcon from 'assets/images/survey-active-icon@3x.png'
 import luckydrawActiveIcon from 'assets/images/luckydraw-active-icon@3x.png'
 import { reaction } from 'mobx'
 import { useHistory } from 'react-router'
-
 
 const MainContainer = observer(() => {
   const { WebinarInfoStore, userStore } = useStores()
@@ -113,12 +112,12 @@ const MainContainer = observer(() => {
 
   const logout = () => {
     userLogout()
-    const wnd = window.open('https://accounts.google.com/logout','_blank')
+    const wnd = window.open('https://accounts.google.com/logout', '_blank')
     setTimeout(() => {
       wnd.close()
     }, 300)
-    axios.post(`${TEST_SERVER}/auth/logout`,{ access_token: accessToken }).then(() => {
-      history.go(0);
+    axios.post(`${PROD_SERVER}/auth/logout`, { access_token: accessToken }).then(() => {
+      history.go(0)
     })
 
     // signOut()
@@ -126,9 +125,9 @@ const MainContainer = observer(() => {
 
   useEffect(() => {
     handleGetWebinarInfo()
-    getUserInfo({access_token: accessToken})
+    getUserInfo({ access_token: accessToken })
       .then((result) => {
-        const { userInfo, accessToken='' } = result
+        const { userInfo, accessToken = '' } = result
         userLogin(userInfo, accessToken)
       })
       .catch((err) => {
@@ -138,7 +137,7 @@ const MainContainer = observer(() => {
 
   return (
     <>
-      <Header login={accessToken.length !== 0} logout={logout}/>
+      <Header login={accessToken.length !== 0} logout={logout} />
       <Main
         InfoMenus={InfoMenus}
         menuIndex={menuIndex}
