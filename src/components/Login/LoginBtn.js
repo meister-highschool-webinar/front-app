@@ -10,6 +10,20 @@ import googleIcon from 'assets/images/google@2x.png'
 import axios from 'axios'
 import { getUserInfo } from '../../utils/apis'
 
+let SERVER_URL
+const host = window.location.hostname
+switch (host) {
+  case 'test-front-app-meister-highschool-webinar.endpoint.ainize.ai':
+    SERVER_URL = `${DEV_SERVER}`
+    break
+  case 'master-backend-meister-highschool-webinar.endpoint.ainize.ai':
+  case 'www.sw-webinar.com':
+    SERVER_URL = `${PROD_SERVER}`
+    break
+  default:
+    SERVER_URL = `${TEST_SERVER}`
+}
+
 const LoginBtn = observer(() => {
   const {
     userStore: { accessToken, userLogout },
@@ -65,7 +79,7 @@ const LoginBtn = observer(() => {
   const googleBtnClick = () => {
     if (accessToken.length === 0) {
       // signIn()
-      window.location.href = `${PROD_SERVER}/auth/google`
+      window.location.href = `${SERVER_URL}/auth/google`
     } else {
       const wnd = window.open('https://accounts.google.com/logout', '_blank')
       setTimeout(() => {
