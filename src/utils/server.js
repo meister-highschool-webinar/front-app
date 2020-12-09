@@ -6,12 +6,14 @@ export const setServerUrl = (host) => {
     case 'test-front-app-meister-highschool-webinar.endpoint.ainize.ai':
       server = `${DEV_SERVER}`
       break
+    case 'localhost':
+      server = `${TEST_SERVER}`
+      break
     case 'master-backend-meister-highschool-webinar.endpoint.ainize.ai':
     case 'www.sw-webinar.com':
+    default:
       server = `${PROD_SERVER}`
       break
-    default:
-      server = `${TEST_SERVER}`
   }
   return server
 }
