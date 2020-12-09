@@ -1,6 +1,7 @@
 import parse from 'html-react-parser'
 
 export const makeLineBreak = (str) => {
+  if(str.length <= 0) return '-'
   return parse(str.replace(/\(/g, '<br/>('))
 }
 
